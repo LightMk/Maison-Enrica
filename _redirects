@@ -1,0 +1,5 @@
+# MODIFICATION : anciennes adresses redirigées vers la page Contact.
+/don                  /contact/contact.html  301
+/don/*                /contact/contact.html  301
+/contact/reception    /contact/contact.html  301
+/contact/reception.*  /contact/contact.html  301

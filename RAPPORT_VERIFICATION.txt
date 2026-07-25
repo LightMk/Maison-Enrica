@@ -1,0 +1,44 @@
+RAPPORT DE VÉRIFICATION - MAISON ENRICA
+Date : 25 juillet 2026
+
+VÉRIFICATIONS EFFECTUÉES
+
+[OK] Tous les liens vers des fichiers locaux conduisent vers un fichier existant.
+[OK] Tous les liens contenant une ancre (#section) conduisent vers un identifiant existant.
+[OK] Aucun identifiant HTML n'est utilisé deux fois dans une même page.
+[OK] Tous les champs visibles du formulaire possèdent un label.
+[OK] Le formulaire contient les attributs nécessaires à Netlify Forms.
+[OK] Le JavaScript du formulaire ne contient aucune erreur de syntaxe.
+[OK] Le JavaScript n'utilise plus localStorage et ne bloque pas l'envoi avec preventDefault().
+[OK] Le sujet « Devenir donateur » peut être sélectionné depuis les boutons de soutien.
+[OK] Le fichier sitemap.xml est un document XML valide.
+[OK] Les données structurées Organization sont un document JSON valide.
+[OK] Les fichiers CSS ont des accolades équilibrées.
+[OK] Contrôle visuel réalisé aux largeurs 1440 px et 390 px.
+[OK] Aucun débordement horizontal détecté sur Accueil, Contact, Projets et À propos.
+[OK] Les images locales principales sont accessibles et s'affichent correctement.
+[OK] L'ancienne page publique de réception et le dossier Don ne figurent plus dans la version finale.
+
+À TESTER APRÈS PUBLICATION
+
+- Réception réelle d'un message dans Netlify Forms.
+- Notification du message vers l'adresse e-mail officielle.
+- Activation du certificat HTTPS du domaine final.
+- Disponibilité et achat du domaine maisonenrica.org.
+- Validation du site dans Google Search Console.
+
+À CONFIRMER PAR LA DIRECTION
+
+- Exactitude de l'adresse, du téléphone, de l'e-mail, du NIF et de l'arrêté.
+- Droit de publication de chaque photographie, notamment celles où des enfants sont identifiables.
+
+MISE À JOUR - MENU BURGER ET INDENTATION
+
+[OK] L'indentation des huit fichiers HTML a été réorganisée de manière cohérente.
+[OK] Le menu burger est présent sur toutes les pages possédant l'en-tête principal.
+[OK] Le fichier menu.js ne contient aucune erreur de syntaxe.
+[OK] Le menu est fermé par défaut sur mobile et reste visible normalement sur ordinateur.
+[OK] Le clic ouvre et ferme le menu et met correctement à jour aria-expanded.
+[OK] La touche Échap referme le menu.
+[OK] Contrôle visuel du menu réalisé aux largeurs 390 px et 1440 px.
+[OK] Tous les liens et fichiers locaux restent accessibles après la modification.

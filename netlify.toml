@@ -1,0 +1,3 @@
+# AJOUT : le dossier actuel contient directement le site à publier.
+[build]
+  publish = "."
