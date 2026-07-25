@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <!-- AJOUT : métadonnées essentielles pour le référencement et le partage. Modifier le domaine si le nom final change. -->
+    <meta content="Contactez la Maison Enrica à Limete, Kinshasa, pour une visite, un partenariat, du bénévolat ou une proposition de soutien." name="description">
+    <meta content="index, follow, max-image-preview:large" name="robots">
+    <link href="https://maisonenrica.org/contact/contact.html" rel="canonical">
+    <meta content="fr_FR" property="og:locale">
+    <meta content="website" property="og:type">
+    <meta content="Maison Enrica" property="og:site_name">
+    <meta content="Contact | Maison Enrica à Kinshasa" property="og:title">
+    <meta content="Contactez la Maison Enrica à Limete, Kinshasa, pour une visite, un partenariat, du bénévolat ou une proposition de soutien." property="og:description">
+    <meta content="https://maisonenrica.org/contact/contact.html" property="og:url">
+    <meta content="https://maisonenrica.org/image/C.jpeg" property="og:image">
+    <meta content="summary_large_image" name="twitter:card">
+    <meta content="Contact | Maison Enrica à Kinshasa" name="twitter:title">
+    <meta content="Contactez la Maison Enrica à Limete, Kinshasa, pour une visite, un partenariat, du bénévolat ou une proposition de soutien." name="twitter:description">
+    <meta content="https://maisonenrica.org/image/C.jpeg" name="twitter:image">
+    <link href="../favicon.png" rel="icon" type="image/png">
+    <title>Contact | Maison Enrica à Kinshasa</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="../general.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script defer src="contact.js"></script>
+    <!-- AJOUT : fonctionnement du menu burger. -->
+    <script defer src="../menu.js"></script>
+</head>
+<body>
+    <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
+    <header>
+        <div class="flex3">
+            <img alt="Logo de la Maison Enrica" class="logo-img" decoding="async" height="400" loading="eager" src="../Logo.png" width="600">
+            <span class="logo-text">MAISON ENRICA</span>
+        </div>
+        <!-- AJOUT : bouton du menu burger affiché sur téléphone et tablette. -->
+        <button aria-controls="menu-principal" aria-expanded="false" aria-label="Ouvrir le menu" class="menu-burger" type="button">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </button>
+        <nav aria-label="Navigation principale" class="navigation-principale" id="menu-principal">
+            <ul>
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="../propos/propos.html">À propos</a></li>
+                <li><a href="../projet/projet.html">Projets &amp; réalisations</a></li>
+                <li><a aria-current="page" href="contact.html"><span>Contact</span></a></li>
+            </ul>
+            <a class="btn-don soutien-menu" href="contact.html?objet=Devenir%20donateur#form-contact">Nous soutenir</a>
+        </nav>
+        <!-- MODIFICATION : la page Don est temporairement retirée ; redirection vers Contact. -->
+    </header>
+    <main id="contenu-principal">
+        <section>
+            <div class="contact">
+                <h1>Contactez-nous</h1>
+                <hr class="animationEntrer">
+                <p class="animationEntrer">Que vous souhaitiez nous rendre visite, devenir bénévole ou établir un partenariat, nous sommes à votre écoute.</p>
+            </div>
+            <div class="flex">
+                <div class="formulaire">
+                    <div>
+                        <h2>Envoyez un message</h2>
+                        <p>Remplissez le formulaire ci-dessous, nous vous répondrons dans les plus brefs délais.</p>
+                    </div>
+                    <!-- MODIFICATION : formulaire réel géré par Netlify Forms ; le stockage local et la page de réception publique ont été retirés. -->
+                    <form action="../merci.html" data-netlify="true" id="form-contact" method="POST" name="contact" netlify-honeypot="bot-field">
+                        <input name="form-name" type="hidden" value="contact">
+                        <p aria-hidden="true" class="champ-piege"><label>Ne remplissez pas ce champ: <input autocomplete="off" name="bot-field" tabindex="-1"></label></p>
+                        <div>
+                            <label for="nom-contact">Nom complet</label>
+                            <input autocomplete="name" id="nom-contact" maxlength="100" minlength="2" name="nom" placeholder="Votre Nom" required type="text">
+                        </div>
+                        <div>
+                            <label for="email-contact">Email</label>
+                            <input autocomplete="email" id="email-contact" maxlength="254" minlength="5" name="email" placeholder="email@exemple.com" required type="email">
+                        </div>
+                        <div>
+                            <label for="objet-contact">Sujet de votre message</label>
+                            <select id="objet-contact" name="objet" required>
+                                <option disabled selected value>Choisissez un sujet</option>
+                                <option value="Information générale">Information générale</option>
+                                <option value="Devenir donateur">Devenir donateur</option>
+                                <option value="Demande de visite">Demande de visite</option>
+                                <option value="Demande de stage">Demande de stage</option>
+                                <option value="Bénévolat">Bénévolat</option>
+                                <option value="Proposition de partenariat">Proposition de partenariat</option>
+                                <option value="autre demande">Autre demande</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message-contact">Votre message</label>
+                            <textarea id="message-contact" maxlength="2000" minlength="20" name="message" placeholder="Comment pouvons-nous vous aider ?" required rows="10"></textarea>
+                        </div>
+                        <div class="consentement">
+                            <input id="accord-contact" name="accord" required type="checkbox" value="oui">
+                            <label for="accord-contact">J’accepte que ces informations soient utilisées uniquement pour répondre à ma demande.</label>
+                        </div>
+                        <button id="btn-contact" type="submit">Envoyer le message</button>
+                        <p class="form-note">Après l’envoi, une page de confirmation s’affichera. Ne communiquez aucune donnée bancaire ou code secret dans ce formulaire.</p>
+                    </form>
+                </div>
+                <div class="flex-invit">
+                    <div class="card-contact">
+                        <div>
+                            <h3><i aria-hidden="true" class="fa-solid fa-museum"></i> Appel à la visite</h3>
+                        </div>
+                        <p>"La porte de la Maison Enrica est toujours ouverte. Venir nous voir, c'est toucher du doigt l'espérance que nous construisons chaque jour pour ces enfants. Je vous y invite avec tout mon cœur."</p>
+                        <span class="insigne">Abbé David, Fondateur</span>
+                        <div>
+                            <p><i aria-hidden="true" class="fa-solid fa-clock"></i> Heures de Visite</p>
+                            <p>Lun - Sam: 09h00 - 17h00</p>
+                        </div>
+                    </div>
+                    <div class="card-contact">
+                        <h3>Informations directes</h3>
+                        <ul>
+                            <li><i aria-hidden="true" class="bi bi-geo-alt"></i> 10, Avenue du 17 Mai, Limete, Kinshasa, RDC</li>
+                            <li><i aria-hidden="true" class="fa-solid fa-phone"></i> <a href="tel:+243819073170">+243 81 90 73 170</a></li>
+                            <li><i aria-hidden="true" class="fa-solid fa-envelope"></i> <a href="mailto:maisonenricas@hotmail.com">maisonenricas@hotmail.com</a></li>
+                        </ul>
+                        <a aria-label="Écrire à la Maison Enrica sur WhatsApp" class="btn-whatsapp" href="https://wa.me/243819073170?text=Bonjour%20Maison%20Enrica%2C%20je%20souhaite%20vous%20contacter." rel="noopener noreferrer" target="_blank"><i aria-hidden="true" class="bi bi-whatsapp"></i> Écrire sur WhatsApp</a>
+                        <img alt="Plan de localisation de la Maison Enrica à Limete, Kinshasa" decoding="async" height="707" loading="lazy" src="image/map.jpg" width="540">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer">
+            <div>
+                <h2>MAISON ENRICA</h2>
+                <p>Le Foyer de l'Enfant Jésus est une œuvre dédiée à la protection et à l'épanouissement de l'enfance vulnérable en République Démocratique du Congo.</p>
+                <div class="footer-icon">
+                    <a aria-label="Envoyer un e-mail" href="mailto:maisonenricas@hotmail.com" title="Envoyer un e-mail"><i aria-hidden="true" class="fa-solid fa-envelope"></i></a>
+                    <a aria-label="Appeler la Maison Enrica" href="tel:+243819073170" title="Appeler la Maison Enrica"><i aria-hidden="true" class="fa-solid fa-phone"></i></a>
+                    <a aria-label="Écrire sur WhatsApp" href="https://wa.me/243819073170?text=Bonjour%20Maison%20Enrica%2C%20je%20souhaite%20vous%20contacter." rel="noopener noreferrer" target="_blank" title="Écrire sur WhatsApp"><i aria-hidden="true" class="bi bi-whatsapp"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3>NAVIGATION</h3>
+                <ul>
+                    <li><a href="../index.html">Accueil</a></li>
+                    <li><a href="../propos/propos.html">À propos</a></li>
+                    <li><a href="../projet/projet.html">Projets &amp; réalisations</a></li>
+                    <li><a href="contact.html"><span>Contact</span></a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>INFORMATION</h3>
+                <ul>
+                    <li><a href="../legale/legale.html">Mentions légales</a></li>
+                    <li><a href="contact.html?objet=Information%20g%C3%A9n%C3%A9rale#form-contact"><span>Adopter un enfant</span></a></li>
+                    <li><a href="contact.html?objet=Proposition%20de%20partenariat#form-contact"><span>Devenir Partenaire</span></a></li>
+                    <li><a href="../faq/faq.html">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copy-right flex-between">
+            <div>
+                <p>© 2026 Maison Enrica / Foyer de l'Enfant Jésus. Tous droits réservés.</p>
+            </div>
+            <div>
+                <p>Conçu et développé par <span>Minga Kweti</span></p>
+            </div>
+            <div>
+                <i aria-hidden="true" class="bx bx-map"></i>
+                Limete, Kinshasa, RDC
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

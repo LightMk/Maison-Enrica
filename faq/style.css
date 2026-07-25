@@ -1,0 +1,34 @@
+h1{
+    color:var(--secondaire);
+    padding-top: 60px;
+}
+h2{
+    color:var(--secondaire);
+    font-size: 3rem;
+    text-align: center;
+}
+h3{
+    font-size:2rem;
+    color:var(--tertiaire);
+    margin-bottom: 20px;
+}
+.question p,.reponse p{ 
+    margin-bottom: 10px;
+    color: #222;
+    
+    font-size: 16px;
+    line-height: 1.4;
+}
+.question li{
+    margin-bottom: 15px;
+}
+.question a{
+    text-decoration: underline;
+    color:var(--primaire);
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.3s;
+}
+.question a:hover{
+    color: var(--tertiaire);
+}

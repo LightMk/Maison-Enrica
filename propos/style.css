@@ -1,0 +1,211 @@
+.propos{
+    text-align: center;
+}
+.propos h1{
+    color: var(--secondaire);
+    padding-top:80px;
+}
+
+.propos p{
+    font-size: 18px;
+    margin: 0 auto;
+    line-height: 1.5;
+    max-width: 600px;
+    font-weight: 500;
+    color: #222;
+}
+
+
+.chronique{
+    padding: 60px 5%;
+    display: flex;
+    justify-content:space-between;
+}
+.chronique h2{
+    color: var(--quaternaire);
+    margin-bottom: 30px;
+}
+.chronique strong{
+    color: var(--secondaire);
+}
+.chronique p{
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    max-width: 500px;
+    font-weight: 500;
+    color: #222;
+}
+.chronique img{
+    border-radius: 15px;
+    width: 500px;
+    height: 500px;
+    
+}
+@media (max-width:1200px){
+    .chronique{
+        flex-direction: column-reverse;
+        gap: 15px;
+        text-align: center;
+    } 
+    .chronique p{
+        margin: 0 auto 20px auto;
+    }
+    .chronique img{
+        margin: 0 auto;
+        width: 70%;
+        height: auto;
+    }
+
+}
+
+.gouvernance h2{
+    color: var(--secondaire);
+    text-align: center;
+    margin-bottom: 10px;
+}
+.gouvernance p{
+    text-align: center;
+    font-size: 15px;
+    margin: 0 auto 30px auto;
+    line-height: 1.5;
+    font-weight: 500;
+    color: #222;
+}
+.autorité{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.autorité .cardI{
+    width: 250px;
+    height: 250px;
+}
+.autorité img{
+    margin: 0 auto;
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 50%;
+}
+.autorité h3{
+    font-size: 17px;
+    text-align: center;
+    color: #222;
+    margin-top: 15px;
+}
+.autorité p{
+    font-size: 14px;
+    color: var(--secondaire);
+}
+
+.effectif{
+    background: linear-gradient(to bottom,#020617,#10B981);
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
+    border-radius: 20px;
+    width: 88%;
+    margin: 0 auto 60px auto;
+}
+.effectif h2{
+    color: var(--secondaire);
+    margin-bottom: 10px;
+}
+.effectif h3{
+    font-size:35px;
+    color: var(--tertiaire);;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.effectif p{
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    color: white;
+    max-width: 450px;
+}
+.effectif table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.effectif th:first-child{
+    text-align: left;
+    padding: 15px 0px;    
+}
+.effectif th{
+    text-align: center;
+    font-size: 1.7rem ; 
+    color: var(--primaire);
+    border-bottom: 1px solid #ddd;
+}
+.effectif td:first-child{
+    padding: 15px 0px;    
+    font-size: 20px;
+    color: white;
+    font-weight: 300;
+    text-align: left;
+}
+.effectif td{
+    font-size: 18px;
+    border-bottom: 1px solid #ddd;
+    color: var(--tertiaire);
+    font-weight: 700;
+    text-align: center;
+}
+@media (max-width:1200px){
+    .effectif .flex-between{
+        flex-direction: column;
+        gap: 10px;
+    }
+    .effectif{
+    box-shadow: none;
+    border-radius: 0;
+    width: 100%;
+    margin: 0;
+    }
+}
+
+#galeries h2{
+    color: var(--quaternaire);
+    text-align: center;
+}
+#galeries > p{
+    margin-top: 15px;
+    margin-bottom: 30px; 
+    text-align: center;
+    font-weight: bold;
+}
+#galeries .flex2{
+    gap: 30px;
+}
+/* CORRECTION : le sélecteur de l’image doit être écrit séparément en CSS classique. */
+#galeries .flex2 img{
+    transition: transform 0.5s;
+    border-radius: 15px;
+    width: 350px;
+    height: 350px;
+}
+
+.partenaires .cardI{
+    width: 180px;
+    height: 180px;
+}
+.partenaires strong{
+    color: var(--secondaire);
+}
+.partenaires img{
+    margin: 0 auto;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+/* AJOUT : la galerie conserve des images lisibles sur téléphone. */
+@media (max-width: 600px){
+    #galeries .flex2 img{
+        width: 100%;
+        height: 280px;
+    }
+    .chronique img{
+        width: 100%;
+    }
+}
