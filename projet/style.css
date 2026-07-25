@@ -1,0 +1,166 @@
+.projet{
+    padding-top: 150px;
+    padding-bottom: 150px;
+    background: linear-gradient(to right,white ,rgb(16, 185, 129,0.5) );
+}
+.projet h1{
+    color: var(--secondaire);
+    font-size: 5rem;
+}
+@media (max-width:1005px){
+        .projet{
+        padding-top: 24px;
+    }
+}
+.projet p{
+    max-width: 600px;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 40px;
+}
+
+#projet h2{
+    color: var(--quaternaire);
+    text-align: center;
+}
+#projet .flex1{
+    margin-bottom: 30px;
+}
+#projet p, #projet li{
+    font-size: 18px;
+    line-height: 1.4;
+    max-width: 700px;
+    margin-bottom: 20px;
+}
+#projet li i{
+    color: var(--primaire);
+    margin-right: 10px;
+}
+#projet img{
+    max-width: 450px;
+    border-radius: 15px;
+    transition: transform 0.5s;
+}
+#projet img:hover{
+    transform: translateY(-8px);
+}
+.chantier{
+    padding-top: 80px;
+}
+@media (max-width:1005px){
+        .chantier{
+        padding-top: 0;
+    }
+}
+.chantier h3{
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--secondaire);
+}
+.chantier .card{
+    margin-bottom: 20px; 
+    max-width: 500px;
+    height: auto;
+}
+.chantier .card span{
+    font-size: 2rem;
+    color: var(--primaire);
+    font-weight: bold;
+}
+.chantier .card i{
+    font-size: 35px;
+    background:rgb(16, 185, 129,0.1);        
+    padding: 10px 15px;
+    border-radius: 15px;
+    color: var(--primaire);
+    transition: background 0.3s;
+    transition: color 0.3s;
+}
+.chantier .card i:hover{
+    background: var(--primaire);
+    color:  white;
+}
+.chantier .card p{
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.flex .card{
+    text-align: center;
+    width: 200px;
+    height: auto;
+}
+.flex .card h4{
+    color: #047857;
+}
+.flex .card p{
+    font-size: 14px;
+}
+@media (max-width:985px){
+.flex{
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+.realisation h2{
+    color: var(--secondaire);
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+.realisation p{
+    max-width: 600px;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    font-size: bold;
+    color: #222;
+}
+.flex-realisation{
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card-realisation{
+    width: 360px; 
+    background: white;
+    border: none;
+    padding: 15px;
+    border-radius: 25px;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
+
+}
+.card-realisation p{
+    margin-bottom: 20px;
+    line-height: 1.4;
+    font-size: 14px;
+}
+.card-realisation h3{
+    margin: 10px 0;
+    font-size: 25px;
+    color: var(--quaternaire);
+}
+.card-realisation span{
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--primaire);
+}
+.card-realisation img{
+    border-radius: 20px;
+    width: 100%;
+    height: 220px; 
+}
+/* AJOUT : titres et cartes adaptés aux écrans étroits. */
+.projet h1{
+    font-size: clamp(2.4rem, 7vw, 5rem);
+}
+@media (max-width: 600px){
+    .card-realisation{
+        width: 100%;
+    }
+    #projet img{
+        width: 100%;
+        height: auto;
+    }
+}
