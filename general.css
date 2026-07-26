@@ -8,6 +8,7 @@
     --secondaire:#047857;
     --tertiaire:#FBBF24;
     --quaternaire:#020617;
+    --hauteur-entete: 90px;
 }
 ::selection{
     background: var(--primaire);
@@ -24,6 +25,10 @@ body{
     min-height: 100vh;
     overflow-x: hidden;
     line-height: 1.5;
+}
+/* AJOUT : toutes les pages commencent sous le header fixe. */
+body:not(.page-simple) > main{
+    padding-top: var(--hauteur-entete);
 }
 section{
     padding: 50px 5%;
@@ -105,7 +110,10 @@ a{
 
 header{
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    min-height: var(--hauteur-entete);
     background: rgba(255, 255, 255, 0.8);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
@@ -365,7 +373,7 @@ footer span{
 @media (max-width:1005px){
     html{
     scroll-behavior: smooth;
-    scroll-padding-top: 5px;
+    scroll-padding-top: 100px;
     }
     .footer,.copy-right{
         flex-direction: column;

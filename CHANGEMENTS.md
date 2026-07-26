@@ -83,3 +83,17 @@ Les commentaires commençant par `AJOUT`, `MODIFICATION`, `CORRECTION` ou `IMPOR
 - Le fichier partagé `menu.js` contient uniquement la logique nécessaire et reste commenté.
 - L’indentation des fichiers HTML a été réorganisée avec quatre espaces, dans le même esprit que le code initial.
 - Aucune animation au défilement ni galerie carrousel n’a été ajoutée : les animations légères déjà présentes suffisent pour cette version.
+
+
+### 8. Corrections après le premier déploiement
+
+- L’image de fond de la page d’accueil possède maintenant une version WebP pour ordinateur et une version plus légère pour téléphone.
+- Ces images de fond sont préchargées dans `index.html`, car une image appelée depuis le CSS est découverte plus tard par le navigateur.
+- Le logo affiché dans l’en-tête utilise désormais `Logo.webp`, beaucoup plus léger que le PNG original.
+- Toutes les images réellement affichées ont une version WebP ; les originaux sont conservés dans le projet comme sauvegarde.
+- La galerie de l’accueil utilise des hauteurs de lignes fixes afin d’éviter les blocs irréguliers pendant le chargement.
+- Deux bibliothèques d’icônes ont été retirées : Font Awesome suffit maintenant pour l’ensemble du site.
+- Le décalage du `header` fixe est centralisé dans `general.css` avec `--hauteur-entete`.
+- Les `h1` des pages Contact, À propos, FAQ et Mentions légales ne possèdent plus chacun leur propre grand `padding-top`.
+- Le formulaire Contact utilise une adresse de confirmation absolue, le champ anti-robot recommandé et réactive son bouton lorsque le visiteur revient en arrière.
+- Le nom cassé de l’image de l’Abbé a été réparé afin que la photographie apparaisse dans la galerie.

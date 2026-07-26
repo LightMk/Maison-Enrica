@@ -5,7 +5,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Strict-Transport-Security: max-age=31536000
-  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; font-src 'self' data: https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; script-src 'self' 'sha256-gcmnBqJ5tkHE6yIZWhFoEEK9zYHUcwKzgKYcKfVy4kQ='; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
+  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' https://cdnjs.cloudflare.com; font-src 'self' data: https://cdnjs.cloudflare.com; script-src 'self' 'sha256-gcmnBqJ5tkHE6yIZWhFoEEK9zYHUcwKzgKYcKfVy4kQ='; connect-src 'self' https://cdnjs.cloudflare.com; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
 
 # Les fichiers HTML sont toujours vérifiés afin d’afficher rapidement les mises à jour.
 /*.html
@@ -20,3 +20,11 @@
   Cache-Control: public, max-age=2592000
 /contact/image/*
   Cache-Control: public, max-age=2592000
+
+# AJOUT : cache des ressources optimisées situées à la racine.
+/*.webp
+  Cache-Control: public, max-age=2592000
+/*.css
+  Cache-Control: public, max-age=604800
+/*.js
+  Cache-Control: public, max-age=604800

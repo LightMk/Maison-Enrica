@@ -26,3 +26,9 @@ formulaire.addEventListener("submit", () => {
         bouton.textContent = "Envoi en cours..."
     }
 })
+
+// AJOUT : réactive le bouton si l’utilisateur revient sur la page avec le bouton Précédent.
+window.addEventListener("pageshow", () => {
+    bouton.disabled = false
+    bouton.textContent = "Envoyer le message"
+})

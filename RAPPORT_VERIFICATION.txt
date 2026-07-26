@@ -1,5 +1,5 @@
 RAPPORT DE VÉRIFICATION - MAISON ENRICA
-Date : 25 juillet 2026
+Date : 26 juillet 2026
 
 VÉRIFICATIONS EFFECTUÉES
 
@@ -42,3 +42,17 @@ MISE À JOUR - MENU BURGER ET INDENTATION
 [OK] La touche Échap referme le menu.
 [OK] Contrôle visuel du menu réalisé aux largeurs 390 px et 1440 px.
 [OK] Tous les liens et fichiers locaux restent accessibles après la modification.
+
+
+MISE À JOUR - PERFORMANCE, FORMULAIRE ET TITRES
+
+[OK] Les 55 fichiers WebP générés sont lisibles et ne sont pas corrompus.
+[OK] Le poids cumulé des images converties passe d’environ 9,6 Mo à 5,1 Mo, soit une réduction proche de 47 %.
+[OK] Les images principales de l’accueil passent d’environ 967 Ko à 594 Ko.
+[OK] Sur téléphone, le logo et l’image de fond immédiatement visibles représentent environ 103 Ko.
+[OK] L’image de fond CSS est préchargée avec une version adaptée au téléphone et une autre à l’ordinateur.
+[OK] Deux bibliothèques d’icônes externes inutiles ont été retirées.
+[OK] Les titres principaux commencent maintenant sous le header fixe sur ordinateur et téléphone.
+[OK] Le formulaire possède method=POST, data-netlify=true, form-name, le honeypot et l’action /merci.html.
+[OK] Tous les chemins locaux ont été vérifiés après le passage aux fichiers WebP.
+[OK] L’image de l’Abbé précédemment introuvable possède maintenant un nom de fichier valide.

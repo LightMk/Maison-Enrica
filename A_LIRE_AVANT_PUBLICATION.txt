@@ -1,8 +1,0 @@
-AVANT DE PUBLIER
-
-1. Confirmer le numéro de téléphone, l'e-mail, l'adresse, le NIF et l'arrêté avec le propriétaire.
-2. Confirmer les droits de publication de toutes les photographies, surtout celles des enfants.
-3. Vérifier la disponibilité du domaine maisonenrica.org.
-4. Publier d'abord sur l'adresse temporaire Netlify et tester le formulaire.
-5. Activer une notification e-mail dans Netlify Forms.
-6. Lire MISE_EN_LIGNE.md et CHANGEMENTS.md.

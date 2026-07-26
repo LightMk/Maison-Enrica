@@ -1,160 +1,23 @@
 .accueil{
-    height:100vh;
+    min-height: calc(100vh - var(--hauteur-entete));
+    min-height: calc(100svh - var(--hauteur-entete));
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(rgb(0, 0, 0,0.6),rgb(0, 0, 0,0.6)),url("image/C.jpeg") top no-repeat;
+    background-color: var(--quaternaire);
+    background-image: linear-gradient(rgb(0, 0, 0,0.6),rgb(0, 0, 0,0.6)), url("image/C-mobile.webp");
+    background-position: center top;
+    background-repeat: no-repeat;
     background-size: cover;
     color: white;
     text-align: center;
-    padding-top: 220px;
+    padding: 60px 5%;
 }
-.style{
-    background: linear-gradient(to right, #047857, #FBBF24);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-.accueil p{
-    max-width: 700px;
-    margin-bottom:  40px ;
-    line-height: 1.4;
-    font-size:1.3rem ;   
-}
-
-.mission{
-    text-align: center;
-}
-
-.mission .card i{
-    font-size: 35px;
-    background:rgb(16, 185, 129,0.1);        
-    padding: 10px 15px;
-    border-radius: 15px;
-    color: var(--primaire);
-    transition: background 0.3s;
-    transition: color 0.3s;
-}
-.mission .card i:hover{
-    background: var(--primaire);
-    color:  white;
-}
-.mission h2,.galerie h2{
-    color: var(--quaternaire);
-    margin-bottom: 80px;
-}
-.mission h3{
-    font-size: 24px ;
-    color: var(--primaire);
-    margin: 25px auto;
-}
-.mission p{
-    font-size: 14.5px;
-    max-width: 300px;
-    margin-bottom: 25px;
-}
-.mission .flex2 p{
-    font-size: 16px; 
-    font-weight: 600; 
-    color:var(--secondaire);
-    border-radius: 15px;
-    background:rgb(16, 185, 129,0.1);        
-    padding: 10px;
-}
-.mission .card a{
-    color: var(--secondaire);
-    font-weight: bold;
-    font-size: 16px;
-    transition: color 0.3s;
-}
-.mission .card a:hover{
-    color: var(--tertiaire);
-}
-
-#impact{
-    padding: 60px 0;
-    background: var(--secondaire);
-}
-.flex-impact{
-    display: flex; 
-    justify-content: space-around;
-    text-align: center;
-}
-#impact h2{
-    text-align: center;
-    color: white;
-    margin-bottom: 20px;
-}
-.impact h3{
-    font-size:35px;
-    color: white;
-    margin-bottom: 10px;
-}
-.impact p{
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 18px; 
-}
-@media (max-width:730px){
-    .flex-impact{
-        flex-direction: column;
-        gap: 15px;
-    }
-}
-
-.galerie a{
-    color: var(--quaternaire);
-    font-weight: bold;
-    font-size: 18px;
-    transition: color 0.3s;
-}
-.galerie a:hover{
-    color: var(--primaire);
-}
-.galerie-grid{
-    display: grid; 
-    grid-template-columns: 2fr 1fr 1fr; 
-    grid-template-areas: 
-    "enfant eglise eglise"
-    "enfant ecole orphelinat";
-    gap: 20px;
-}
-.galerie-grid img{
-    transition:transform 0.5s ease;
-}
-.enfant{
-    grid-area: enfant;
-
-}
-.ecole{
-    grid-area: ecole;
-}
-.orphelinat{
-    grid-area: orphelinat;
-}
-.eglise{
-    grid-area: eglise;
-}
-
-
-
-@media (max-width: 780px){
-.accueil{
-    height:100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(rgb(0, 0, 0,0.6),rgb(0, 0, 0,0.6)),url("image/C.jpeg") top no-repeat;
-    background-size: cover;
-    color: white;
-    text-align: center;
-    padding-top: 220px;
-} 
-}
-@media (max-width:1005px){
+/* AJOUT : version plus détaillée uniquement pour les écrans larges. */
+@media (min-width: 769px){
     .accueil{
-        padding-top: 0;
+        background-image: linear-gradient(rgb(0, 0, 0,0.6),rgb(0, 0, 0,0.6)), url("image/C.webp");
     }
 }
 .style{
@@ -264,6 +127,7 @@
     grid-template-areas: 
     "enfant eglise eglise"
     "enfant ecole orphelinat";
+    grid-template-rows: repeat(2, 260px);
     gap: 20px;
 }
 .galerie-grid img{
@@ -285,18 +149,7 @@
 
 
 
-/* AJOUT : la bannière s’adapte aux petits écrans sans couper son contenu. */
-.accueil{
-    min-height: 100svh;
-    height: auto;
-    padding-bottom: 80px;
-}
 @media (max-width: 780px){
-    .accueil{
-        min-height: 82svh;
-        padding: 70px 6% 60px;
-    }
-
     .accueil p{
         font-size: 1.1rem;
     }
@@ -307,8 +160,6 @@
             "eglise"
             "ecole"
             "orphelinat";
-    }
-    .galerie-grid > div{
-        min-height: 260px;
+        grid-template-rows: repeat(4, 260px);
     }
 }

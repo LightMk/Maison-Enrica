@@ -15,11 +15,12 @@ La direction de la Maison Enrica doit confirmer les éléments suivants :
 1. Créer un compte Netlify au nom du propriétaire ou de l’organisation.
 2. Dans Netlify, choisir l’ajout manuel d’un nouveau site.
 3. Déposer le contenu de ce dossier ou le fichier ZIP fourni. `index.html` doit rester à la racine.
-4. Ouvrir la page Contact sur l’adresse temporaire en `.netlify.app`.
-5. Envoyer un message de test.
-6. Dans le tableau de bord Netlify, ouvrir la rubrique **Forms** et vérifier que le formulaire `contact` apparaît.
-7. Configurer une notification par e-mail vers l’adresse officielle de la Maison Enrica.
-8. Tester une deuxième fois le formulaire après l’activation de la notification.
+4. Dans les réglages du site, vérifier que la détection des formulaires est activée. Si elle vient d’être activée, lancer un nouveau déploiement.
+5. Ouvrir la page Contact sur l’adresse temporaire en `.netlify.app`.
+6. Envoyer un message de test.
+7. Dans le tableau de bord Netlify, ouvrir la rubrique **Forms** et vérifier que le formulaire `contact` apparaît.
+8. Configurer une notification par e-mail vers l’adresse officielle de la Maison Enrica.
+9. Tester une deuxième fois le formulaire après l’activation de la notification.
 
 Le formulaire Netlify ne peut pas être testé complètement en ouvrant simplement les fichiers sur l’ordinateur. Il doit être publié sur Netlify.
 

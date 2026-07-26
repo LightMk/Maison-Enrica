@@ -3,14 +3,7 @@
 }
 .propos h1{
     color: var(--secondaire);
-    padding-top:80px;
-}
-
-@media (max-width:1005px){
-    .propos h1{
-    padding-top:0px;
-}
-
+    padding-top: 0;
 }
 
 .propos p{

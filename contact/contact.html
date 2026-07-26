@@ -20,8 +20,8 @@
     <meta content="https://maisonenrica.org/image/C.jpeg" name="twitter:image">
     <link href="../favicon.png" rel="icon" type="image/png">
     <title>Contact | Maison Enrica à Kinshasa</title>
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- MODIFICATION : une seule bibliothèque d’icônes réduit les requêtes bloquantes. -->
+    <link crossorigin href="https://cdnjs.cloudflare.com" rel="preconnect">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="../general.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
@@ -33,7 +33,7 @@
     <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
     <header>
         <div class="flex3">
-            <img alt="Logo de la Maison Enrica" class="logo-img" decoding="async" height="400" loading="eager" src="../Logo.png" width="600">
+            <img alt="Logo de la Maison Enrica" class="logo-img" decoding="async" height="200" loading="eager" src="../Logo.webp" width="300">
             <span class="logo-text">MAISON ENRICA</span>
         </div>
         <!-- AJOUT : bouton du menu burger affiché sur téléphone et tablette. -->
@@ -67,7 +67,7 @@
                         <p>Remplissez le formulaire ci-dessous, nous vous répondrons dans les plus brefs délais.</p>
                     </div>
                     <!-- MODIFICATION : formulaire réel géré par Netlify Forms ; le stockage local et la page de réception publique ont été retirés. -->
-                    <form action="../merci.html" data-netlify="true" id="form-contact" method="POST" name="contact" netlify-honeypot="bot-field">
+                    <form accept-charset="UTF-8" action="/merci.html" data-netlify="true" data-netlify-honeypot="bot-field" id="form-contact" method="POST" name="contact">
                         <input name="form-name" type="hidden" value="contact">
                         <p aria-hidden="true" class="champ-piege"><label>Ne remplissez pas ce champ: <input autocomplete="off" name="bot-field" tabindex="-1"></label></p>
                         <div>
@@ -118,12 +118,12 @@
                     <div class="card-contact">
                         <h3>Informations directes</h3>
                         <ul>
-                            <li><i aria-hidden="true" class="bi bi-geo-alt"></i> 10, Avenue du 17 Mai, Limete, Kinshasa, RDC</li>
+                            <li><i aria-hidden="true" class="fa-solid fa-location-dot"></i> 10, Avenue du 17 Mai, Limete, Kinshasa, RDC</li>
                             <li><i aria-hidden="true" class="fa-solid fa-phone"></i> <a href="tel:+243819073170">+243 81 90 73 170</a></li>
                             <li><i aria-hidden="true" class="fa-solid fa-envelope"></i> <a href="mailto:maisonenricas@hotmail.com">maisonenricas@hotmail.com</a></li>
                         </ul>
-                        <a aria-label="Écrire à la Maison Enrica sur WhatsApp" class="btn-whatsapp" href="https://wa.me/243819073170?text=Bonjour%20Maison%20Enrica%2C%20je%20souhaite%20vous%20contacter." rel="noopener noreferrer" target="_blank"><i aria-hidden="true" class="bi bi-whatsapp"></i> Écrire sur WhatsApp</a>
-                        <img alt="Plan de localisation de la Maison Enrica à Limete, Kinshasa" decoding="async" height="707" loading="lazy" src="image/map.jpg" width="540">
+                        <a aria-label="Écrire à la Maison Enrica sur WhatsApp" class="btn-whatsapp" href="https://wa.me/243819073170?text=Bonjour%20Maison%20Enrica%2C%20je%20souhaite%20vous%20contacter." rel="noopener noreferrer" target="_blank"><i aria-hidden="true" class="fa-brands fa-whatsapp"></i> Écrire sur WhatsApp</a>
+                        <img alt="Plan de localisation de la Maison Enrica à Limete, Kinshasa" decoding="async" height="707" loading="lazy" src="image/map.webp" width="540">
                     </div>
                 </div>
             </div>
@@ -137,7 +137,7 @@
                 <div class="footer-icon">
                     <a aria-label="Envoyer un e-mail" href="mailto:maisonenricas@hotmail.com" title="Envoyer un e-mail"><i aria-hidden="true" class="fa-solid fa-envelope"></i></a>
                     <a aria-label="Appeler la Maison Enrica" href="tel:+243819073170" title="Appeler la Maison Enrica"><i aria-hidden="true" class="fa-solid fa-phone"></i></a>
-                    <a aria-label="Écrire sur WhatsApp" href="https://wa.me/243819073170?text=Bonjour%20Maison%20Enrica%2C%20je%20souhaite%20vous%20contacter." rel="noopener noreferrer" target="_blank" title="Écrire sur WhatsApp"><i aria-hidden="true" class="bi bi-whatsapp"></i></a>
+                    <a aria-label="Écrire sur WhatsApp" href="https://wa.me/243819073170?text=Bonjour%20Maison%20Enrica%2C%20je%20souhaite%20vous%20contacter." rel="noopener noreferrer" target="_blank" title="Écrire sur WhatsApp"><i aria-hidden="true" class="fa-brands fa-whatsapp"></i></a>
                 </div>
             </div>
             <div>
@@ -167,7 +167,7 @@
                 <p>Conçu et développé par <span>Minga Kweti</span></p>
             </div>
             <div>
-                <i aria-hidden="true" class="bx bx-map"></i>
+                <i aria-hidden="true" class="fa-solid fa-location-dot"></i>
                 Limete, Kinshasa, RDC
             </div>
         </div>
