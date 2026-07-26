@@ -146,10 +146,161 @@ button[type="submit"]:disabled{
     }
     
 }
+body{
+    background: linear-gradient(white,#10B981);
+}
+.contact{
+    text-align: center;
+}
+.contact h1{
+    color: var(--secondaire);
+    padding-top:60px;
+}
+@media (max-width:1005px){
+    .contact h1{
+    padding-top:0px;
+}
 
-/* ==========================================================
-   AJOUTS : formulaire destiné à la version réellement publiée.
-   ========================================================== */
+}
+.contact p{
+    font-size: 17px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 30px;
+}
+
+.formulaire{
+    background: white;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 2rem ;
+}
+.formulaire h2{
+    color: var(--quaternaire);
+    margin-bottom: 10px;
+}
+.formulaire div{
+    margin-bottom: 1.5rem;
+}
+label{
+    display: block;
+    font-weight: 600;
+    margin-bottom: 12px;
+    font-size:15px;
+    color: #333;
+}
+input,select,textarea{
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+input:focus,select:focus,textarea:focus{
+    border-color: var(--primaire);
+}
+textarea{
+    resize: none;
+}
+button[type="submit"]{
+    padding: 0.85rem 2.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: var(--tertiaire);
+    transition: background 0.3s;
+}
+button[type="submit"]:hover{
+    background: var(--secondaire);
+}
+button[type="submit"]:disabled{
+    cursor: not-allowed;
+    background: rgba(251, 191, 36,0.6);
+}
+.succes{
+    margin-top: 10px ;
+    max-width:400px;
+    padding: 12px;
+    font-weight: bold;
+    color: #047857;
+    border: 1px solid #10B981;
+    background: rgba(16, 185, 129,0.3);
+}
+.flex-invit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.card-contact{
+    background: white;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    padding: 28px;
+    border: 1px solid #ddd;
+}
+.card-contact h3{
+    font-size: 25px;
+    color: #047857;
+}
+.card-contact p{
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    font-style: italic;
+    max-width: 400px;
+    line-height: 1.5;
+}
+.card-contact i{
+    font-size: 18px;
+    background:rgb(16, 185, 129,0.1);        
+    padding: 12px;
+    margin-right: 10px;
+    border-radius: 50%;
+    color: var(--primaire);
+    transition: background 0.3s, color 0.3s;
+}
+.card-contact i:hover{
+    background: var(--primaire);
+    color:  white;
+}
+.card-contact li{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+.card-contact li i{
+    background: transparent;
+    margin-right: 12px;
+    color: var(--primaire);
+}
+.card-contact img{
+    height: 250px;
+    border-radius: 15px;
+}
+
+@media (max-width:1005px){
+    .flex{
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+}
+
 .champ-piege{
     position: absolute;
     left: -10000px;

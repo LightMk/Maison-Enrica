@@ -6,6 +6,13 @@
     padding-top:80px;
 }
 
+@media (max-width:1005px){
+    .propos h1{
+    padding-top:0px;
+}
+
+}
+
 .propos p{
     font-size: 18px;
     margin: 0 auto;
