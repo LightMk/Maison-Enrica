@@ -82,6 +82,213 @@
     color: var(--tertiaire);
 }
 
+
+/* =============================================
+   MODIFICATION : 20 ANS DE LA MAISON ENRICA
+============================================= */
+.conteneur{
+    width: min(100% - 40px, 1180px);
+    margin-inline: auto;
+}
+.anniversaire{
+    position: relative;
+    overflow: hidden;
+    padding: clamp(70px, 9vw, 110px) 0;
+    background:
+        radial-gradient(circle at 8% 12%, rgba(251, 191, 36, 0.16), transparent 24%),
+        radial-gradient(circle at 92% 88%, rgba(16, 185, 129, 0.14), transparent 27%),
+        linear-gradient(180deg, #ffffff 0%, #ecfdf5 100%);
+}
+.anniversaire::before{
+    content: "20";
+    position: absolute;
+    top: -100px;
+    right: -25px;
+    color: rgba(4, 120, 87, 0.04);
+    font-size: clamp(16rem, 32vw, 31rem);
+    font-weight: 800;
+    line-height: 1;
+    pointer-events: none;
+}
+.anniversaire .conteneur{
+    position: relative;
+    z-index: 1;
+}
+.anniversaire-entete{
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(30px, 6vw, 75px);
+    max-width: 940px;
+    margin: 0 auto clamp(45px, 6vw, 70px);
+}
+/* AJOUT : sceau visuel rappelant les vingt années de la Maison Enrica. */
+.anniversaire-embleme{
+    position: relative;
+    width: clamp(145px, 17vw, 190px);
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 7px solid white;
+    border-radius: 50%;
+    background: var(--secondaire);
+    color: white;
+    box-shadow: 0 18px 45px rgba(4, 120, 87, 0.22);
+}
+.anniversaire-embleme::after{
+    content: "";
+    position: absolute;
+    inset: 9px;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: inherit;
+}
+.anniversaire-embleme strong{
+    position: relative;
+    z-index: 1;
+    font-size: clamp(4rem, 8vw, 6rem);
+    line-height: 0.8;
+}
+.anniversaire-embleme span{
+    position: relative;
+    z-index: 1;
+    margin-top: 12px;
+    color: var(--tertiaire);
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+}
+.titre-section{
+    max-width: 680px;
+    margin: 0;
+    text-align: left;
+}
+.titre-section .anniversaire-date{
+    display: inline-block;
+    margin-bottom: 13px;
+    padding: 6px 13px;
+    border: 1px solid rgba(4, 120, 87, 0.16);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--primaire);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+}
+.titre-section h2{
+    margin-bottom: 18px;
+    color: var(--quaternaire);
+    line-height: 1.08;
+}
+.titre-section p{
+    max-width: 610px;
+    color: #475569;
+    font-size: 1.08rem;
+    line-height: 1.7;
+}
+.videos-anniversaire{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(20px, 3vw, 32px);
+    max-width: 980px;
+    margin: 0 auto;
+}
+.video-anniversaire{
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid rgba(4, 120, 87, 0.1);
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 15px 38px rgba(2, 6, 23, 0.11);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.video-anniversaire:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 22px 48px rgba(2, 6, 23, 0.16);
+}
+.video-cadre{
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1;
+    background: var(--quaternaire);
+}
+.video-numero{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 2;
+    padding: 7px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 999px;
+    background: rgba(2, 6, 23, 0.7);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    pointer-events: none;
+}
+.video-cadre video{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: var(--quaternaire);
+    object-fit: contain;
+}
+.video-anniversaire figcaption{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    padding: 18px 20px 20px;
+}
+.video-anniversaire figcaption span{
+    flex: none;
+    color: var(--primaire);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+.video-anniversaire figcaption strong{
+    color: var(--quaternaire);
+    font-size: 0.95rem;
+    text-align: right;
+}
+
+/* MODIFICATION : deux colonnes sur tablette, une seule sur petit écran. */
+@media (max-width: 620px){
+    .anniversaire{
+        padding: 65px 0;
+    }
+    .anniversaire::before{
+        top: 20px;
+        right: -30px;
+    }
+    .anniversaire-entete{
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 28px;
+        margin-bottom: 42px;
+    }
+    .anniversaire-embleme{
+        width: 145px;
+    }
+    .titre-section{
+        text-align: center;
+    }
+    .titre-section p{
+        font-size: 1rem;
+    }
+    .videos-anniversaire{
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .video-anniversaire figcaption{
+        padding: 16px 17px 18px;
+    }
+}
 #impact{
     padding: 60px 0;
     background: var(--secondaire);

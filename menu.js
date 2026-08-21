@@ -34,3 +34,15 @@ if (boutonMenu && menuPrincipal) {
         }
     })
 }
+// AJOUT : une seule vidéo anniversaire peut jouer à la fois.
+const videosAnniversaire = document.querySelectorAll(".video-anniversaire video")
+
+videosAnniversaire.forEach((videoActive) => {
+    videoActive.addEventListener("play", () => {
+        videosAnniversaire.forEach((video) => {
+            if (video !== videoActive && !video.paused) {
+                video.pause()
+            }
+        })
+    })
+})
