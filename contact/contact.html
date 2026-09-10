@@ -60,23 +60,35 @@
                 <hr class="animationEntrer">
                 <p class="animationEntrer">Que vous souhaitiez nous rendre visite, devenir bénévole ou établir un partenariat, nous sommes à votre écoute.</p>
             </div>
-            <div class="flex">
+            <!-- MODIFICATION : disposition réorganisée pour éviter un grand vide sous le formulaire. -->
+            <div class="invitation-visite">
+                <div class="invitation-icone">
+                    <i aria-hidden="true" class="fa-solid fa-door-open"></i>
+                </div>
+                <div>
+                    <span class="insigne">OUVERT À TOUS</span>
+                    <h2>Vous êtes les bienvenus à la Maison Enrica</h2>
+                    <p>Toute personne est la bienvenue, qu’elle vienne à titre individuel, en famille, en groupe ou au nom d’une association.</p>
+                    <blockquote>« La porte de la Maison Enrica est toujours ouverte. Venir nous voir, c’est toucher du doigt l’espérance que nous construisons chaque jour pour ces enfants. Je vous y invite avec tout mon cœur. »</blockquote>
+                    <div class="details-visite">
+                        <span><i aria-hidden="true" class="fa-solid fa-user"></i> Abbé David, Fondateur</span>
+                        <span><i aria-hidden="true" class="fa-solid fa-clock"></i> Lun - Sam : 09h00 - 17h00</span>
+                        <a class="lien-regles" href="#regles-visite">Consulter les règles de visite</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-principal">
                 <div class="formulaire">
                     <div>
-                        <h2>Envoyez un message</h2>
-                        <p>Remplissez le formulaire ci-dessous, nous vous répondrons dans les plus brefs délais.</p>
+                        <h2>Envoyer un message</h2>
+                        <p>Remplissez le formulaire puis choisissez votre moyen d’envoi. WhatsApp reste l’option principale ; si vous ne l’utilisez pas, l’e-mail ouvrira votre application de messagerie avec le même message déjà préparé.</p>
                     </div>
-                    <!-- MODIFICATION : formulaire réel géré par Netlify Forms ; le stockage local et la page de réception publique ont été retirés. -->
-                    <form accept-charset="UTF-8" action="/merci.html" data-netlify="true" data-netlify-honeypot="bot-field" id="form-contact" method="POST" name="contact">
-                        <input name="form-name" type="hidden" value="contact">
-                        <p aria-hidden="true" class="champ-piege"><label>Ne remplissez pas ce champ: <input autocomplete="off" name="bot-field" tabindex="-1"></label></p>
+                    <!-- MODIFICATION : le formulaire prépare désormais le message puis ouvre WhatsApp. -->
+                    <form id="form-contact">
                         <div>
                             <label for="nom-contact">Nom complet</label>
                             <input autocomplete="name" id="nom-contact" maxlength="100" minlength="2" name="nom" placeholder="Votre Nom" required type="text">
-                        </div>
-                        <div>
-                            <label for="email-contact">Email</label>
-                            <input autocomplete="email" id="email-contact" maxlength="254" minlength="5" name="email" placeholder="email@exemple.com" required type="email">
                         </div>
                         <div>
                             <label for="objet-contact">Sujet de votre message</label>
@@ -88,44 +100,79 @@
                                 <option value="Demande de stage">Demande de stage</option>
                                 <option value="Bénévolat">Bénévolat</option>
                                 <option value="Proposition de partenariat">Proposition de partenariat</option>
-                                <option value="autre demande">Autre demande</option>
+                                <option value="Autre demande">Autre demande</option>
                             </select>
                         </div>
                         <div>
                             <label for="message-contact">Votre message</label>
-                            <textarea id="message-contact" maxlength="2000" minlength="20" name="message" placeholder="Comment pouvons-nous vous aider ?" required rows="10"></textarea>
+                            <textarea id="message-contact" maxlength="2000" minlength="20" name="message" placeholder="Comment pouvons-nous vous aider ?" required rows="8"></textarea>
                         </div>
                         <div class="consentement">
                             <input id="accord-contact" name="accord" required type="checkbox" value="oui">
                             <label for="accord-contact">J’accepte que ces informations soient utilisées uniquement pour répondre à ma demande.</label>
                         </div>
-                        <button id="btn-contact" type="submit">Envoyer le message</button>
-                        <p class="form-note">Après l’envoi, une page de confirmation s’affichera. Ne communiquez aucune donnée bancaire ou code secret dans ce formulaire.</p>
+                        <button id="btn-contact" type="submit"><i aria-hidden="true" class="fa-brands fa-whatsapp"></i> Envoyer le message</button>
+
+                        <!-- AJOUT : solution de secours pour les visiteurs qui n’utilisent pas WhatsApp. -->
+                        <div class="alternative-contact">
+                            <span>Vous n’avez pas WhatsApp ?</span>
+                            <button id="btn-email" type="button"><i aria-hidden="true" class="fa-solid fa-envelope"></i> Envoyer par e-mail</button>
+                        </div>
+
+                        <p class="form-note">Le message sera préparé automatiquement dans l’application choisie. Vous devrez ensuite confirmer vous-même son envoi. Ne communiquez aucune donnée bancaire ou code secret.</p>
                     </form>
                 </div>
-                <div class="flex-invit">
-                    <div class="card-contact">
-                        <div>
-                            <h3><i aria-hidden="true" class="fa-solid fa-museum"></i> Appel à la visite</h3>
-                        </div>
-                        <p>"La porte de la Maison Enrica est toujours ouverte. Venir nous voir, c'est toucher du doigt l'espérance que nous construisons chaque jour pour ces enfants. Je vous y invite avec tout mon cœur."</p>
-                        <span class="insigne">Abbé David, Fondateur</span>
-                        <div>
-                            <p><i aria-hidden="true" class="fa-solid fa-clock"></i> Heures de Visite</p>
-                            <p>Lun - Sam: 09h00 - 17h00</p>
-                        </div>
-                    </div>
-                    <div class="card-contact">
-                        <h3>Informations directes</h3>
-                        <ul>
-                            <li><i aria-hidden="true" class="fa-solid fa-location-dot"></i> 10, Avenue du 17 Mai, Limete, Kinshasa, RDC</li>
-                            <li><i aria-hidden="true" class="fa-solid fa-phone"></i> <a href="tel:+243819073170">+243 81 90 73 170</a></li>
-                            <li><i aria-hidden="true" class="fa-solid fa-envelope"></i> <a href="mailto:maisonenricas@hotmail.com">maisonenricas@hotmail.com</a></li>
-                        </ul>
-                        <a aria-label="Écrire à la Maison Enrica sur WhatsApp" class="btn-whatsapp" href="https://wa.me/243819073170?text=Bonjour%20Maison%20Enrica%2C%20je%20souhaite%20vous%20contacter." rel="noopener noreferrer" target="_blank"><i aria-hidden="true" class="fa-brands fa-whatsapp"></i> Écrire sur WhatsApp</a>
-                        <img alt="Plan de localisation de la Maison Enrica à Limete, Kinshasa" decoding="async" height="707" loading="lazy" src="image/map.webp" width="540">
+
+                <div class="card-contact informations-contact">
+                    <span class="insigne">NOUS TROUVER</span>
+                    <h3>Informations directes</h3>
+                    <p class="texte-contact">Vous pouvez également nous joindre directement ou préparer votre visite grâce aux informations ci-dessous.</p>
+                    <ul>
+                        <li><i aria-hidden="true" class="fa-solid fa-location-dot"></i> 10, Avenue du 17 Mai, Limete, Kinshasa, RDC</li>
+                        <li><i aria-hidden="true" class="fa-solid fa-phone"></i> <a href="tel:+243819073170">+243 81 90 73 170</a></li>
+                        <li><i aria-hidden="true" class="fa-solid fa-envelope"></i> <a href="mailto:maisonenricas@hotmail.com">maisonenricas@hotmail.com</a></li>
+                    </ul>
+                    <a aria-label="Envoyer un message à la Maison Enrica sur WhatsApp" class="btn-whatsapp" href="https://wa.me/243819073170?text=Bonjour%20Maison%20Enrica%2C%20je%20souhaite%20vous%20contacter." rel="noopener noreferrer" target="_blank"><i aria-hidden="true" class="fa-brands fa-whatsapp"></i> Envoyer un message</a>
+                    <img alt="Plan de localisation de la Maison Enrica à Limete, Kinshasa" decoding="async" height="707" loading="lazy" src="image/map.webp" width="540">
+                </div>
+            </div>
+
+            <!-- AJOUT : règles essentielles pour les visites, les dons et les partenariats. -->
+            <div class="card-contact regles-visite" id="regles-visite">
+                <div class="entete-regles">
+                    <i aria-hidden="true" class="fa-solid fa-shield-heart"></i>
+                    <div>
+                        <span class="insigne">À LIRE AVANT UNE VISITE</span>
+                        <h3>Quelques règles pour le bien de tous</h3>
                     </div>
                 </div>
+                <p class="intro-regles">Tout le monde est bienvenu à la Maison Enrica. Ces quelques règles permettent simplement de protéger les enfants, d’assurer une distribution équitable des dons et de garantir la transparence des visites et partenariats.</p>
+                <ul class="liste-regles">
+                    <li>
+                        <i aria-hidden="true" class="fa-solid fa-camera"></i>
+                        <p>Les prises de photos ou de vidéos sont soumises à l’autorisation préalable du responsable.</p>
+                    </li>
+                    <li>
+                        <i aria-hidden="true" class="fa-solid fa-ban"></i>
+                        <p>La distribution directe d’argent aux enfants est interdite.</p>
+                    </li>
+                    <li>
+                        <i aria-hidden="true" class="fa-solid fa-box-open"></i>
+                        <p>Les dons en vivres ou en nature doivent être confiés à la responsable afin d’assurer une distribution équitable à partir du dépôt.</p>
+                    </li>
+                    <li>
+                        <i aria-hidden="true" class="fa-solid fa-people-group"></i>
+                        <p>Les visites sont destinées à la Maison Enrica dans son ensemble et non à un employé en particulier.</p>
+                    </li>
+                    <li>
+                        <i aria-hidden="true" class="fa-solid fa-circle-exclamation"></i>
+                        <p>Le responsable de l’orphelinat décline toute responsabilité pour les dons remis directement à un employé sans validation officielle.</p>
+                    </li>
+                    <li>
+                        <i aria-hidden="true" class="fa-solid fa-file-signature"></i>
+                        <p>Tout partenariat avec l’ONG Maison Enrica doit être officiel et transparent, au moyen d’un contrat dûment signé par le responsable de l’orphelinat et le partenaire.</p>
+                    </li>
+                </ul>
             </div>
         </section>
     </main>

@@ -1,5 +1,4 @@
 // AJOUT : menu burger commun à toutes les pages principales.
-
 const boutonMenu = document.querySelector(".menu-burger")
 const menuPrincipal = document.querySelector("#menu-principal")
 

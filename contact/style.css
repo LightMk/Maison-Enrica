@@ -1,5 +1,5 @@
 body{
-    background: linear-gradient(white,#10B981);
+    background: radial-gradient(circle at 10% 15%, rgba(16, 185, 129, 0.12), transparent 28rem), linear-gradient(180deg, #f8fffb, #ecfdf5 55%, #d1fae5);
 }
 .contact{
     text-align: center;
@@ -213,5 +213,271 @@ textarea{
     .formulaire,
     .card-contact{
         padding: 20px;
+    }
+}
+
+
+/* ==========================================================
+   AJOUT : charte de visite et formulaire dirigé vers WhatsApp.
+   ========================================================== */
+.facultatif{
+    color: #64748B;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+button[type="submit"] i{
+    margin-right: 8px;
+}
+.regles-visite{
+    border-color: rgba(4, 120, 87, 0.25);
+    background: linear-gradient(135deg, #ffffff, #f0fdf4);
+}
+.entete-regles{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 8px;
+}
+.entete-regles > i{
+    flex: 0 0 auto;
+    margin: 0;
+    font-size: 22px;
+}
+.entete-regles .insigne{
+    margin-bottom: 5px;
+}
+.entete-regles h3{
+    margin: 0;
+}
+.regles-visite .intro-regles{
+    max-width: none;
+    margin: 16px 0 22px;
+    font-style: normal;
+    color: #475569;
+}
+.liste-regles{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.liste-regles li{
+    align-items: flex-start;
+    margin: 0;
+    padding: 12px;
+    border-radius: 10px;
+    background: white;
+    border: 1px solid rgba(16, 185, 129, 0.14);
+}
+.liste-regles li > i{
+    flex: 0 0 auto;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    margin: 0 12px 0 0;
+    background: rgba(16, 185, 129, 0.1);
+}
+.liste-regles li > i:hover{
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--primaire);
+}
+.liste-regles p{
+    max-width: none;
+    margin: 0;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 1.55;
+    color: #334155;
+}
+
+
+@media (max-width: 620px){
+    .entete-regles{
+        align-items: flex-start;
+    }
+    .liste-regles li{
+        padding: 10px;
+    }
+}
+
+.lien-regles{
+    color: var(--primaire);
+    text-decoration:underline;
+}
+
+/* ==========================================================
+   MODIFICATION : nouvelle disposition de la page Contact.
+   Le bloc d’accueil est séparé du formulaire afin d’éviter
+   le grand espace vide créé par deux colonnes de hauteurs différentes.
+   ========================================================== */
+.invitation-visite{
+    max-width: 1180px;
+    margin: 0 auto 30px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    border-radius: 18px;
+    border: 1px solid rgba(4, 120, 87, 0.18);
+    background: linear-gradient(135deg, #ffffff, #ecfdf5);
+    box-shadow: 0 8px 30px rgba(2, 6, 23, 0.08);
+}
+.invitation-icone{
+    flex: 0 0 72px;
+    width: 72px;
+    height: 72px;
+    display: grid;
+    place-items: center;
+    border-radius: 18px;
+    background: var(--secondaire);
+    color: white;
+    font-size: 28px;
+}
+.invitation-visite h2{
+    margin: 5px 0 10px;
+    color: var(--secondaire);
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+}
+.invitation-visite p{
+    max-width: 850px;
+    margin: 0 0 12px;
+    color: #334155;
+    font-size: 1rem;
+}
+.invitation-visite blockquote{
+    max-width: 900px;
+    margin: 16px 0;
+    padding-left: 16px;
+    border-left: 4px solid var(--tertiaire);
+    color: #475569;
+    font-style: italic;
+}
+.details-visite{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    color: var(--quaternaire);
+    font-weight: 600;
+}
+.details-visite i{
+    margin-right: 6px;
+    color: var(--primaire);
+}
+.contact-principal{
+    width: min(100%, 1180px);
+    margin: 0 auto 30px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+    align-items: start;
+    gap: 25px;
+}
+.contact-principal .formulaire,
+.contact-principal .card-contact{
+    max-width: none;
+    margin: 0;
+}
+.informations-contact{
+    height: 100%;
+}
+.informations-contact .texte-contact{
+    max-width: none;
+    margin: 12px 0 20px;
+    color: #475569;
+    font-style: normal;
+}
+.informations-contact ul{
+    margin-bottom: 12px;
+}
+.informations-contact img{
+    margin-top: 8px;
+    min-height: 280px;
+    object-fit: cover;
+}
+.regles-visite{
+    max-width: 1180px;
+    margin: 0 auto;
+}
+.liste-regles{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+@media (max-width: 900px){
+    .contact-principal{
+        grid-template-columns: 1fr;
+    }
+    .informations-contact{
+        height: auto;
+    }
+}
+
+@media (max-width: 700px){
+    .invitation-visite{
+        padding: 22px;
+        align-items: flex-start;
+    }
+    .invitation-icone{
+        flex-basis: 52px;
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        font-size: 20px;
+    }
+    .liste-regles{
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 520px){
+    .invitation-visite{
+        flex-direction: column;
+    }
+}
+
+
+/* ==========================================================
+   AJOUT : alternative e-mail au formulaire WhatsApp.
+   ========================================================== */
+.alternative-contact{
+    margin-top: 16px;
+    padding-top: 16px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    border-top: 1px solid #e2e8f0;
+}
+.alternative-contact span{
+    color: #475569;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+#btn-email{
+    padding: 10px 14px;
+    border: 1px solid var(--secondaire);
+    border-radius: 6px;
+    background: white;
+    color: var(--secondaire);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+#btn-email:hover{
+    background: var(--secondaire);
+    color: white;
+}
+#btn-email i{
+    margin-right: 7px;
+}
+
+@media (max-width: 520px){
+    .alternative-contact{
+        align-items: stretch;
+        flex-direction: column;
+    }
+    #btn-email{
+        width: 100%;
     }
 }

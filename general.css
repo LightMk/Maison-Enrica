@@ -265,7 +265,7 @@ nav ul a:hover{
 
 footer{
     padding: 100px 100px 0 100px;
-    background:var(--quaternaire);
+    background: radial-gradient(circle at 15% 20%, rgba(16, 185, 129, 0.14), transparent 24rem), #020617;
 }
 footer span{
     color: #FBBF24;
