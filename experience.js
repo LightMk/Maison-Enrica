@@ -5,9 +5,7 @@
    - galerie en plein écran
    - bouton de retour en haut
    - FAQ repliable
-   Tout reste volontairement simple et sans bibliothèque externe.
    ========================================================== */
-
 // 1. Le header gagne une ombre plus nette après le début du défilement.
 const entete = document.querySelector("header")
 
