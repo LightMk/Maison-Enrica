@@ -1,23 +1,30 @@
+
+.accueil::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(to bottom, transparent 55%, rgba(2, 6, 23, 0.45));
+}
 .accueil{
-    min-height: calc(100vh - var(--hauteur-entete));
-    min-height: calc(100svh - var(--hauteur-entete));
+    position: relative;
+    isolation: isolate;
+    min-height: 100svh;
+    padding: 170px 6% 90px;
+    background:
+        radial-gradient(circle at 50% 35%, rgba(16, 185, 129, 0.18), transparent 28rem),
+        linear-gradient(110deg, rgba(2, 6, 23, 0.86), rgba(2, 6, 23, 0.58)),
+        url("image/C.jpeg") center / cover no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--quaternaire);
-    background-image: linear-gradient(rgb(0, 0, 0,0.6),rgb(0, 0, 0,0.6)), url("image/C-mobile.webp");
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-size: cover;
     color: white;
     text-align: center;
-    padding: 60px 5%;
 }
-/* AJOUT : version plus détaillée uniquement pour les écrans larges. */
-@media (min-width: 769px){
+@media (max-width:1005px){
     .accueil{
-        background-image: linear-gradient(rgb(0, 0, 0,0.6),rgb(0, 0, 0,0.6)), url("image/C.webp");
+        padding-top: 0;
     }
 }
 .style{
@@ -27,20 +34,129 @@
     color: transparent;
 }
 .accueil p{
-    max-width: 700px;
+    max-width: 760px;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
     margin-bottom:  40px ;
-    line-height: 1.4;
-    font-size:1.3rem ;   
+    line-height: 1.4;  
+}
+.hero-contenu{
+    max-width: 980px;
+}
+.hero-kicker{
+    margin-bottom: 22px;
+    padding: 9px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.08);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+.hero-kicker i{
+    margin-right: 7px;
+    color: var(--tertiaire);
+}
+.accueil h1{
+    max-width: 950px;
+    margin-bottom: 26px;
+    color: white;
+    font-size: clamp(3rem, 7.5vw, 6rem);
+    line-height: 0.97;
+    letter-spacing: -0.06em;
+    text-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
+}
+.accueil .flex2{
+    gap: 14px;
+}
+.accueil .btn,
+.accueil .btn-don{
+    min-width: 180px;
+    padding: 15px 24px;
+}
+
+.hero-reperes{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    width: min(660px, 100%);
+    margin-top: 44px;
+}
+.hero-reperes > div{
+    padding: 15px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.08);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+.hero-reperes strong{
+    display: block;
+    color: white;
+    font-size: 1.75rem;
+    line-height: 1;
+}
+.hero-reperes span{
+    margin-top: 6px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.78rem;
+}
+.hero-scroll{
+    position: absolute;
+    bottom: 26px;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.78rem;
+    transform: translateX(-50%);
+}
+.hero-scroll i{
+    font-size: 1.25rem;
+    animation: flotter 1.8s ease-in-out infinite;
+}
+@keyframes flotter{
+    0%, 100%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(7px);
+    }
 }
 
 .mission{
+    overflow: hidden;
+    padding-top: 110px;
+    padding-bottom: 120px;
     text-align: center;
 }
+.mission::before{
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    top: 80px;
+    left: -230px;
+    border-radius: 50%;
+    background: rgba(16, 185, 129, 0.07);
+}
 
+.mission .card{
+    padding: 40px 30px;
+}
 .mission .card i{
+    display: inline-grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    padding: 0;
     font-size: 35px;
-    background:rgb(16, 185, 129,0.1);        
-    padding: 10px 15px;
+    background:rgb(16, 185, 129,0.1);    
     border-radius: 15px;
     color: var(--primaire);
     transition: background 0.3s;
@@ -51,20 +167,31 @@
     color:  white;
 }
 .mission h2,.galerie h2{
+    margin-bottom: 55px;
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
     color: var(--quaternaire);
-    margin-bottom: 80px;
 }
 .mission h3{
+    margin: 26px 0 16px;
     font-size: 24px ;
     color: var(--primaire);
-    margin: 25px auto;
+}
+.mission .flex1{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    max-width: 1180px;
+    margin: 0 auto;
 }
 .mission p{
+    max-width: none;
+    color: #64748b;
+    line-height: 1.7;
     font-size: 14.5px;
-    max-width: 300px;
     margin-bottom: 25px;
 }
 .mission .flex2 p{
+    justify-content: flex-start;
     font-size: 16px; 
     font-weight: 600; 
     color:var(--secondaire);
@@ -289,14 +416,129 @@
         padding: 16px 17px 18px;
     }
 }
+
+.experience-foyer{
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: center;
+    gap: clamp(35px, 6vw, 80px);
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 70px;
+    padding-bottom: 110px;
+}
+.experience-photo{
+    position: relative;
+    min-height: 540px;
+}
+.experience-photo img{
+    border-radius: 32px;
+    box-shadow: var(--ombre-forte);
+}
+.experience-photo::before{
+    content: "";
+    position: absolute;
+    inset: 26px -22px -22px 26px;
+    z-index: -1;
+    border-radius: 32px;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.18), rgba(251, 191, 36, 0.18));
+}
+.experience-badge{
+    position: absolute;
+    right: -22px;
+    bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 280px;
+    padding: 16px 18px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 18px;
+    color: var(--quaternaire);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: var(--ombre-douce);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+.experience-badge i{
+    color: var(--secondaire);
+    font-size: 1.5rem;
+}
+.experience-texte h2{
+    margin: 12px 0 22px;
+    font-size: clamp(2.6rem, 5vw, 4.4rem);
+}
+.experience-texte > p{
+    max-width: 600px;
+    font-size: 1.08rem;
+    line-height: 1.8;
+}
+.experience-points{
+    display: grid;
+    gap: 12px;
+    margin: 28px 0;
+}
+.experience-points > div{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 15px;
+    border: 1px solid rgba(16, 185, 129, 0.12);
+    border-radius: 14px;
+    color: var(--quaternaire);
+    background: rgba(255, 255, 255, 0.75);
+    font-weight: 650;
+}
+.experience-points i{
+    color: var(--primaire);
+    font-size: 1.25rem;
+}
+.lien-fleche{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--secondaire);
+    font-weight: 800;
+}
+.lien-fleche i{
+    transition: transform 0.25s ease;
+}
+.lien-fleche:hover i{
+    transform: translateX(5px);
+}
 #impact{
-    padding: 60px 0;
-    background: var(--secondaire);
+    overflow: hidden;
+    padding: 95px 5%;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(251, 191, 36, 0.13), transparent 18rem),
+        linear-gradient(135deg, #064e3b, #047857 55%, #065f46);
+}
+#impact::after{
+    content: "";
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    right: -120px;
+    bottom: -200px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
 }
 .flex-impact{
-    display: flex; 
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+    font-size: clamp(2.2rem, 4vw, 3.6rem);
     text-align: center;
+}
+.flex-impact > div{
+    padding: 28px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.08);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
 }
 #impact h2{
     text-align: center;
@@ -304,21 +546,33 @@
     margin-bottom: 20px;
 }
 .impact h3{
-    font-size:35px;
+    font-size: clamp(2.3rem, 5vw, 4rem);
     color: white;
     margin-bottom: 10px;
 }
 .impact p{
+    margin-top: 8px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
     color: rgba(255, 255, 255, 0.8);
-    font-size: 18px; 
 }
 @media (max-width:730px){
     .flex-impact{
         flex-direction: column;
         gap: 15px;
     }
+    
 }
 
+.galerie{
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+.galerie .flex-between{
+    max-width: 1180px;
+    margin: 0 auto;
+}
 .galerie a{
     color: var(--quaternaire);
     font-weight: bold;
@@ -334,8 +588,15 @@
     grid-template-areas: 
     "enfant eglise eglise"
     "enfant ecole orphelinat";
-    grid-template-rows: repeat(2, 260px);
-    gap: 20px;
+    max-width: 1180px;
+    margin: 0 auto;
+    grid-template-rows: 280px 280px;
+    gap: 16px;
+}
+.galerie-grid > div{
+    min-height: 0;
+    border-radius: 24px;
+    box-shadow: 0 14px 35px rgba(2, 6, 23, 0.08);
 }
 .galerie-grid img{
     transition:transform 0.5s ease;
@@ -353,12 +614,77 @@
 .eglise{
     grid-area: eglise;
 }
+.devoile p{
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding: 24px;
+    background: linear-gradient(to top, rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.05) 65%);
+    opacity: 1;
+    font-size: 1rem;
+}
+.devoile:hover img{
+    transform: scale(1.06);
+}
 
 
 
+@media (max-width: 985px){
+    .mission .flex1{
+        grid-template-columns: 1fr;
+    }
+    .mission .card{
+        width: min(650px, 100%);
+        margin: 0 auto;
+    }
+    .experience-foyer{
+        grid-template-columns: 1fr;
+    }
+    .experience-photo{
+        min-height: 420px;
+    }
+    .experience-badge{
+        right: 18px;
+    }
+    .flex-impact{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
 @media (max-width: 780px){
+    .accueil{
+        min-height: calc(100svh - 20px);
+        padding: 90px 6% 70px;
+    }
     .accueil p{
         font-size: 1.1rem;
+    }
+    .hero-contenu{
+    margin-top: 20px;
+    }
+    .hero-reperes{
+        grid-template-columns: 1fr;
+        width: min(420px, 100%);
+        margin-top: 30px;
+    }
+    .hero-reperes > div{
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+    }
+    .hero-reperes span{
+        margin-top: 0;
+        text-align: right;
+    }
+    .hero-scroll{
+        display: none;
+    }
+    .experience-photo{
+        min-height: 340px;
+    }
+    .experience-badge{
+        right: 12px;
+        bottom: 12px;
+        max-width: 240px;
     }
     .galerie-grid{
         grid-template-columns: 1fr;
@@ -367,6 +693,50 @@
             "eglise"
             "ecole"
             "orphelinat";
-        grid-template-rows: repeat(4, 260px);
+        grid-template-rows: none;
+    }
+    .flex-impact{
+        grid-template-columns: 1fr 1fr;
+    }
+    .galerie-grid > div{
+        min-height: 290px;
+    }
+}
+@media (max-width: 480px){
+    .flex-impact{
+        grid-template-columns: 1fr;
+    }
+    .hero-kicker{
+        font-size: 0.72rem;
+    }
+    .flex-impact{
+        grid-template-columns: 1fr;
+    }
+    .experience-photo{
+        min-height: 300px;
+    }
+    .experience-badge{
+        left: 12px;
+        right: 12px;
+        max-width: none;
+    }
+}
+
+.experience-photo img{
+    height: 540px;
+}
+@media (max-width: 985px){
+    .experience-photo img{
+        height: 420px;
+    }
+}
+@media (max-width: 780px){
+    .experience-photo img{
+        height: 340px;
+    }
+}
+@media (max-width: 480px){
+    .experience-photo img{
+        height: 300px;
     }
 }

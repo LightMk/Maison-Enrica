@@ -19,12 +19,10 @@
     <meta content="Découvrez la Maison Enrica, Foyer de l’Enfant Jésus à Limete, Kinshasa : accueil, éducation et accompagnement de plus de 150 enfants." name="twitter:description">
     <meta content="https://maisonenrica.org/image/C.jpeg" name="twitter:image">
     <link href="favicon.png" rel="icon" type="image/png">
-    <!-- AJOUT : l’image de fond est préchargée car une image CSS est découverte plus tard qu’une balise img. -->
-    <link as="image" href="image/C-mobile.webp" media="(max-width: 768px)" rel="preload" type="image/webp">
-    <link as="image" href="image/C.webp" media="(min-width: 769px)" rel="preload" type="image/webp">
+    <link as="image" href="image/C.jpeg" rel="preload">
     <title>Maison Enrica | Foyer de l’Enfant Jésus à Kinshasa</title>
-    <!-- MODIFICATION : une seule bibliothèque d’icônes réduit les requêtes bloquantes. -->
-    <link crossorigin href="https://cdnjs.cloudflare.com" rel="preconnect">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="general.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
@@ -57,14 +55,14 @@
             }
         }
     </script>
-    <!-- AJOUT : fonctionnement du menu burger. -->
     <script defer src="menu.js"></script>
+    <script defer src="experience.js"></script>
 </head>
-<body>
+<body class="page-accueil">
     <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
     <header>
         <div class="flex3">
-            <img alt="Logo de la Maison Enrica" class="logo-img" decoding="async" height="200" loading="eager" src="Logo.webp" width="300">
+            <img alt="Logo de la Maison Enrica" class="logo-img" decoding="async" height="200" loading="eager" src="Logo.webp" width="600">
             <div class="logo-text">
                 MAISON ENRICA
             </div>
@@ -87,7 +85,8 @@
     </header>
     <main id="contenu-principal">
         <section class="accueil">
-            <div>
+            <div class="hero-contenu">
+                <span class="hero-kicker"><i aria-hidden="true" class="bi bi-heart-fill"></i> Foyer de l'Enfant Jésus • Kinshasa • Depuis 2006</span>
                 <h1>Protéger l'avenir, Construire une <span class="style">vie</span></h1>
             </div>
             <div class="animationEntrer">
@@ -97,8 +96,56 @@
                 <a class="btn" href="contact/contact.html">Nous contacter</a>
                 <a class="btn fond" href="projet/projet.html#realisation">Découvrir nos œuvres</a>
             </div>
+            <div class="hero-reperes animationEntrer" aria-label="Quelques repères sur la Maison Enrica">
+                <div>
+                    <strong>150</strong>
+                    <span>Capacité d'accueil</span>
+                </div>
+                <div>
+                    <strong>19</strong>
+                    <span>Éducateurs</span>
+                </div>
+                <div>
+                    <strong>3</strong>
+                    <span>Repas par jour</span>
+                </div>
+            </div>
+            <a class="hero-scroll" href="#mission" aria-label="Découvrir la mission de la Maison Enrica">
+                <span>Découvrir</span>
+                <i aria-hidden="true" class="bi bi-arrow-down"></i>
+            </a>
         </section>
-        <section class="mission">
+        <!-- AJOUT PREMIUM : section de narration pour mieux expliquer l'expérience proposée aux enfants. -->
+        <section class="experience-foyer">
+            <div class="experience-photo">
+                <img alt="Moment de vie collective à la Maison Enrica" decoding="async" height="608" loading="lazy" src="image/terasse-enf.jpeg" width="1080">
+                <div class="experience-badge">
+                    <i aria-hidden="true" class="bi bi-house-heart"></i>
+                    <span>Un cadre de vie, d'apprentissage et de partage</span>
+                </div>
+            </div>
+            <div class="experience-texte">
+                <span class="insigne">UN LIEU DE VIE</span>
+                <h2>Bien plus qu'un toit</h2>
+                <p>La Maison Enrica accompagne les enfants dans les dimensions essentielles de leur quotidien : protection, alimentation, éducation, santé et développement personnel.</p>
+                <div class="experience-points">
+                    <div>
+                        <i aria-hidden="true" class="bi bi-shield-check"></i>
+                        <span>Protection et cadre familial</span>
+                    </div>
+                    <div>
+                        <i aria-hidden="true" class="bi bi-book"></i>
+                        <span>Scolarisation et apprentissage</span>
+                    </div>
+                    <div>
+                        <i aria-hidden="true" class="bi bi-heart-pulse"></i>
+                        <span>Soins et bien-être quotidien</span>
+                    </div>
+                </div>
+                <a class="lien-fleche" href="propos/propos.html">Découvrir notre histoire <i aria-hidden="true" class="bi bi-arrow-right"></i></a>
+            </div>
+        </section>
+        <section class="mission" id="mission">
             <span class="insigne">NOTRE MISSION</span>
             <h2>Les Piliers du Quotidien</h2>
             <div class="flex1">
@@ -129,7 +176,7 @@
                 </div>
             </div>
         </section>
-         <!-- MODIFICATION : section anniversaire restructurée pour mettre les quatre vidéos en valeur sans autoplay. -->
+        <!-- MODIFICATION : section anniversaire restructurée pour mettre les quatre vidéos en valeur sans autoplay. -->
         <section aria-labelledby="titre-anniversaire" class="anniversaire">
             <div class="conteneur">
 
@@ -308,13 +355,13 @@
         </div>
         <div class="copy-right flex-between">
             <div>
-                <p>© 2026 Maison Enrica / Foyer de l'Enfant Jésus. Tous droits réservés.</p>
+                <p>© 2026 Maison Enrica / Foyer de l'Enfant Jésus.</p>
             </div>
             <div>
                 <p>Conçu et développé par <span>Minga Kweti</span></p>
             </div>
             <div>
-                <i aria-hidden="true" class="fa-solid fa-location-dot"></i>
+                <i aria-hidden="true" class="bx bx-map"></i>
                 Limete, Kinshasa, RDC
             </div>
         </div>

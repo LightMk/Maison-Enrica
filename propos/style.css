@@ -1,27 +1,50 @@
 .propos{
+    min-height: 82svh;
+    display: grid;
+    place-content: center;
+    padding-top: 150px;
     text-align: center;
+    background:
+        linear-gradient(rgba(2, 6, 23, 0.72), rgba(2, 6, 23, 0.62)),
+        url("image/enfant.webp") top / cover no-repeat;
 }
 .propos h1{
-    color: var(--secondaire);
+    max-width: 900px;
+    margin-inline: auto;
     padding-top: 0;
+    color: white;
+    font-size: clamp(3rem, 14vw, 6rem);
 }
-
+@media (max-width:1005px){
+    .propos h1{
+    padding-top:0px;
+}
+}
 .propos p{
-    font-size: 18px;
+    max-width: 720px;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 1.08rem;
     margin: 0 auto;
     line-height: 1.5;
-    max-width: 600px;
     font-weight: 500;
-    color: #222;
 }
 
 
 .chronique{
-    padding: 60px 5%;
+    align-items: center;
+    gap: clamp(35px, 6vw, 80px);
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 110px;
+    padding-bottom: 110px;
     display: flex;
     justify-content:space-between;
 }
+.chronique > div{
+    flex: 1;
+}
 .chronique h2{
+    font-size: clamp(2.6rem, 5vw, 4.4rem);
     color: var(--quaternaire);
     margin-bottom: 30px;
 }
@@ -29,18 +52,19 @@
     color: var(--secondaire);
 }
 .chronique p{
+    max-width: 620px;
+    color: #475569;
+    line-height: 1.8;
     font-size: 16px;
     margin-bottom: 20px;
-    line-height: 1.5;
-    max-width: 500px;
     font-weight: 500;
-    color: #222;
 }
 .chronique img{
-    border-radius: 15px;
-    width: 500px;
-    height: 500px;
-    
+    width: 100%;
+    max-width: 540px;
+    height: 560px;
+    border-radius: 30px;
+    box-shadow: var(--ombre-forte);
 }
 @media (max-width:1200px){
     .chronique{
@@ -59,7 +83,13 @@
 
 }
 
+.gouvernance{
+    padding-top: 100px;
+    padding-bottom: 110px;
+    background: linear-gradient(180deg, rgba(240, 253, 244, 0.5), rgba(255, 255, 255, 0));
+}
 .gouvernance h2{
+    font-size: clamp(2.4rem, 5vw, 4rem);
     color: var(--secondaire);
     text-align: center;
     margin-bottom: 10px;
@@ -73,27 +103,37 @@
     color: #222;
 }
 .autorité{
-    display: flex;
-    justify-content: center;
+    max-width: 1120px;
+    margin: 45px auto 0;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     flex-wrap: wrap;
     gap: 30px;
 }
 
 .autorité .cardI{
-    width: 250px;
-    height: 250px;
+    width: auto;
+    height: auto;
+    min-height: 245px;
+    padding: 24px 14px;
 }
 .autorité img{
+    
+    width: 130px;
+    height: 130px;
+    max-width: none;
+    max-height: none;
+    border: 4px solid #ecfdf5;
+    box-shadow: 0 8px 25px rgba(2, 6, 23, 0.1);
     margin: 0 auto;
-    max-width: 150px;
-    max-height: 150px;
     border-radius: 50%;
 }
 .autorité h3{
-    font-size: 17px;
+    margin-top: 18px;
+    font-size: 1rem;
+    letter-spacing: -0.01em;
     text-align: center;
     color: #222;
-    margin-top: 15px;
 }
 .autorité p{
     font-size: 14px;
@@ -101,15 +141,30 @@
 }
 
 .effectif{
-    background: linear-gradient(to bottom,#020617,#10B981);
-    box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
-    border-radius: 20px;
-    width: 88%;
+    overflow: hidden;
+    width: min(1180px, calc(100% - 40px));
+    padding: clamp(35px, 5vw, 65px);
+    border-radius: 32px;
+    background:
+        radial-gradient(circle at 85% 10%, rgba(251, 191, 36, 0.16), transparent 18rem),
+        linear-gradient(135deg, #020617, #064e3b);
+    box-shadow: var(--ombre-forte);
     margin: 0 auto 60px auto;
 }
 .effectif h2{
-    color: var(--secondaire);
+    color: white;
     margin-bottom: 10px;
+}
+.effectif .flex{
+    gap: 12px;
+}
+.effectif .flex > div{
+    text-align: center;
+    min-width: 120px;
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.06);
 }
 .effectif h3{
     font-size:35px;
@@ -127,6 +182,13 @@
 .effectif table{
     width: 100%;
     border-collapse: collapse;
+    margin-top: 35px;
+    overflow: hidden;
+    border-radius: 16px;
+}
+.effectif th,
+.effectif td{
+    padding: 14px 10px !important;
 }
 .effectif th:first-child{
     text-align: left;
@@ -164,8 +226,12 @@
     margin: 0;
     }
 }
-
+#galeries{
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
 #galeries h2{
+    font-size: clamp(2.5rem, 5vw, 4rem);
     color: var(--quaternaire);
     text-align: center;
 }
@@ -176,27 +242,52 @@
     font-weight: bold;
 }
 #galeries .flex2{
-    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 1180px;
+    margin: 45px auto 0;
+    gap: 18px;
 }
 /* CORRECTION : le sélecteur de l’image doit être écrit séparément en CSS classique. */
 #galeries .flex2 img{
+    width: 100%;
+    height: 310px;
+    border-radius: 22px;
     transition: transform 0.5s;
     border-radius: 15px;
-    width: 350px;
-    height: 350px;
+}
+#galeries .devoile{
+    border-radius: 22px;
+    box-shadow: 0 12px 34px rgba(2, 6, 23, 0.09);
 }
 
+.partenaires{
+    padding-top: 110px;
+    padding-bottom: 110px;
+    background: white;
+}
+.partenaires .flex2{
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    max-width: 1120px;
+    margin: 45px auto 0;
+    gap: 16px;
+}
 .partenaires .cardI{
-    width: 180px;
-    height: 180px;
+    
+    width: auto;
+    height: 140px;
+    display: grid;
+    place-items: center;
+    padding: 18px;
 }
 .partenaires strong{
     color: var(--secondaire);
 }
 .partenaires img{
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
-    width: 120px;
-    height: 120px;
     border-radius: 50%;
 }
 /* AJOUT : la galerie conserve des images lisibles sur téléphone. */
@@ -209,3 +300,49 @@
         width: 100%;
     }
 }
+@media (max-width: 1100px){
+    .autorité{
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .partenaires .flex2{
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+@media (max-width: 760px){
+    .propos{
+        min-height: 52svh;
+        padding-top: 90px;
+    }
+    .chronique{
+        padding-top: 70px;
+    }
+    .chronique img{
+        height: 390px;
+    }
+    .autorité{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    #galeries .flex2{
+        grid-template-columns: 1fr 1fr;
+    }
+    .partenaires .flex2{
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+@media (max-width: 520px){
+    .autorité,
+    #galeries .flex2{
+        grid-template-columns: 1fr;
+    }
+    .autorité .cardI{
+        width: 100%;
+    }
+    .partenaires .flex2{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .effectif{
+        width: calc(100% - 24px);
+        overflow-x: auto;
+    }
+}
+

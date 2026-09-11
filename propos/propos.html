@@ -20,19 +20,21 @@
     <meta content="https://maisonenrica.org/image/C.jpeg" name="twitter:image">
     <link href="../favicon.png" rel="icon" type="image/png">
     <title>À propos | Maison Enrica – Foyer de l’Enfant Jésus</title>
-    <!-- MODIFICATION : une seule bibliothèque d’icônes réduit les requêtes bloquantes. -->
-    <link crossorigin href="https://cdnjs.cloudflare.com" rel="preconnect">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="../general.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <!-- AJOUT : fonctionnement du menu burger. -->
     <script defer src="../menu.js"></script>
+    <!-- AJOUT PREMIUM : animations sobres, compteurs, galerie et confort de navigation. -->
+    <script defer src="../experience.js"></script>
 </head>
-<body>
+<body class="page-propos">
     <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
     <header>
         <div class="flex3">
-            <img alt="Logo de la Maison Enrica" class="logo-img" decoding="async" height="200" loading="eager" src="../Logo.webp" width="300">
+            <img alt="Logo de la Maison Enrica" class="logo-img" decoding="async" height="200" loading="eager" src="../Logo.webp" width="600">
             <span class="logo-text">MAISON ENRICA</span>
         </div>
         <!-- AJOUT : bouton du menu burger affiché sur téléphone et tablette. -->
