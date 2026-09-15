@@ -1,30 +1,5 @@
-# AJOUT : protections appliquées par Netlify à toutes les pages.
 /*
-  X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Strict-Transport-Security: max-age=31536000
-  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' https://cdnjs.cloudflare.com; font-src 'self' data: https://cdnjs.cloudflare.com; script-src 'self' 'sha256-gcmnBqJ5tkHE6yIZWhFoEEK9zYHUcwKzgKYcKfVy4kQ='; connect-src 'self' https://cdnjs.cloudflare.com; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
-
-# Les fichiers HTML sont toujours vérifiés afin d’afficher rapidement les mises à jour.
-/*.html
-  Cache-Control: public, max-age=0, must-revalidate
-
-# Les images peuvent rester en cache plus longtemps.
-/image/*
-  Cache-Control: public, max-age=2592000
-/propos/image/*
-  Cache-Control: public, max-age=2592000
-/projet/image/*
-  Cache-Control: public, max-age=2592000
-/contact/image/*
-  Cache-Control: public, max-age=2592000
-
-# AJOUT : cache des ressources optimisées situées à la racine.
-/*.webp
-  Cache-Control: public, max-age=2592000
-/*.css
-  Cache-Control: public, max-age=604800
-/*.js
-  Cache-Control: public, max-age=604800

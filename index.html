@@ -24,8 +24,8 @@
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="general.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
+    <link href="general.css?v=20260914" rel="stylesheet">
+    <link href="style.css?v=20260914" rel="stylesheet">
     <!-- AJOUT : données structurées permettant aux moteurs de recherche de mieux identifier l’organisation. -->
     <script type="application/ld+json">
         {
@@ -55,8 +55,8 @@
             }
         }
     </script>
-    <script defer src="menu.js"></script>
-    <script defer src="experience.js"></script>
+    <script defer src="menu.js?v=20260914"></script>
+    <script defer src="experience.js?v=20260914"></script>
 </head>
 <body class="page-accueil">
     <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
@@ -153,7 +153,9 @@
                     <i aria-hidden="true" class="fa-solid fa-graduation-cap"></i>
                     <h3>Éducation intégrale</h3>
                     <p>Une éducation de qualité pour les enfants du foyer et du quartier, favorisant l’excellence académique dès le plus jeune âge.</p>
-                    <a href="propos/propos.html">En savoir plus</a>
+                    <!-- PRÉPARATION : ce lien pointe temporairement vers la réalisation Saint-Charles.
+                         Quand la page dédiée sera créée, il suffira de remplacer le href. -->
+                    <a href="projet/projet.html#saint-charles">En savoir plus</a>
                 </div>
                 <div class="card">
                     <i aria-hidden="true" class="fa-solid fa-house"></i>
@@ -278,6 +280,13 @@
                     <h3>3</h3>
                     <p>REPAS/JOUR</p>
                 </div>
+            </div>
+
+            <!-- AJOUT : compteur réel alimenté par une Netlify Function.
+                 En local, un tiret est affiché tant que la fonction n'est pas disponible. -->
+            <div class="visites-site" aria-live="polite" hidden>
+                <i aria-hidden="true" class="bi bi-people"></i>
+                <span><strong id="compteur-visites">—</strong> visites enregistrées sur le site</span>
             </div>
         </section>
         <section class="galerie">

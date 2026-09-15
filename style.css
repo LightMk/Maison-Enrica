@@ -1,4 +1,3 @@
-
 .accueil::before{
     content: "";
     position: absolute;
@@ -323,6 +322,8 @@
     margin: 0 auto;
 }
 .video-anniversaire{
+    display: flex;
+    flex-direction: column;
     margin: 0;
     overflow: hidden;
     border: 1px solid rgba(4, 120, 87, 0.1);
@@ -363,7 +364,12 @@
     background: var(--quaternaire);
     object-fit: contain;
 }
+.video-cadre video:focus-visible{
+    outline: 3px solid var(--tertiaire);
+    outline-offset: -3px;
+}
 .video-anniversaire figcaption{
+    flex: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -738,5 +744,53 @@
 @media (max-width: 480px){
     .experience-photo img{
         height: 300px;
+    }
+}
+
+/* AJOUT : compteur réel du site, alimenté par Netlify côté serveur. */
+.visites-site{
+    width: fit-content;
+    max-width: min(100%, 520px);
+    margin: 32px auto 0;
+    padding: 9px 17px 9px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid rgba(251, 191, 36, 0.28);
+    border-radius: 999px;
+    color: rgba(255, 255, 255, 0.88);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.06));
+    box-shadow: 0 9px 24px rgba(0, 0, 0, 0.12);
+    font-size: 0.88rem;
+    font-weight: 650;
+}
+.visites-site i{
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 32px;
+    border-radius: 50%;
+    color: var(--tertiaire);
+    background: rgba(251, 191, 36, 0.12);
+}
+.visites-site strong{
+    color: white;
+    font-size: 1.12rem;
+    letter-spacing: 0.01em;
+}
+
+@media (max-width: 420px){
+    .anniversaire-embleme{
+        width: 128px;
+    }
+    .video-anniversaire figcaption{
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+    }
+    .video-anniversaire figcaption strong{
+        text-align: left;
     }
 }

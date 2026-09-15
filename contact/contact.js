@@ -1,10 +1,11 @@
-// MODIFICATION : le formulaire prépare un message adapté au sujet choisi.
-// WhatsApp reste le moyen principal et l'e-mail sert uniquement de solution de secours.
+// FINALISATION : le formulaire prépare un message fidèle au texte du visiteur.
+// WhatsApp reste le moyen principal et l'e-mail sert de solution de secours.
 
 const formulaire = document.querySelector("#form-contact")
 const bouton = document.querySelector("#btn-contact")
 const boutonEmail = document.querySelector("#btn-email")
 const listeObjet = document.querySelector("#objet-contact")
+const etatContact = document.querySelector("#etat-contact")
 
 // Numéro officiel de la Maison Enrica au format WhatsApp : sans +, espace ou tiret.
 const numeroWhatsApp = "243819073170"
@@ -24,8 +25,14 @@ if (objetDemande) {
     }
 }
 
-// MODIFICATION : le site ne reformule plus le texte écrit par le visiteur.
-// Il ajoute seulement une présentation claire autour du message original.
+function afficherEtat(message) {
+    if (etatContact) {
+        etatContact.textContent = message
+    }
+}
+
+// Le site ne reformule pas le texte du visiteur : il l'encadre seulement
+// avec le nom et le sujet sélectionné pour que la demande reste claire.
 function preparerMessage() {
     const nom = document.querySelector("#nom-contact").value.trim()
     const objet = listeObjet.value
@@ -52,7 +59,6 @@ formulaire.addEventListener("submit", (event) => {
     }
 
     const donnees = preparerMessage()
-
     const lienWhatsApp =
         "https://wa.me/" +
         numeroWhatsApp +
@@ -60,13 +66,20 @@ formulaire.addEventListener("submit", (event) => {
         encodeURIComponent(donnees.texte)
 
     bouton.disabled = true
-    bouton.textContent = "Ouverture de WhatsApp..."
+    bouton.innerHTML = '<i aria-hidden="true" class="fa-brands fa-whatsapp"></i> Ouverture de WhatsApp...'
+    afficherEtat("Votre message est prêt. Vérifiez-le dans WhatsApp puis confirmez vous-même son envoi.")
 
-    window.location.href = lienWhatsApp
+    // L'ouverture dans un nouvel onglet permet de conserver le formulaire si le visiteur revient.
+    const nouvelleFenetre = window.open(lienWhatsApp, "_blank", "noopener,noreferrer")
+
+    // Secours pour les navigateurs qui bloquent l'ouverture d'un nouvel onglet.
+    if (!nouvelleFenetre) {
+        window.location.href = lienWhatsApp
+    }
 })
 
-// L'e-mail n'utilise pas l'ancien système Netlify.
-// Il ouvre simplement l'application e-mail du visiteur avec le message déjà préparé.
+// L'e-mail n'utilise pas l'ancien système Netlify Forms.
+// Il ouvre l'application e-mail du visiteur avec le même message déjà préparé.
 boutonEmail.addEventListener("click", () => {
     if (!formulaire.checkValidity()) {
         formulaire.reportValidity()
@@ -74,7 +87,6 @@ boutonEmail.addEventListener("click", () => {
     }
 
     const donnees = preparerMessage()
-
     const sujetEmail = donnees.objet + " - " + donnees.nom
     const lienEmail =
         "mailto:" +
@@ -84,10 +96,16 @@ boutonEmail.addEventListener("click", () => {
         "&body=" +
         encodeURIComponent(donnees.texte)
 
+    afficherEtat("Votre application e-mail va s’ouvrir avec le message préparé. Vérifiez-le puis confirmez vous-même son envoi.")
     window.location.href = lienEmail
 })
 
-// Réactive le bouton si l'utilisateur revient sur la page.
+// Le retour disparaît dès que le visiteur recommence à modifier sa demande.
+formulaire.addEventListener("input", () => {
+    afficherEtat("")
+})
+
+// Réactive le bouton si l'utilisateur revient sur la page depuis WhatsApp.
 window.addEventListener("pageshow", () => {
     bouton.disabled = false
     bouton.innerHTML = '<i aria-hidden="true" class="fa-brands fa-whatsapp"></i> Envoyer le message'

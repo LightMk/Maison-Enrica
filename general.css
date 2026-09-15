@@ -36,10 +36,6 @@ body{
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
 }
-/* AJOUT : toutes les pages commencent sous le header fixe. 
-body:not(.page-simple) > main{
-    padding-top: var(--hauteur-entete);
-}*/
 h1,
 h2,
 h3{
@@ -58,8 +54,6 @@ section{
     padding: 50px 5%;
 }
 h1{
-    /*margin-bottom: 20px;
-    animation: entrer 0.6s ease-out both;*/
     font-size: clamp(2.2rem, 6vw, 3.5rem);
 }
 h2{
@@ -641,6 +635,7 @@ footer span{
 
 .menu-burger{
     display: none;
+    position: relative;
     width: 44px;
     height: 44px;
     padding: 9px;
@@ -650,21 +645,33 @@ footer span{
     cursor: pointer;
 }
 .menu-burger span{
-    display: block;
-    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 9px;
+    right: 9px;
     height: 3px;
+    margin-top: -1.5px;
     border-radius: 5px;
     background: var(--secondaire);
-    transition: transform 0.3s, opacity 0.3s;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.menu-burger span:nth-child(1){
+    transform: translateY(-8px);
+}
+.menu-burger span:nth-child(2){
+    transform: translateY(0);
+}
+.menu-burger span:nth-child(3){
+    transform: translateY(8px);
 }
 .menu-burger.actif span:nth-child(1){
-    transform: translateY(12px) rotate(45deg);
+    transform: rotate(45deg);
 }
 .menu-burger.actif span:nth-child(2){
     opacity: 0;
 }
 .menu-burger.actif span:nth-child(3){
-    transform: translateY(-8px) rotate(-45deg);
+    transform: rotate(-45deg);
 }
 
 @media (max-width: 1005px){
@@ -686,9 +693,7 @@ footer span{
         white-space: nowrap;
     }
     .menu-burger{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        display: block;
         align-self: center;
     }
     .navigation-principale{
@@ -729,5 +734,30 @@ footer span{
     .navigation-principale .btn-don{
         align-self: center;
         margin-top: 12px;
+    }
+}
+
+/* CORRECTION : sous ~352 px, le logo et le bouton burger manquaient d'espace.
+   Cette règle reste volontairement ciblée pour ne pas multiplier les breakpoints. */
+@media (max-width: 360px){
+    header{
+        width: calc(100% - 16px);
+        padding: 7px 9px;
+        gap: 0 7px;
+    }
+    header .logo-img{
+        width: 5.2rem;
+    }
+    header .logo-text{
+        font-size: 0.88rem;
+        letter-spacing: 0.035em;
+    }
+    .menu-burger{
+        width: 40px;
+        height: 40px;
+    }
+    .menu-burger span{
+        left: 8px;
+        right: 8px;
     }
 }

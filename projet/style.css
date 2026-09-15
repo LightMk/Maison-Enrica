@@ -107,8 +107,7 @@
     padding: 10px 15px;
     border-radius: 15px;
     color: var(--primaire);
-    transition: background 0.3s;
-    transition: color 0.3s;
+    transition: background 0.3s, color 0.3s;
 }
 .chantier .card i:hover{
     background: var(--primaire);
@@ -157,7 +156,7 @@
     font-size: 1.2rem;
     margin-bottom: 15px;
     line-height: 1.4;
-    font-size: bold;
+    font-weight: 600;
     color: #222;
 }
 .flex-realisation{
@@ -168,46 +167,63 @@
     gap: 22px;
 }
 .card-realisation{
-    width: auto;
-    padding: 14px 14px 24px;
-    border: 1px solid rgba(15, 23, 42, 0.07);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: 12px 12px 24px;
+    overflow: hidden;
+    border: 1px solid rgba(4, 120, 87, 0.11);
     border-radius: 26px;
+    background: white;
     box-shadow: var(--ombre-douce);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: white;
+}
+.card-realisation::after{
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--secondaire), var(--primaire), var(--tertiaire));
+    opacity: 0;
+    transform: scaleX(0.4);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 .card-realisation:hover{
     transform: translateY(-8px);
     box-shadow: var(--ombre-forte);
 }
-.card-realisation p{
-    margin-bottom: 20px;
-    line-height: 1.4;
-    font-size: 14px;
-}
-.card-realisation h3{
-    margin: 10px 0;
-    font-size: 25px;
-    color: var(--quaternaire);
-}
-.card-realisation span{
-    font-size: 12px;
-    font-weight: bold;
-    color: var(--primaire);
+.card-realisation:hover::after{
+    opacity: 1;
+    transform: scaleX(1);
 }
 .card-realisation img{
-    height: 240px;
-    border-radius: 20px;
     width: 100%;
+    height: 230px;
+    border-radius: 18px;
+    transition: transform 0.45s ease;
 }
-.card-realisation span{
-    margin-top: 14px;
+.card-realisation:hover img{
+    transform: scale(1.025);
+}
+.card-realisation .insigne{
+    align-self: flex-start;
+    margin: 15px 8px 2px;
+    color: var(--primaire);
+    font-size: 12px;
+    font-weight: bold;
 }
 .card-realisation h3{
+    margin: 12px 8px 8px;
+    color: var(--quaternaire);
     font-size: 1.45rem;
+    line-height: 1.2;
 }
 .card-realisation p{
+    flex: 1;
+    margin: 0 8px;
     color: #64748b;
+    font-size: 14px;
     line-height: 1.65;
 }
 @media (max-width: 980px){
@@ -233,5 +249,152 @@
     }
     #projet img{
         min-height: 300px;
+    }
+}
+
+/* ==========================================================
+   FINALISATION : Pont International et cartes Réalisations.
+   ========================================================== */
+.familles-adoptees{
+    max-width: 560px;
+    margin: 22px 0 26px;
+    border: 1px solid rgba(4, 120, 87, 0.16);
+    border-radius: 18px;
+    background: #f8fffb;
+    overflow: hidden;
+}
+.familles-adoptees > summary{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    padding: 17px 19px;
+    color: var(--secondaire);
+    font-weight: 800;
+    cursor: pointer;
+    list-style: none;
+}
+.familles-adoptees > summary::-webkit-details-marker{
+    display: none;
+}
+.familles-adoptees > summary::after{
+    content: "+";
+    flex: 0 0 auto;
+    font-size: 1.4rem;
+    line-height: 1;
+    transition: transform 0.25s ease;
+}
+.familles-adoptees[open] summary::after{
+    transform: rotate(45deg);
+}
+.familles-adoptees > summary small{
+    margin-left: auto;
+    color: #64748b;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+.grille-familles{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    padding: 16px 19px 18px;
+    border-top: 1px solid rgba(4, 120, 87, 0.1);
+}
+/* AJOUT : chaque famille dispose de sa propre fiche dépliable.
+   Il suffit de dupliquer un bloc .famille-carte dans le HTML pour en ajouter une. */
+.famille-carte{
+    border: 1px solid rgba(4, 120, 87, 0.12);
+    border-radius: 15px;
+    background: white;
+    overflow: hidden;
+}
+.famille-carte > summary{
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    align-items: center;
+    gap: 11px;
+    padding: 13px;
+    cursor: pointer;
+    list-style: none;
+}
+.famille-carte > summary::-webkit-details-marker{
+    display: none;
+}
+.famille-carte > summary::after{
+    display: none;
+}
+.famille-icone{
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    color: var(--secondaire);
+    background: rgba(16, 185, 129, 0.11);
+}
+.famille-carte summary span:last-child{
+    min-width: 0;
+}
+.famille-carte summary small,
+.famille-carte summary strong,
+.famille-carte summary em{
+    display: block;
+}
+.famille-carte summary small{
+    margin: 0 0 3px;
+    color: #94a3b8;
+    font-size: 0.62rem;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+}
+.famille-carte summary strong{
+    color: var(--quaternaire);
+    font-size: 0.9rem;
+    line-height: 1.25;
+}
+.famille-carte summary em{
+    margin-top: 3px;
+    color: #64748b;
+    font-size: 0.72rem;
+    font-style: normal;
+}
+.famille-contenu{
+    padding: 0 13px 13px;
+    border-top: 1px solid #eef2f7;
+}
+.famille-contenu p{
+    margin: 11px 0 !important;
+    color: #64748b;
+    font-size: 0.78rem !important;
+    line-height: 1.55 !important;
+}
+.famille-contenu ul{
+    margin: 0;
+}
+.famille-contenu li{
+    margin-bottom: 4px !important;
+    color: #475569;
+    font-size: 0.73rem !important;
+    line-height: 1.45 !important;
+}
+
+
+@media (max-width: 520px){
+    .familles-adoptees > summary{
+        align-items: flex-start;
+        flex-wrap: wrap;
+        padding: 15px;
+    }
+    .familles-adoptees > summary small{
+        width: 100%;
+        margin: -8px 24px 0 0;
+    }
+    .grille-familles{
+        grid-template-columns: 1fr;
+        padding: 14px 15px 15px;
+    }
+    .card-realisation img{
+        height: 210px;
     }
 }

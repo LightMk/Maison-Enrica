@@ -24,13 +24,13 @@
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="../general.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
-    <script defer src="contact.js"></script>
+    <link href="../general.css?v=20260914" rel="stylesheet">
+    <link href="style.css?v=20260914" rel="stylesheet">
+    <script defer src="contact.js?v=20260914"></script>
     <!-- AJOUT : fonctionnement du menu burger. -->
-    <script defer src="../menu.js"></script>
+    <script defer src="../menu.js?v=20260914"></script>
     <!-- AJOUT PREMIUM : animations sobres, compteurs, galerie et confort de navigation. -->
-    <script defer src="../experience.js"></script>
+    <script defer src="../experience.js?v=20260914"></script>
 </head>
 <body class="page-contact">
     <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
@@ -123,6 +123,8 @@
                         </div>
 
                         <p class="form-note">Le message sera préparé automatiquement dans l’application choisie. Vous devrez ensuite confirmer vous-même son envoi. Ne communiquez aucune donnée bancaire ou code secret.</p>
+                        <!-- AJOUT : retour clair sans prétendre que WhatsApp ou l'e-mail a déjà envoyé le message. -->
+                        <p aria-live="polite" class="etat-contact" id="etat-contact"></p>
                     </form>
                 </div>
 
@@ -136,7 +138,21 @@
                         <li><i aria-hidden="true" class="fa-solid fa-envelope"></i> <a href="mailto:maisonenricas@hotmail.com">maisonenricas@hotmail.com</a></li>
                     </ul>
                     <a aria-label="Envoyer un message à la Maison Enrica sur WhatsApp" class="btn-whatsapp" href="https://wa.me/243819073170?text=Bonjour%20Maison%20Enrica%2C%20je%20souhaite%20vous%20contacter." rel="noopener noreferrer" target="_blank"><i aria-hidden="true" class="fa-brands fa-whatsapp"></i> Envoyer un message</a>
-                    <img alt="Plan de localisation de la Maison Enrica à Limete, Kinshasa" decoding="async" height="707" loading="lazy" src="image/map.webp" width="540">
+                    <!-- MODIFICATION : l'ancienne image statique est remplacée par une carte
+                        interactive plus utile pour préparer une visite. -->
+                    <div class="carte-localisation">
+                        <iframe
+                            allowfullscreen
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            src="https://www.google.com/maps?q=10%20Avenue%20du%2017%20Mai%2C%20Limete%2C%20Kinshasa%2C%20RDC&amp;z=16&amp;output=embed"
+                            title="Localisation de la Maison Enrica à Limete, Kinshasa">
+                        </iframe>
+                        <div class="carte-actions">
+                            <span><i aria-hidden="true" class="fa-solid fa-location-dot"></i> 10, Avenue du 17 Mai, Limete, Kinshasa</span>
+                            <a href="https://www.google.com/maps/search/?api=1&amp;query=10%20Avenue%20du%2017%20Mai%2C%20Limete%2C%20Kinshasa%2C%20RDC" rel="noopener noreferrer" target="_blank">Ouvrir dans Google Maps <i aria-hidden="true" class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
 

@@ -23,11 +23,11 @@
     <!-- MODIFICATION : une seule bibliothèque d’icônes réduit les requêtes bloquantes. -->
     <link crossorigin href="https://cdnjs.cloudflare.com" rel="preconnect">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="../general.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
+    <link href="../general.css?v=20260914" rel="stylesheet">
+    <link href="style.css?v=20260914" rel="stylesheet">
     <!-- AJOUT : fonctionnement du menu burger. -->
-    <script defer src="../menu.js"></script>
-    <script defer src="../experience.js"></script>
+    <script defer src="../menu.js?v=20260914"></script>
+    <script defer src="../experience.js?v=20260914"></script>
 </head>
 <body class="page-projet">
     <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
@@ -130,6 +130,69 @@
                             <p>Tutelle</p>
                         </div>
                     </div>
+                    <!-- MODIFICATION : modèle fonctionnel pour présenter les familles.
+                         Les contenus ci-dessous sont uniquement des exemples à remplacer par les données validées. 
+                    <details class="familles-adoptees">
+                        <summary>
+                            <span>Familles accompagnées</span>
+                            <small>Voir les exemples</small>
+                        </summary>
+                        <div class="grille-familles">
+                            <details class="famille-carte">
+                                <summary>
+                                    <span class="famille-icone"><i aria-hidden="true" class="fa-solid fa-house"></i></span>
+                                    <span>
+                                        <small>EXEMPLE À REMPLACER</small>
+                                        <strong>Famille exemple 01</strong>
+                                        <em>Italie · Adoption internationale</em>
+                                    </span>
+                                </summary>
+                                <div class="famille-contenu">
+                                    <p>Ajoutez ici une courte présentation validée de la famille, son parcours et le type d’accompagnement réalisé par la Maison Enrica.</p>
+                                    <ul>
+                                        <li><strong>Année :</strong> 20XX</li>
+                                        <li><strong>Suivi :</strong> Accompagnement post-adoption</li>
+                                    </ul>
+                                </div>
+                            </details>
+
+                            <details class="famille-carte">
+                                <summary>
+                                    <span class="famille-icone"><i aria-hidden="true" class="fa-solid fa-people-roof"></i></span>
+                                    <span>
+                                        <small>EXEMPLE À REMPLACER</small>
+                                        <strong>Famille exemple 02</strong>
+                                        <em>RDC · Adoption nationale</em>
+                                    </span>
+                                </summary>
+                                <div class="famille-contenu">
+                                    <p>Ce bloc peut accueillir un témoignage court, une information sur le parcours familial ou un résumé du suivi effectué.</p>
+                                    <ul>
+                                        <li><strong>Année :</strong> 20XX</li>
+                                        <li><strong>Suivi :</strong> Accompagnement familial</li>
+                                    </ul>
+                                </div>
+                            </details>
+
+                            <details class="famille-carte">
+                                <summary>
+                                    <span class="famille-icone"><i aria-hidden="true" class="fa-solid fa-earth-europe"></i></span>
+                                    <span>
+                                        <small>EXEMPLE À REMPLACER</small>
+                                        <strong>Famille exemple 03</strong>
+                                        <em>International · Suivi familial</em>
+                                    </span>
+                                </summary>
+                                <div class="famille-contenu">
+                                    <p>Dupliquez simplement cette carte lorsque vous aurez une nouvelle famille à présenter, puis remplacez les textes d’exemple.</p>
+                                    <ul>
+                                        <li><strong>Année :</strong> 20XX</li>
+                                        <li><strong>Suivi :</strong> À préciser</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </details>-->
                     <div class="flex2">
                         <!-- MODIFICATION : la page Don est temporairement retirée ; redirection vers Contact. -->
                         <a class="btn" href="../contact/contact.html?objet=Devenir%20donateur#form-contact">Soutenir ce projet</a>
@@ -147,7 +210,7 @@
                 <p>La plus belle preuve de notre impact réside dans le parcours des enfants qui ont grandi au foyer et qui ont réussi leur vie.</p>
             </div>
             <div class="flex-realisation">
-                <div class="card-realisation">
+                <div class="card-realisation" id="saint-charles">
                     <span class="insigne">Education des enfants</span>
                     <img alt="L'école Saint-Charles" decoding="async" height="653" loading="lazy" src="image/st-charles.webp" width="980">
                     <h3>École Saint-Charles</h3>

@@ -23,12 +23,12 @@
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="../general.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
+    <link href="../general.css?v=20260914" rel="stylesheet">
+    <link href="style.css?v=20260914" rel="stylesheet">
     <!-- AJOUT : fonctionnement du menu burger. -->
-    <script defer src="../menu.js"></script>
+    <script defer src="../menu.js?v=20260914"></script>
     <!-- AJOUT PREMIUM : animations sobres, compteurs, galerie et confort de navigation. -->
-    <script defer src="../experience.js"></script>
+    <script defer src="../experience.js?v=20260914"></script>
 </head>
 <body class="page-propos">
     <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
@@ -148,54 +148,59 @@
                     </div>
                 </div>
             </div>
+            <!-- MODIFICATION : le tableau reste un vrai tableau, mais son défilement
+                 est limité à cette zone sur les petits écrans. -->
+            <p class="aide-tableau">Sur petit écran, faites glisser le tableau horizontalement pour voir toutes les colonnes.</p>
+            <div aria-label="Effectifs scolarisés de la Maison Enrica" class="tableau-effectifs" role="region" tabindex="0">
             <table>
-                <thead>
-                    <tr>
-                        <th>Catégories</th>
-                        <th>Filles</th>
-                        <th>Garçons</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Maternelle</td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>3</td>
-                    </tr>
-                    <tr>
-                        <td>Primaire</td>
-                        <td>10</td>
-                        <td>36</td>
-                        <td>46</td>
-                    </tr>
-                    <tr>
-                        <td>Secondaire</td>
-                        <td>17</td>
-                        <td>14</td>
-                        <td>31</td>
-                    </tr>
-                    <tr>
-                        <td>Humanités</td>
-                        <td>11</td>
-                        <td>20</td>
-                        <td>31</td>
-                    </tr>
-                    <tr>
-                        <td>Université</td>
-                        <td>3</td>
-                        <td>5</td>
-                        <td>4</td>
-                    </tr>
-                    <tr>
-                        <td>Licenciés LMD</td>
-                        <td>2</td>
-                        <td>4</td>
-                        <td>6</td>
-                    </tr>
-                </tbody>
-            </table>
+                    <thead>
+                        <tr>
+                            <th>Catégories</th>
+                            <th>Filles</th>
+                            <th>Garçons</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Maternelle</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>Primaire</td>
+                            <td>10</td>
+                            <td>36</td>
+                            <td>46</td>
+                        </tr>
+                        <tr>
+                            <td>Secondaire</td>
+                            <td>17</td>
+                            <td>14</td>
+                            <td>31</td>
+                        </tr>
+                        <tr>
+                            <td>Humanités</td>
+                            <td>11</td>
+                            <td>20</td>
+                            <td>31</td>
+                        </tr>
+                        <tr>
+                            <td>Université</td>
+                            <td>3</td>
+                            <td>5</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Licenciés LMD</td>
+                            <td>2</td>
+                            <td>4</td>
+                            <td>6</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
         <section id="galeries">
             <h2>La Vie au Foyer</h2>
@@ -226,7 +231,7 @@
                     <p>Vue d'ensemble de l'école et l'orphelinat</p>
                 </div>
                 <div class="devoile">
-                    <img alt="Le fondateur de l'orphelinat" decoding="async" height="653" loading="lazy" src="image/abbé.webp" width="980">
+                    <img alt="Le fondateur de l'orphelinat" decoding="async" height="653" loading="lazy" src="image/abbe.webp" width="980">
                     <p>Le fondateur de l'orphelinat</p>
                 </div>
                 <div class="devoile">
@@ -269,40 +274,40 @@
             <p>Nous tenons à exprimer notre profonde gratitude aux donateurs particuliers, aux communautés ecclésiales locales, ainsi qu'aux organisations internationales comme l'<strong>ASBL Salama</strong> d'Italie, dont le soutien régulier permet au Foyer de surmonter les impasses économiques quotidiennes.</p>
             <div class="flex2">
                 <div class="cardI">
-                    <img alt="logo de knowledge" decoding="async" height="1024" loading="lazy" src="image/knowledge.webp" width="1024">
+                    <img alt="logo de knowledge" decoding="async" height="760" loading="lazy" src="image/knowledge.webp" width="1200">
                 </div>
                 <div class="cardI">
-                    <img alt="logo de rawbank" decoding="async" height="1024" loading="lazy" src="image/rawbank.webp" width="1024">
+                    <img alt="logo de rawbank" decoding="async" height="760" loading="lazy" src="image/rawbank.webp" width="1200">
                 </div>
                 <div class="cardI">
-                    <img alt="logo de kongo" decoding="async" height="1024" loading="lazy" src="image/kongo.webp" width="1024">
+                    <img alt="logo de kongo" decoding="async" height="760" loading="lazy" src="image/kongo.webp" width="1200">
                 </div>
                 <div class="cardI">
-                    <img alt="logo de fondation Denise Nyakero" decoding="async" height="800" loading="lazy" src="image/fondation.webp" width="800">
+                    <img alt="logo de fondation Denise Nyakero" decoding="async" height="760" loading="lazy" src="image/fondation.webp" width="1200">
                 </div>
                 <div class="cardI">
-                    <img alt="logo de initiative plus" decoding="async" height="310" loading="lazy" src="image/initiativeplus.webp" width="800">
+                    <img alt="logo de initiative plus" decoding="async" height="760" loading="lazy" src="image/initiativeplus.webp" width="1200">
                 </div>
                 <div class="cardI">
-                    <img alt="logo de l'Association AMACA" decoding="async" height="323" loading="lazy" src="image/amaca.webp" width="800">
+                    <img alt="logo de l'Association AMACA" decoding="async" height="760" loading="lazy" src="image/amaca.webp" width="1200">
                 </div>
                 <div class="cardI">
-                    <img alt="logo de oltre i confini.png" decoding="async" height="447" loading="lazy" src="image/otreiconfini.webp" width="800">
+                    <img alt="logo de oltre i confini.png" decoding="async" height="760" loading="lazy" src="image/otreiconfini.webp" width="1200">
                 </div>
                 <div class="cardI">
-                    <img alt="logo de l'Association Mwaganza" decoding="async" height="437" loading="lazy" src="image/mwaganza.webp" width="800">
+                    <img alt="logo de l'Association Mwaganza" decoding="async" height="760" loading="lazy" src="image/mwaganza.webp" width="1200">
                 </div>
                 <div class="cardI">
-                    <img alt="logo de l'Association CARTER" decoding="async" height="437" loading="lazy" src="image/carter.webp" width="800">
+                    <img alt="logo de l'Association CARTER" decoding="async" height="760" loading="lazy" src="image/carter.webp" width="1200">
                 </div>
                 <div class="cardI">
-                    <img alt="logo de l'Association croce" decoding="async" height="447" loading="lazy" src="image/croce.webp" width="447">
+                    <img alt="logo de l'Association croce" decoding="async" height="760" loading="lazy" src="image/croce.webp" width="1200">
                 </div>
                 <div class="cardI">
-                    <img alt="logo de l'Equity BCDC" decoding="async" height="437" loading="lazy" src="image/equitybcdc.webp" width="800">
+                    <img alt="logo de l'Equity BCDC" decoding="async" height="760" loading="lazy" src="image/equitybcdc.webp" width="1200">
                 </div>
                 <div class="cardI">
-                    <img alt="logo du Ministère des affaires sociales " decoding="async" height="800" loading="lazy" src="image/affaires.webp" width="800">
+                    <img alt="logo du Ministère des affaires sociales " decoding="async" height="760" loading="lazy" src="image/affaires.webp" width="1200">
                 </div>
             </div>
         </section>

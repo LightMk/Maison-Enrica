@@ -1,3 +1,6 @@
-# AJOUT : le dossier actuel contient directement le site à publier.
 [build]
   publish = "."
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"

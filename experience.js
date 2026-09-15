@@ -21,7 +21,8 @@ actualiserEntete()
 // 2. Apparition progressive des éléments lorsqu'ils entrent dans l'écran.
 const elementsADevoiler = document.querySelectorAll(
     "section h2, .card, .cardI, .card-realisation, .devoile, .chronique > div, " +
-    ".experience-photo, .experience-texte, .formulaire, .card-contact, .reponse > div"
+    ".experience-photo, .experience-texte, .formulaire, .card-contact, .reponse > div, " +
+    ".anniversaire-entete, .video-anniversaire, .tableau-effectifs, .familles-adoptees"
 )
 
 if ("IntersectionObserver" in window) {
@@ -142,3 +143,56 @@ blocsFaq.forEach((bloc, index) => {
         bouton.setAttribute("aria-expanded", estOuverte ? "true" : "false")
     })
 })
+
+
+// 6. Compteur réel de visites.
+// Une visite est comptée une seule fois par session de navigation.
+// Le total est stocké côté serveur avec Netlify Blobs : ce n'est pas un faux compteur local.
+async function actualiserCompteurVisites() {
+    const compteur = document.querySelector("#compteur-visites")
+    let visiteDejaComptee = false
+
+    try {
+        visiteDejaComptee = sessionStorage.getItem("maison-enrica-visite-comptee") === "oui"
+    } catch (erreur) {
+        // Certains modes de confidentialité peuvent bloquer sessionStorage.
+        // Dans ce cas, le compteur continue de fonctionner sans mémorisation locale.
+    }
+
+    try {
+        const reponse = await fetch("/.netlify/functions/visites", {
+            method: visiteDejaComptee ? "GET" : "POST",
+            headers: {
+                "Accept": "application/json"
+            }
+        })
+
+        if (!reponse.ok) {
+            throw new Error("Compteur indisponible")
+        }
+
+        const donnees = await reponse.json()
+
+        if (!visiteDejaComptee) {
+            try {
+                sessionStorage.setItem("maison-enrica-visite-comptee", "oui")
+            } catch (erreur) {
+                // Le comptage serveur reste valable même si le stockage local est indisponible.
+            }
+        }
+
+        if (compteur) {
+            compteur.textContent = Number(donnees.visites).toLocaleString("fr-FR")
+            compteur.closest(".visites-site")?.removeAttribute("hidden")
+        }
+    } catch (erreur) {
+        // En local ou si la fonction Netlify n'est pas encore déployée,
+        // on affiche un tiret au lieu d'inventer une valeur.
+        if (compteur) {
+            // Le bloc reste masqué : aucune valeur fictive n'est affichée.
+            compteur.closest(".visites-site")?.setAttribute("hidden", "")
+        }
+    }
+}
+
+actualiserCompteurVisites()

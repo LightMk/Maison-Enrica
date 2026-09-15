@@ -179,40 +179,54 @@
     color: white;
     max-width: 450px;
 }
+.aide-tableau{
+    display: none;
+}
+.tableau-effectifs{
+    width: 100%;
+    margin-top: 35px;
+    overflow-x: auto;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(251, 191, 36, 0.65) transparent;
+}
 .effectif table{
     width: 100%;
+    min-width: 620px;
+    margin: 0;
     border-collapse: collapse;
-    margin-top: 35px;
-    overflow: hidden;
-    border-radius: 16px;
 }
 .effectif th,
 .effectif td{
-    padding: 14px 10px !important;
-}
-.effectif th:first-child{
-    text-align: left;
-    padding: 15px 0px;    
+    padding: 14px 12px;
+    white-space: nowrap;
 }
 .effectif th{
     text-align: center;
-    font-size: 1.7rem ; 
-    color: var(--primaire);
-    border-bottom: 1px solid #ddd;
-}
-.effectif td:first-child{
-    padding: 15px 0px;    
-    font-size: 20px;
-    color: white;
-    font-weight: 300;
-    text-align: left;
+    color: #d1fae5;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    font-size: 1rem;
+    letter-spacing: 0.02em;
 }
 .effectif td{
-    font-size: 18px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--tertiaire);
+    font-size: 1rem;
     font-weight: 700;
     text-align: center;
+}
+.effectif th:first-child,
+.effectif td:first-child{
+    text-align: left;
+}
+.effectif td:first-child{
+    color: white;
+    font-weight: 500;
+}
+.effectif tbody tr:last-child td{
+    border-bottom: 0;
 }
 @media (max-width:1200px){
     .effectif .flex-between{
@@ -268,28 +282,39 @@
 }
 .partenaires .flex2{
     display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     max-width: 1120px;
     margin: 45px auto 0;
-    gap: 16px;
+    gap: 18px;
 }
 .partenaires .cardI{
-    
-    width: auto;
-    height: 140px;
+    min-height: 140px;
     display: grid;
     place-items: center;
-    padding: 18px;
+    padding: 22px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 20px;
+    background: linear-gradient(145deg, #ffffff, #f8fbf9);
+    box-shadow: 0 10px 28px rgba(2, 6, 23, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.partenaires .cardI:hover{
+    transform: translateY(-4px);
+    border-color: rgba(16, 185, 129, 0.22);
+    box-shadow: 0 16px 34px rgba(2, 6, 23, 0.1);
 }
 .partenaires strong{
     color: var(--secondaire);
 }
 .partenaires img{
     width: 100%;
-    height: 100%;
+    max-width: 155px;
+    height: 82px;
     margin: 0 auto;
-    border-radius: 50%;
+    border-radius: 0;
+    object-fit: contain;
 }
+
 /* AJOUT : la galerie conserve des images lisibles sur téléphone. */
 @media (max-width: 600px){
     #galeries .flex2 img{
@@ -305,7 +330,7 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
     .partenaires .flex2{
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 @media (max-width: 760px){
@@ -326,7 +351,37 @@
         grid-template-columns: 1fr 1fr;
     }
     .partenaires .flex2{
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* MODIFICATION : seul le tableau défile horizontalement, pas toute la section. */
+    .effectif{
+        width: calc(100% - 24px);
+        padding: 32px 18px;
+        border-radius: 24px;
+        margin: 0 auto 45px;
+    }
+    .aide-tableau{
+        display: block;
+        margin: 18px 0 8px;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 0.82rem;
+        font-weight: 500;
+    }
+    .tableau-effectifs{
+        margin-top: 12px;
+    }
+    .effectif th,
+    .effectif td{
+        padding: 12px 10px;
+        font-size: 0.92rem;
+    }
+    .effectif th:first-child,
+    .effectif td:first-child{
+        position: sticky;
+        left: 0;
+        z-index: 1;
+        background: #064e3b;
     }
 }
 @media (max-width: 520px){
@@ -339,10 +394,21 @@
     }
     .partenaires .flex2{
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
     }
-    .effectif{
-        width: calc(100% - 24px);
-        overflow-x: auto;
+    .partenaires .cardI{
+        min-height: 116px;
+        padding: 16px;
+    }
+    .partenaires img{
+        height: 68px;
+    }
+    .effectif .flex{
+        width: 100%;
+    }
+    .effectif .flex > div{
+        flex: 1 1 90px;
+        min-width: 0;
+        padding: 14px 10px;
     }
 }
-
