@@ -143,6 +143,7 @@ function changerVue(idVue, bouton) {
 
     element("titre-vue").textContent = noms[idVue] || "Administration"
     barreLaterale.classList.remove("ouverte")
+    document.body.classList.remove("menu-admin-ouvert")
 }
 
 document.querySelectorAll(".onglet").forEach((bouton) => {
@@ -152,7 +153,23 @@ document.querySelectorAll(".onglet").forEach((bouton) => {
 })
 
 boutonMenu.addEventListener("click", () => {
-    barreLaterale.classList.toggle("ouverte")
+    const ouvert = barreLaterale.classList.toggle("ouverte")
+    document.body.classList.toggle("menu-admin-ouvert", ouvert)
+})
+
+document.addEventListener("click", (event) => {
+    if (window.innerWidth > 980 || !barreLaterale.classList.contains("ouverte")) return
+    if (barreLaterale.contains(event.target) || boutonMenu.contains(event.target)) return
+
+    barreLaterale.classList.remove("ouverte")
+    document.body.classList.remove("menu-admin-ouvert")
+})
+
+document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || !barreLaterale.classList.contains("ouverte")) return
+    barreLaterale.classList.remove("ouverte")
+    document.body.classList.remove("menu-admin-ouvert")
+    boutonMenu.focus()
 })
 
 const boutonVoirMotDePasse = element("voir-mot-de-passe")
@@ -309,7 +326,7 @@ element("news-form").addEventListener("submit", async (event) => {
 
         reinitialiserActualite()
         await chargerActualites()
-        afficherMessage(id ? "Actualité modifiée." : "Actualité enregistrée.")
+        afficherMessage(id ? "Actualité modifiée. Les changements sont disponibles sur le site." : "Actualité enregistrée. Si son statut est Publié, elle est maintenant disponible sur le site.")
     } catch (erreur) {
         afficherMessage(`Enregistrement impossible : ${erreur.message}`, true)
     } finally {
@@ -427,7 +444,7 @@ element("event-form").addEventListener("submit", async (event) => {
 
         reinitialiserEvenement()
         await chargerEvenements()
-        afficherMessage(id ? "Événement modifié." : "Événement enregistré.")
+        afficherMessage(id ? "Événement modifié. Les changements sont disponibles sur le site." : "Événement enregistré. Si son statut est Publié, il est maintenant disponible sur le site.")
     } catch (erreur) {
         afficherMessage(`Enregistrement impossible : ${erreur.message}`, true)
     } finally {
@@ -519,7 +536,7 @@ element("need-form").addEventListener("submit", async (event) => {
 
     reinitialiserBesoin()
     await chargerBesoins()
-    afficherMessage(id ? "Besoin modifié." : "Besoin enregistré.")
+    afficherMessage(id ? "Besoin modifié. Les changements sont disponibles sur le site." : "Besoin enregistré. S’il est Actif, il est maintenant disponible sur le site.")
 })
 
 element("need-cancel").addEventListener("click", reinitialiserBesoin)

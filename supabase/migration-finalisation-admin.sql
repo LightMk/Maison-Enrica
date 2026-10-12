@@ -237,3 +237,57 @@ values
 ('hawa-kendi','Hawa Kendi','Intendante','/propos/image/hawa.webp',90),
 ('josephine-ibengu','Joséphine Ibengu','Conseillère','/propos/image/ibengo.webp',100)
 on conflict (slug) do nothing;
+
+
+-- CORRECTIF RLS PUBLICATION 2026-10-12
+create or replace function public.est_administrateur()
+returns boolean
+language sql
+stable
+security definer
+set search_path = public
+as $$
+    select exists (
+        select 1 from public.administrateurs
+        where id = auth.uid() and role = 'admin'
+    );
+$$;
+revoke all on function public.est_administrateur() from public;
+grant execute on function public.est_administrateur() to anon, authenticated;
+
+DO $$
+DECLARE
+    nom_table text;
+    nom_policy text;
+BEGIN
+    FOREACH nom_table IN ARRAY ARRAY['projets_site','realisations_site','partenaires_site','responsables_site']
+    LOOP
+        nom_policy := nom_table || '_lecture_publique';
+        EXECUTE format('DROP POLICY IF EXISTS %I ON public.%I', nom_policy, nom_table);
+        EXECUTE format(
+            'CREATE POLICY %I ON public.%I FOR SELECT TO anon, authenticated USING (statut = ''publie'' OR public.est_administrateur())',
+            nom_policy, nom_table
+        );
+        nom_policy := nom_table || '_admin';
+        EXECUTE format('DROP POLICY IF EXISTS %I ON public.%I', nom_policy, nom_table);
+        EXECUTE format(
+            'CREATE POLICY %I ON public.%I FOR ALL TO authenticated USING (public.est_administrateur()) WITH CHECK (public.est_administrateur())',
+            nom_policy, nom_table
+        );
+    END LOOP;
+END $$;
+
+drop policy if exists "messages_contact_admin" on public.messages_contact;
+create policy "messages_contact_admin" on public.messages_contact for all to authenticated
+using (public.est_administrateur()) with check (public.est_administrateur());
+
+drop policy if exists "admin_ajoute_medias_publics" on storage.objects;
+create policy "admin_ajoute_medias_publics" on storage.objects for insert to authenticated
+with check (bucket_id = 'medias-publics' and public.est_administrateur());
+drop policy if exists "admin_modifie_medias_publics" on storage.objects;
+create policy "admin_modifie_medias_publics" on storage.objects for update to authenticated
+using (bucket_id = 'medias-publics' and public.est_administrateur())
+with check (bucket_id = 'medias-publics' and public.est_administrateur());
+drop policy if exists "admin_supprime_medias_publics" on storage.objects;
+create policy "admin_supprime_medias_publics" on storage.objects for delete to authenticated
+using (bucket_id = 'medias-publics' and public.est_administrateur());

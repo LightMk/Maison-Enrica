@@ -1,9 +1,9 @@
-const CACHE = "maison-enrica-admin-v2"
+const CACHE = "maison-enrica-admin-v3"
 const INTERFACE = [
     "/admin/",
     "/admin/index.html",
-    "/admin/admin.css?v=20261012-2",
-    "/admin/admin.js?v=20261012-2",
+    "/admin/admin.css?v=20261012-3",
+    "/admin/admin.js?v=20261012-3",
     "/admin/admin-pwa.js?v=20261012-2",
     "/admin/manifest.webmanifest",
     "/admin/icons/admin-192.png",

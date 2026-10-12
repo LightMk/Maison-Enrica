@@ -20,6 +20,7 @@ async function lireTable(nomTable, requete) {
     if (!configurationActive) return []
 
     const reponse = await fetch(`${SUPABASE_URL}/rest/v1/${nomTable}?${requete}`, {
+        cache: "no-store",
         headers: {
             apikey: SUPABASE_PUBLISHABLE_KEY,
             Accept: "application/json"
@@ -27,6 +28,8 @@ async function lireTable(nomTable, requete) {
     })
 
     if (!reponse.ok) {
+        const details = await reponse.text()
+        console.error(`Lecture Supabase impossible (${nomTable}) :`, details)
         throw new Error(`Lecture impossible : ${nomTable}`)
     }
 

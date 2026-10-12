@@ -181,3 +181,54 @@ grant insert on public.commentaires to anon;
 -- partenaires, responsables, messages et Storage) se trouve dans :
 -- supabase/migration-finalisation-admin.sql
 -- ============================================================
+
+
+-- CORRECTIF RLS PUBLICATION 2026-10-12
+-- Évite que les politiques publiques aient besoin de lire directement
+-- la table privée administrateurs.
+create or replace function public.est_administrateur()
+returns boolean
+language sql
+stable
+security definer
+set search_path = public
+as $$
+    select exists (
+        select 1 from public.administrateurs
+        where id = auth.uid() and role = 'admin'
+    );
+$$;
+revoke all on function public.est_administrateur() from public;
+grant execute on function public.est_administrateur() to anon, authenticated;
+
+drop policy if exists "actualites_publiques" on public.actualites;
+create policy "actualites_publiques" on public.actualites for select to anon, authenticated
+using (statut = 'publie' or public.est_administrateur());
+drop policy if exists "administrateurs_gerent_actualites" on public.actualites;
+create policy "administrateurs_gerent_actualites" on public.actualites for all to authenticated
+using (public.est_administrateur()) with check (public.est_administrateur());
+
+drop policy if exists "evenements_publics" on public.evenements;
+create policy "evenements_publics" on public.evenements for select to anon, authenticated
+using (statut = 'publie' or public.est_administrateur());
+drop policy if exists "administrateurs_gerent_evenements" on public.evenements;
+create policy "administrateurs_gerent_evenements" on public.evenements for all to authenticated
+using (public.est_administrateur()) with check (public.est_administrateur());
+
+drop policy if exists "besoins_publics" on public.besoins;
+create policy "besoins_publics" on public.besoins for select to anon, authenticated
+using (statut = 'actif' or public.est_administrateur());
+drop policy if exists "administrateurs_gerent_besoins" on public.besoins;
+create policy "administrateurs_gerent_besoins" on public.besoins for all to authenticated
+using (public.est_administrateur()) with check (public.est_administrateur());
+
+drop policy if exists "administrateurs_gerent_infos" on public.informations_publiques;
+create policy "administrateurs_gerent_infos" on public.informations_publiques for all to authenticated
+using (public.est_administrateur()) with check (public.est_administrateur());
+
+drop policy if exists "commentaires_publics" on public.commentaires;
+create policy "commentaires_publics" on public.commentaires for select to anon, authenticated
+using (statut = 'publie' or public.est_administrateur());
+drop policy if exists "administrateurs_gerent_commentaires" on public.commentaires;
+create policy "administrateurs_gerent_commentaires" on public.commentaires for all to authenticated
+using (public.est_administrateur()) with check (public.est_administrateur());
