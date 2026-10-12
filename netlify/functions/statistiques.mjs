@@ -14,7 +14,7 @@ function reponseJSON(donnees, statut = 200) {
 
 async function utilisateurAutorise(requete) {
     const url = process.env.SUPABASE_URL
-    const cle = process.env.SUPABASE_PUBLISHABLE_KEY
+    const cle = process.env.SUPABASE_SECRET_KEY
     const autorisation = requete.headers.get("authorization") || ""
 
     if (!url || !cle || !autorisation.startsWith("Bearer ")) return false

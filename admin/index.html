@@ -9,12 +9,13 @@
     <link href="../favicon.png" rel="icon" type="image/png">
     <meta content="#047857" name="theme-color">
     <link href="manifest.webmanifest" rel="manifest">
-    <link href="admin.css?v=20261011" rel="stylesheet">
-    <script type="module" src="admin.js?v=20261011-3"></script>
-    <script defer src="admin-pwa.js?v=20261011"></script>
+    <link href="admin.css?v=20261012-2" rel="stylesheet">
+    <script type="module" src="admin.js?v=20261012-2"></script>
+    <script defer src="admin-pwa.js?v=20261012-2"></script>
 </head>
 <body>
     <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Activer le mode nuit">Mode nuit</button>
 
     <div class="admin-layout">
         <aside class="admin-sidebar" id="admin-sidebar">
@@ -37,7 +38,7 @@
                 <button class="onglet" data-cible="vue-responsables" type="button"><span>08</span> Responsables</button>
                 <button class="onglet" data-cible="vue-messages" type="button"><span>09</span> Messages</button>
                 <button class="onglet" data-cible="vue-commentaires" type="button"><span>10</span> Commentaires</button>
-                <button class="onglet" data-cible="vue-infos" type="button"><span>11</span> Informations</button>
+                <button class="onglet" data-cible="vue-infos" type="button"><span>11</span> Infos du site</button>
                 <button class="onglet" data-cible="vue-statistiques" type="button"><span>12</span> Visiteurs</button>
             </nav>
 
@@ -127,6 +128,10 @@
                                 <textarea id="news-content" rows="8" required></textarea>
                                 <label for="news-source">Lien source / Facebook <small>(facultatif)</small></label>
                                 <input id="news-source" type="url" placeholder="https://...">
+                                <label for="news-image">Image <small>(facultatif, WebP/JPG/PNG, 2 Mo max)</small></label>
+                                <input id="news-image" type="file" accept="image/png,image/jpeg,image/webp">
+                                <input id="news-image-url" type="hidden">
+                                <p class="aide-champ">Si aucune image n’est choisie, l’actualité reste parfaitement publiable sans image.</p>
                                 <label for="news-status">Statut</label>
                                 <select id="news-status">
                                     <option value="brouillon">Brouillon</option>
@@ -160,6 +165,10 @@
                                 <input id="event-date" type="datetime-local" required>
                                 <label for="event-location">Lieu</label>
                                 <input id="event-location" maxlength="180">
+                                <label for="event-image">Image <small>(facultatif, WebP/JPG/PNG, 2 Mo max)</small></label>
+                                <input id="event-image" type="file" accept="image/png,image/jpeg,image/webp">
+                                <input id="event-image-url" type="hidden">
+                                <p class="aide-champ">L’événement peut être enregistré même sans image.</p>
                                 <label for="event-status">Statut</label>
                                 <select id="event-status"><option value="brouillon">Brouillon</option><option value="publie">Publié</option><option value="archive">Archivé</option></select>
                                 <div class="actions-formulaire"><button id="event-save" type="submit">Enregistrer</button><button class="secondaire" id="event-cancel" type="button" hidden>Annuler</button></div>
@@ -281,15 +290,27 @@
 
                 <section class="vue-admin" id="vue-infos" hidden>
                     <section class="panneau largeur-moyenne">
-                        <span class="sur-titre">Données sélectionnées</span>
-                        <h2>Informations publiques</h2>
-                        <p class="texte-secondaire">Cette zone est réservée aux informations qui changent réellement. Elle ne transforme pas tout le HTML en base de données.</p>
+                        <span class="sur-titre">Réglages du contenu public</span>
+                        <h2>Informations du site</h2>
+                        <div class="encart-information">
+                            <strong>À quoi sert cette zone ?</strong>
+                            <p>Elle permet de conserver dans Supabase de petites informations qui peuvent changer régulièrement sans modifier le code : téléphone public, e-mail, adresse, horaires de visite ou message pratique.</p>
+                            <p>Une information n’est affichée automatiquement sur le site public que si une zone du site utilise la même clé technique.</p>
+                        </div>
                         <form id="info-form">
-                            <label for="info-key">Clé</label>
-                            <input id="info-key" maxlength="80" placeholder="ex. telephone_public" required>
-                            <label for="info-value">Valeur</label>
+                            <label for="info-key">Identifiant de l’information</label>
+                            <input id="info-key" list="info-key-suggestions" maxlength="80" placeholder="ex. telephone_public" required>
+                            <datalist id="info-key-suggestions">
+                                <option value="telephone_public"></option>
+                                <option value="email_public"></option>
+                                <option value="adresse_publique"></option>
+                                <option value="horaires_visite"></option>
+                                <option value="message_pratique"></option>
+                            </datalist>
+                            <p class="aide-champ">Utilise une clé courte, sans espace. Si elle existe déjà, sa valeur sera mise à jour.</p>
+                            <label for="info-value">Valeur affichable</label>
                             <textarea id="info-value" rows="4" required></textarea>
-                            <button type="submit">Enregistrer l'information</button>
+                            <button type="submit">Enregistrer l’information</button>
                         </form>
                         <div class="liste-infos" id="info-list"></div>
                     </section>

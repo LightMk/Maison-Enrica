@@ -97,6 +97,12 @@ function afficherActualites(actualites) {
         article.className = "carte-dynamique actualite-carte"
         article.id = identifiant
 
+        if (actualite.image_url) {
+            const image = creerImage(actualite.image_url, actualite.titre)
+            image.className = "contenu-image"
+            article.append(image)
+        }
+
         const meta = document.createElement("p")
         meta.className = "contenu-meta"
         meta.textContent = formaterDate(actualite.created_at)
@@ -173,6 +179,12 @@ function afficherEvenements(evenements) {
         const identifiant = `evenement-${evenement.id}`
         article.className = "carte-dynamique evenement-carte"
         article.id = identifiant
+
+        if (evenement.image_url) {
+            const image = creerImage(evenement.image_url, evenement.titre)
+            image.className = "contenu-image"
+            article.append(image)
+        }
 
         const date = document.createElement("p")
         date.className = "contenu-meta"
@@ -379,8 +391,8 @@ async function chargerContenusDynamiques() {
 
     try {
         const [actualites, evenements, besoins] = await Promise.all([
-            lireTable("actualites", "select=id,titre,contenu,source_url,created_at&statut=eq.publie&order=created_at.desc&limit=6"),
-            lireTable("evenements", "select=id,titre,description,date_debut,date_fin,lieu&statut=eq.publie&order=date_debut.asc&limit=6"),
+            lireTable("actualites", "select=id,titre,contenu,source_url,image_url,created_at&statut=eq.publie&order=created_at.desc&limit=6"),
+            lireTable("evenements", "select=id,titre,description,date_debut,date_fin,lieu,image_url&statut=eq.publie&order=date_debut.asc&limit=6"),
             lireTable("besoins", "select=id,titre,description,priorite,created_at&statut=eq.actif&order=created_at.desc&limit=6")
         ])
 

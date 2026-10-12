@@ -14,10 +14,10 @@ export default async (requete) => {
     }
 
     const url = process.env.SUPABASE_URL
-    const cle = process.env.SUPABASE_PUBLISHABLE_KEY
+    const cle = process.env.SUPABASE_SECRET_KEY
 
     if (!url || !cle) {
-        return reponseJSON({ erreur: "Configuration commentaires indisponible" }, 503)
+        return reponseJSON({ erreur: "Configuration commentaires indisponible : vérifiez SUPABASE_URL et SUPABASE_SECRET_KEY" }, 503)
     }
 
     try {

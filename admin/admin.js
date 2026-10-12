@@ -23,6 +23,33 @@ const barreLaterale = element("admin-sidebar")
 let supabase = null
 let utilisateurConnecte = null
 
+// ----------------------------------------------------------
+// APPARENCE JOUR / NUIT
+// Le choix reste uniquement dans ce navigateur.
+// ----------------------------------------------------------
+const CLE_THEME = "maison-enrica-admin-theme"
+const boutonTheme = element("theme-toggle")
+
+function appliquerTheme(theme) {
+    const mode = theme === "dark" ? "dark" : "light"
+    document.documentElement.dataset.theme = mode
+    localStorage.setItem(CLE_THEME, mode)
+
+    if (boutonTheme) {
+        const modeNuit = mode === "dark"
+        boutonTheme.textContent = modeNuit ? "Mode jour" : "Mode nuit"
+        boutonTheme.setAttribute("aria-label", modeNuit ? "Activer le mode jour" : "Activer le mode nuit")
+    }
+}
+
+const themeEnregistre = localStorage.getItem(CLE_THEME)
+const themeInitial = themeEnregistre || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+appliquerTheme(themeInitial)
+
+boutonTheme?.addEventListener("click", () => {
+    appliquerTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark")
+})
+
 function afficherMessageConnexion(message, type = "neutre") {
     const zone = element("login-message")
     if (!zone) return
@@ -109,7 +136,7 @@ function changerVue(idVue, bouton) {
         "vue-partenaires": "Partenaires",
         "vue-responsables": "Responsables",
         "vue-messages": "Messages",
-        "vue-infos": "Informations publiques",
+        "vue-infos": "Informations du site",
         "vue-commentaires": "Commentaires",
         "vue-statistiques": "Visiteurs"
     }
@@ -165,12 +192,25 @@ function texteVide(conteneur, message) {
     conteneur.append(texte)
 }
 
+function creerApercuImage(url, alt = "") {
+    if (!url) return null
+
+    const image = document.createElement("img")
+    image.className = "apercu-media-admin"
+    image.src = url
+    image.alt = alt
+    image.loading = "lazy"
+    image.decoding = "async"
+    return image
+}
+
 // ----------------------------------------------------------
 // ACTUALITÉS
 // ----------------------------------------------------------
 function reinitialiserActualite() {
     element("news-form").reset()
     element("news-id").value = ""
+    element("news-image-url").value = ""
     element("news-editor-title").textContent = "Nouvelle actualité"
     element("news-save").textContent = "Enregistrer"
     element("news-cancel").hidden = true
@@ -179,7 +219,7 @@ function reinitialiserActualite() {
 async function chargerActualites() {
     const resultat = await supabase
         .from("actualites")
-        .select("id,titre,contenu,source_url,statut,created_at")
+        .select("id,titre,contenu,source_url,image_url,statut,created_at")
         .order("created_at", { ascending: false })
 
     if (resultat.error) throw resultat.error
@@ -207,6 +247,8 @@ async function chargerActualites() {
         const contenu = document.createElement("p")
         contenu.textContent = actualite.contenu
 
+        const image = creerApercuImage(actualite.image_url, "")
+        if (image) article.append(image)
         article.append(statut, titre, contenu)
         article.append(creerActions(
             () => {
@@ -214,6 +256,7 @@ async function chargerActualites() {
                 element("news-title").value = actualite.titre
                 element("news-content").value = actualite.contenu
                 element("news-source").value = actualite.source_url || ""
+                element("news-image-url").value = actualite.image_url || ""
                 element("news-status").value = actualite.statut
                 element("news-editor-title").textContent = "Modifier l’actualité"
                 element("news-save").textContent = "Enregistrer les modifications"
@@ -237,23 +280,41 @@ element("news-form").addEventListener("submit", async (event) => {
     event.preventDefault()
 
     const id = element("news-id").value
-    const donnees = {
-        titre: element("news-title").value.trim(),
-        contenu: element("news-content").value.trim(),
-        source_url: element("news-source").value.trim() || null,
-        statut: element("news-status").value,
-        updated_at: new Date().toISOString()
+    const bouton = element("news-save")
+    bouton.disabled = true
+
+    try {
+        let imageUrl = element("news-image-url").value.trim() || null
+        const fichier = element("news-image").files[0]
+
+        if (fichier) {
+            afficherMessage("Téléversement de l’image de l’actualité…")
+            imageUrl = await televerserImage(fichier, "actualites")
+        }
+
+        const donnees = {
+            titre: element("news-title").value.trim(),
+            contenu: element("news-content").value.trim(),
+            source_url: element("news-source").value.trim() || null,
+            image_url: imageUrl,
+            statut: element("news-status").value,
+            updated_at: new Date().toISOString()
+        }
+
+        const resultat = id
+            ? await supabase.from("actualites").update(donnees).eq("id", id)
+            : await supabase.from("actualites").insert(donnees)
+
+        if (resultat.error) throw resultat.error
+
+        reinitialiserActualite()
+        await chargerActualites()
+        afficherMessage(id ? "Actualité modifiée." : "Actualité enregistrée.")
+    } catch (erreur) {
+        afficherMessage(`Enregistrement impossible : ${erreur.message}`, true)
+    } finally {
+        bouton.disabled = false
     }
-
-    const resultat = id
-        ? await supabase.from("actualites").update(donnees).eq("id", id)
-        : await supabase.from("actualites").insert(donnees)
-
-    if (resultat.error) return afficherMessage(`Enregistrement impossible : ${resultat.error.message}`, true)
-
-    reinitialiserActualite()
-    await chargerActualites()
-    afficherMessage(id ? "Actualité modifiée." : "Actualité enregistrée.")
 })
 
 element("news-cancel").addEventListener("click", reinitialiserActualite)
@@ -264,6 +325,7 @@ element("news-cancel").addEventListener("click", reinitialiserActualite)
 function reinitialiserEvenement() {
     element("event-form").reset()
     element("event-id").value = ""
+    element("event-image-url").value = ""
     element("event-editor-title").textContent = "Nouvel événement"
     element("event-save").textContent = "Enregistrer"
     element("event-cancel").hidden = true
@@ -279,7 +341,7 @@ function datePourChamp(dateTexte) {
 async function chargerEvenements() {
     const resultat = await supabase
         .from("evenements")
-        .select("id,titre,description,date_debut,lieu,statut,created_at")
+        .select("id,titre,description,date_debut,lieu,image_url,statut,created_at")
         .order("date_debut", { ascending: true })
 
     if (resultat.error) throw resultat.error
@@ -298,6 +360,8 @@ async function chargerEvenements() {
         const article = document.createElement("article")
         article.className = "element-admin"
         article.innerHTML = `<small></small><h3></h3><p></p>`
+        const image = creerApercuImage(evenement.image_url, "")
+        if (image) article.prepend(image)
         article.querySelector("small").textContent = `${evenement.statut} · ${new Date(evenement.date_debut).toLocaleDateString("fr-FR")}`
         article.querySelector("h3").textContent = evenement.titre
         article.querySelector("p").textContent = evenement.description
@@ -309,6 +373,7 @@ async function chargerEvenements() {
                 element("event-description").value = evenement.description
                 element("event-date").value = datePourChamp(evenement.date_debut)
                 element("event-location").value = evenement.lieu || ""
+                element("event-image-url").value = evenement.image_url || ""
                 element("event-status").value = evenement.statut
                 element("event-editor-title").textContent = "Modifier l’événement"
                 element("event-save").textContent = "Enregistrer les modifications"
@@ -332,24 +397,42 @@ element("event-form").addEventListener("submit", async (event) => {
     event.preventDefault()
 
     const id = element("event-id").value
-    const donnees = {
-        titre: element("event-title").value.trim(),
-        description: element("event-description").value.trim(),
-        date_debut: new Date(element("event-date").value).toISOString(),
-        lieu: element("event-location").value.trim() || null,
-        statut: element("event-status").value,
-        updated_at: new Date().toISOString()
+    const bouton = element("event-save")
+    bouton.disabled = true
+
+    try {
+        let imageUrl = element("event-image-url").value.trim() || null
+        const fichier = element("event-image").files[0]
+
+        if (fichier) {
+            afficherMessage("Téléversement de l’image de l’événement…")
+            imageUrl = await televerserImage(fichier, "evenements")
+        }
+
+        const donnees = {
+            titre: element("event-title").value.trim(),
+            description: element("event-description").value.trim(),
+            date_debut: new Date(element("event-date").value).toISOString(),
+            lieu: element("event-location").value.trim() || null,
+            image_url: imageUrl,
+            statut: element("event-status").value,
+            updated_at: new Date().toISOString()
+        }
+
+        const resultat = id
+            ? await supabase.from("evenements").update(donnees).eq("id", id)
+            : await supabase.from("evenements").insert(donnees)
+
+        if (resultat.error) throw resultat.error
+
+        reinitialiserEvenement()
+        await chargerEvenements()
+        afficherMessage(id ? "Événement modifié." : "Événement enregistré.")
+    } catch (erreur) {
+        afficherMessage(`Enregistrement impossible : ${erreur.message}`, true)
+    } finally {
+        bouton.disabled = false
     }
-
-    const resultat = id
-        ? await supabase.from("evenements").update(donnees).eq("id", id)
-        : await supabase.from("evenements").insert(donnees)
-
-    if (resultat.error) return afficherMessage(`Enregistrement impossible : ${resultat.error.message}`, true)
-
-    reinitialiserEvenement()
-    await chargerEvenements()
-    afficherMessage(id ? "Événement modifié." : "Événement enregistré.")
 })
 
 element("event-cancel").addEventListener("click", reinitialiserEvenement)
@@ -626,7 +709,14 @@ async function chargerStatistiques() {
     })
 
     if (!reponse.ok) {
-        throw new Error("Statistiques indisponibles")
+        let message = "Statistiques indisponibles"
+        try {
+            const erreur = await reponse.json()
+            if (erreur?.erreur) message = erreur.erreur
+        } catch (erreur) {
+            // La réponse n'était pas au format JSON.
+        }
+        throw new Error(message)
     }
 
     const donnees = await reponse.json()
