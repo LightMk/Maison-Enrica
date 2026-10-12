@@ -1,0 +1,26 @@
+MAISON ENRICA — RAPPORT DE CONTRÔLES PHASE 2
+Date : 11 octobre 2026
+
+Contrôles réellement exécutés :
+- Syntaxe de tous les fichiers .js et .mjs avec node --check : OK
+- Analyse de tous les fichiers HTML : OK
+- Recherche d'IDs HTML dupliqués : aucun détecté
+- Vérification des références locales href/src/source/poster : aucune manquante
+- Vérification de toutes les références srcset : aucune manquante
+- Vérification des url() CSS locales : aucune manquante
+- Vérification simple de l'équilibre des accolades CSS : OK
+- Recherche de clé Supabase sb_secret_ réelle dans la copie finale : aucune détectée
+- Logos partenaires : 13 fichiers vérifiés en 1200 x 760, fond blanc identique aux quatre coins
+- Vidéo réalisation : source présente et chargement différé par data-src
+
+Limites :
+- Aucun test visuel complet dans un navigateur réel n'a été exécuté dans cet environnement.
+- Aucun test de connexion au vrai projet Supabase n'a été exécuté car la clé publishable sûre n'est pas fournie dans l'archive finale.
+- Aucun déploiement Netlify production n'a été effectué.
+
+Avant production :
+1. Révoquer/faire tourner l'ancienne clé Supabase secrète qui avait été exposée.
+2. Ajouter la vraie clé sb_publishable_ dans supabase-config.js.
+3. Exécuter supabase/schema.sql.
+4. Ajouter SUPABASE_URL et SUPABASE_PUBLISHABLE_KEY dans les variables Netlify.
+5. Tester sur Deploy Preview : connexion admin, CRUD, commentaires, statistiques, vidéos, mobile.

@@ -14,21 +14,23 @@
     <meta content="Consultez les mentions légales, les règles de confidentialité et les conditions d’utilisation du site officiel de la Maison Enrica." property="og:description">
     <meta content="https://maisonenrica.org/legale/legale.html" property="og:url">
     <meta content="https://maisonenrica.org/image/C.jpeg" property="og:image">
+    <meta content="Maison Enrica, Foyer de l’Enfant Jésus à Kinshasa" property="og:image:alt">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="Mentions légales et confidentialité | Maison Enrica" name="twitter:title">
     <meta content="Consultez les mentions légales, les règles de confidentialité et les conditions d’utilisation du site officiel de la Maison Enrica." name="twitter:description">
     <meta content="https://maisonenrica.org/image/C.jpeg" name="twitter:image">
+    <meta content="Maison Enrica, Foyer de l’Enfant Jésus à Kinshasa" name="twitter:image:alt">
     <link href="../favicon.png" rel="icon" type="image/png">
     <title>Mentions légales et confidentialité | Maison Enrica</title>
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="../general.css?v=20260914" rel="stylesheet">
-    <link href="style.css?v=20260914" rel="stylesheet">
+    <link href="../general.css?v=20261012" rel="stylesheet">
+    <link href="style.css?v=20261011" rel="stylesheet">
     <!-- AJOUT : fonctionnement du menu burger. -->
-    <script defer src="../menu.js?v=20260914"></script>
+    <script defer src="../menu.js?v=20261010"></script>
     <!-- AJOUT PREMIUM : animations sobres, compteurs, galerie et confort de navigation. -->
-    <script defer src="../experience.js?v=20260914"></script>
+    <script defer src="../experience.js?v=20261011"></script>
+    <script defer src="../recherche.js?v=20261012"></script>
+    <script type="module" src="../contenus.js?v=20261011"></script>
 </head>
 <body class="page-legale">
     <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
@@ -57,7 +59,7 @@
     <main id="contenu-principal">
         <section class="legal">
             <h1>Mentions légales &amp; Politique de Confidentialité</h1>
-            <span class="insigne animationEntrer">Mise à jour le 25 juillet 2026</span>
+            <span class="insigne animationEntrer">Mise à jour le 11 octobre 2026</span>
             <p class="animationEntrer">La présente page a pour objet de définir les conditions d'utilisation du site internet officiel de la Maison Enrica, ainsi que de préciser le cadre légal de traitement des données et de protection des droits. En naviguant sur ce site, l'utilisateur accepte sans réserve l'intégralité des dispositions, conditions et politiques énoncées ci-dessous.</p>
             <div>
                 <h2>1. Éditeur du site</h2>
@@ -72,7 +74,7 @@
             </div>
             <div>
                 <h2>2. Hébergement et sécurité technique</h2>
-                <p>Le site est destiné à être hébergé par Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, États-Unis. L’hébergement fournit notamment la diffusion des fichiers du site, le chiffrement HTTPS et le traitement technique du formulaire de contact.</p>
+                <p>Le site est destiné à être hébergé par Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, États-Unis. L’hébergement fournit notamment la diffusion des fichiers du site, le chiffrement HTTPS et l’exécution de la fonction utilisée pour le compteur global de visites.</p>
                 <p>Aucune mesure technique ne peut rendre le code HTML, CSS et JavaScript d’un site public totalement invisible. La protection mise en place repose donc sur l’absence de secrets dans le code, l’utilisation de HTTPS, des en-têtes de sécurité et la limitation des données collectées.</p>
             </div>
             <div>
@@ -82,11 +84,13 @@
                 <p>En conséquence, toute reproduction, représentation, modification, adaptation, téléchargement abusif, distribution ou réutilisation de ces contenus (notamment les images des enfants) sur d'autres plateformes numériques, réseaux sociaux ou supports imprimés, sans un accord écrit, formel et préalable de la direction de la Maison Enrica, est strictement interdite. Tout manquement à cette règle sera considéré comme une violation grave du droit à l'image des mineurs et une contrefaçon, exposant les auteurs à des poursuites judiciaires civiles et pénales conformément aux lois en vigueur.</p>
             </div>
             <div>
-                <h2>4. Confidentialité et données du formulaire</h2>
-                <p>La simple consultation du site ne demande pas la création d’un compte. Le formulaire de contact collecte uniquement le nom, l’adresse e-mail, le sujet et le message fournis volontairement par l’utilisateur, afin que l’administration de la Maison Enrica puisse répondre à sa demande.</p>
-                <p>Les soumissions du formulaire sont traitées par le service Netlify Forms et peuvent être transmises par notification à l’adresse e-mail de l’administration. Elles ne doivent contenir aucune donnée bancaire, aucun mot de passe, aucun code PIN et aucune information médicale sensible.</p>
-                <p>Les informations ne sont ni vendues ni utilisées à des fins publicitaires. Toute personne peut demander l’accès, la rectification ou la suppression de son message en écrivant à maisonenricas@hotmail.com. L’administration est invitée à supprimer régulièrement les messages devenus inutiles.</p>
-                <p>Le site n’intègre actuellement aucun outil publicitaire ni cookie de suivi ajouté par la Maison Enrica. Les services techniques externes nécessaires à l’affichage ou à l’hébergement peuvent toutefois recevoir des informations techniques habituelles, comme l’adresse IP et le navigateur utilisé.</p>
+                <h2>4. Confidentialité, statistiques et contenus participatifs</h2>
+                <p>La simple consultation du site ne demande pas la création d’un compte. Le formulaire de contact demande le nom, un moyen de réponse, le sujet et le message fournis volontairement par l’utilisateur. Le message reste préparé pour WhatsApp ou l’application e-mail du visiteur, mais une copie peut également être enregistrée dans Supabase afin que les responsables autorisés puissent traiter la demande depuis l’espace d’administration. Ces données ne sont pas publiques et sont utilisées uniquement pour le suivi de la demande.</p>
+                <p>Le compteur de fréquentation conserve uniquement des statistiques agrégées : nombre de visites, pays ou région approximative fournie par l’infrastructure d’hébergement, catégorie d’appareil et distinction globale entre première visite et retour sur le même navigateur. Aucune adresse IP, aucun nom et aucun identifiant permettant d’identifier personnellement un visiteur n’est conservé dans ces statistiques.</p>
+                <p>La zone de commentaires demande un nom ou prénom d’affichage et un message. Les commentaires sont stockés dans Supabase et restent invisibles tant qu’un responsable ne les a pas validés. Un commentaire peut être masqué ou supprimé par l’administration. Il ne faut jamais y publier d’information médicale, bancaire, de mot de passe, de code PIN ou de donnée sensible concernant un enfant.</p>
+                <p>Les actualités, événements, besoins et certaines informations publiques peuvent être gérés au moyen de Supabase afin d’éviter un redéploiement du site à chaque mise à jour. L’espace administrateur utilise Supabase Auth et des règles de sécurité au niveau de la base de données. Les données privées réservées aux responsables ne doivent jamais être placées dans les contenus publics.</p>
+                <p>Le site n’intègre aucun outil publicitaire ajouté par Maison Enrica. Un stockage local limité mémorise le nombre de visites effectuées depuis le navigateur, le guide déjà consulté et les notifications déjà vues. Le stockage de session évite de recompter la même session. Ces informations restent dans le navigateur. La carte Google n’est chargée qu’après une action volontaire du visiteur ; son activation peut alors transmettre à Google les informations techniques habituelles liées à la connexion.</p>
+                <p>Les informations collectées ne sont ni vendues ni utilisées à des fins publicitaires. Toute demande relative aux données publiées ou aux commentaires peut être adressée à maisonenricas@hotmail.com.</p>
             </div>
             <div>
                 <h2>5. Soutiens financiers et absence de paiement en ligne</h2>
@@ -109,6 +113,8 @@
                     <a aria-label="Envoyer un e-mail" href="mailto:maisonenricas@hotmail.com" title="Envoyer un e-mail"><i aria-hidden="true" class="fa-solid fa-envelope"></i></a>
                     <a aria-label="Appeler la Maison Enrica" href="tel:+243819073170" title="Appeler la Maison Enrica"><i aria-hidden="true" class="fa-solid fa-phone"></i></a>
                     <a aria-label="Écrire sur WhatsApp" href="https://wa.me/243819073170?text=Bonjour%20Maison%20Enrica%2C%20je%20souhaite%20vous%20contacter." rel="noopener noreferrer" target="_blank" title="Écrire sur WhatsApp"><i aria-hidden="true" class="fa-brands fa-whatsapp"></i></a>
+                
+                    <a aria-label="Suivre Maison Enrica sur Facebook" href="https://www.facebook.com/profile.php?id=100064860190113" rel="noopener noreferrer" target="_blank" title="Facebook Maison Enrica"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i></a>
                 </div>
             </div>
             <div>
@@ -135,7 +141,7 @@
                 <p>© 2026 Maison Enrica / Foyer de l'Enfant Jésus. Tous droits réservés.</p>
             </div>
             <div>
-                <p>Conçu et développé par <span>Minga Kweti</span></p>
+                <p>Conçu et développé par <a class="credit-portfolio" href="https://portfolio-lightmk.netlify.app/" rel="noopener noreferrer" target="_blank">Minga Kweti</a></p>
             </div>
             <div>
                 <i aria-hidden="true" class="fa-solid fa-location-dot"></i>

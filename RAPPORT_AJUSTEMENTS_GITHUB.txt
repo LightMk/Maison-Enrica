@@ -1,0 +1,21 @@
+MAISON ENRICA — AJUSTEMENTS POUR DEPLOIEMENT GITHUB
+Date : 12 octobre 2026
+
+MODIFICATIONS
+- Pont d'adoption simplifié : suppression des familles/exemples fictifs et des styles devenus inutiles.
+- Chiffres confirmés : 120 enfants accueillis, capacité 150, Université total 8.
+- Suppression des formulations qui confondaient capacité et nombre actuel de pensionnaires.
+- Page Contact modernisée visuellement sans modifier le fonctionnement WhatsApp/e-mail/Netlify Function.
+- Recherche interne légère ajoutée aux pages publiques, sans bibliothèque ni service externe.
+- Versions de cache CSS mises à jour pour éviter l'affichage d'anciens styles après déploiement.
+
+CONTROLES EXECUTES
+- Références locales : 0 manquante.
+- IDs HTML dupliqués : 0.
+- Ancres de la recherche : toutes présentes.
+- Syntaxe JavaScript : OK sur tous les fichiers .js/.mjs.
+- Equilibre simple des accolades CSS : OK.
+
+DEPLOIEMENT
+Le site étant connecté à GitHub, remplacer/mettre à jour les fichiers du dépôt puis effectuer un seul commit/push.
+Netlify lancera automatiquement le déploiement et appliquera les variables d'environnement déjà configurées.

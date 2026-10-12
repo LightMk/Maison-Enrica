@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="noindex, nofollow" name="robots">
+    <meta content="no-referrer" name="referrer">
+    <title>Administration | Maison Enrica</title>
+    <link href="../favicon.png" rel="icon" type="image/png">
+    <meta content="#047857" name="theme-color">
+    <link href="manifest.webmanifest" rel="manifest">
+    <link href="admin.css?v=20261011" rel="stylesheet">
+    <script type="module" src="admin.js?v=20261011-3"></script>
+    <script defer src="admin-pwa.js?v=20261011"></script>
+</head>
+<body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <div class="admin-layout">
+        <aside class="admin-sidebar" id="admin-sidebar">
+            <a class="admin-marque" href="../index.html">
+                <img src="../Logo.webp" alt="" width="72" height="48">
+                <span>
+                    <strong>Maison Enrica</strong>
+                    <small>Administration</small>
+                </span>
+            </a>
+
+            <nav aria-label="Navigation de l'administration" id="admin-navigation" hidden>
+                <button class="onglet actif" data-cible="vue-dashboard" type="button"><span>01</span> Vue d’ensemble</button>
+                <button class="onglet" data-cible="vue-actualites" type="button"><span>02</span> Actualités</button>
+                <button class="onglet" data-cible="vue-evenements" type="button"><span>03</span> Événements</button>
+                <button class="onglet" data-cible="vue-besoins" type="button"><span>04</span> Besoins</button>
+                <button class="onglet" data-cible="vue-projets" type="button"><span>05</span> Projets</button>
+                <button class="onglet" data-cible="vue-realisations" type="button"><span>06</span> Réalisations</button>
+                <button class="onglet" data-cible="vue-partenaires" type="button"><span>07</span> Partenaires</button>
+                <button class="onglet" data-cible="vue-responsables" type="button"><span>08</span> Responsables</button>
+                <button class="onglet" data-cible="vue-messages" type="button"><span>09</span> Messages</button>
+                <button class="onglet" data-cible="vue-commentaires" type="button"><span>10</span> Commentaires</button>
+                <button class="onglet" data-cible="vue-infos" type="button"><span>11</span> Informations</button>
+                <button class="onglet" data-cible="vue-statistiques" type="button"><span>12</span> Visiteurs</button>
+            </nav>
+
+            <div class="admin-sidebar-bas">
+                <a href="../index.html">Voir le site public</a>
+                <button class="secondaire installer-admin" id="installer-admin" type="button" hidden>Installer l’application</button>
+                <button class="secondaire" id="logout-button" type="button" hidden>Se déconnecter</button>
+            </div>
+        </aside>
+
+        <main id="contenu">
+            <section class="connexion" id="login-panel" aria-labelledby="login-title">
+                <div class="connexion-carte">
+                    <div class="connexion-presentation">
+                        <a class="connexion-logo" href="../index.html" aria-label="Retour au site Maison Enrica">
+                            <img src="../Logo.webp" alt="Logo Maison Enrica" width="132" height="88">
+                        </a>
+                        <span class="sur-titre clair">Espace responsable</span>
+                        <h1>Maison Enrica Admin</h1>
+                        <p>Gérez les informations vivantes du site sans modifier directement le code.</p>
+                        <ul>
+                            <li>Contenus publics centralisés</li>
+                            <li>Accès protégé par Supabase</li>
+                            <li>Utilisable sur téléphone et ordinateur</li>
+                        </ul>
+                    </div>
+
+                    <div class="connexion-formulaire">
+                        <span class="sur-titre">Accès sécurisé</span>
+                        <h2 id="login-title">Bienvenue</h2>
+                        <p class="texte-secondaire">Connectez-vous avec un compte administrateur autorisé.</p>
+
+                        <form id="login-form">
+                            <label for="email">Adresse e-mail</label>
+                            <input id="email" name="email" type="email" autocomplete="username" required maxlength="254" placeholder="nom@exemple.com">
+
+                            <label for="password">Mot de passe</label>
+                            <div class="mot-de-passe">
+                                <input id="password" name="password" type="password" autocomplete="current-password" required>
+                                <button class="voir-mot-de-passe" id="voir-mot-de-passe" type="button" aria-label="Afficher le mot de passe">Afficher</button>
+                            </div>
+
+                            <button id="login-button" type="submit">Se connecter</button>
+                            <p class="message-connexion" id="login-message" role="status" aria-live="polite">Connexion prête.</p>
+                        </form>
+
+                        <button class="secondaire installer-admin installer-admin-connexion" id="installer-admin-connexion" type="button" hidden>Installer Maison Enrica Admin</button>
+                        <a class="retour-site" href="../index.html">Retour au site public</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dashboard" id="dashboard" hidden>
+                <header class="admin-entete">
+                    <div>
+                        <span class="sur-titre">Espace privé</span>
+                        <h1 id="titre-vue">Vue d’ensemble</h1>
+                        <p class="texte-secondaire" id="account-label"></p>
+                    </div>
+                    <button aria-label="Ouvrir la navigation de l'administration" class="menu-admin" id="menu-admin" type="button">Menu</button>
+                </header>
+
+                <section class="vue-admin active" id="vue-dashboard">
+                    <div class="metriques">
+                        <article><span>Actualités</span><strong id="news-count">—</strong></article>
+                        <article><span>Événements</span><strong id="events-count">—</strong></article>
+                        <article><span>Besoins actifs</span><strong id="needs-count">—</strong></article>
+                        <article><span>Messages</span><strong id="messages-count">—</strong></article>
+                        <article><span>Visites</span><strong id="visits-count">—</strong></article>
+                    </div>
+                    <div class="panneau intro-admin">
+                        <span class="sur-titre">Gestion simple</span>
+                        <h2>Mettre le site à jour sans toucher au code</h2>
+                        <p>Utilisez les rubriques à gauche pour gérer les contenus qui changent réellement : actualités, événements, besoins, projets, réalisations, partenaires, responsables et messages. Les contenus publiés apparaissent automatiquement sur le site public.</p>
+                    </div>
+                </section>
+
+                <section class="vue-admin" id="vue-actualites" hidden>
+                    <div class="grille-edition">
+                        <section class="panneau">
+                            <h2 id="news-editor-title">Nouvelle actualité</h2>
+                            <form id="news-form">
+                                <input id="news-id" type="hidden">
+                                <label for="news-title">Titre</label>
+                                <input id="news-title" maxlength="160" required>
+                                <label for="news-content">Contenu</label>
+                                <textarea id="news-content" rows="8" required></textarea>
+                                <label for="news-source">Lien source / Facebook <small>(facultatif)</small></label>
+                                <input id="news-source" type="url" placeholder="https://...">
+                                <label for="news-status">Statut</label>
+                                <select id="news-status">
+                                    <option value="brouillon">Brouillon</option>
+                                    <option value="publie">Publié</option>
+                                    <option value="archive">Archivé</option>
+                                </select>
+                                <div class="actions-formulaire">
+                                    <button id="news-save" type="submit">Enregistrer</button>
+                                    <button class="secondaire" id="news-cancel" type="button" hidden>Annuler</button>
+                                </div>
+                            </form>
+                        </section>
+                        <section class="panneau liste-admin">
+                            <div class="panneau-entete"><h2>Actualités enregistrées</h2><button class="secondaire" data-refresh="actualites" type="button">Actualiser</button></div>
+                            <div id="news-list"></div>
+                        </section>
+                    </div>
+                </section>
+
+                <section class="vue-admin" id="vue-evenements" hidden>
+                    <div class="grille-edition">
+                        <section class="panneau">
+                            <h2 id="event-editor-title">Nouvel événement</h2>
+                            <form id="event-form">
+                                <input id="event-id" type="hidden">
+                                <label for="event-title">Titre</label>
+                                <input id="event-title" maxlength="160" required>
+                                <label for="event-description">Description</label>
+                                <textarea id="event-description" rows="6" required></textarea>
+                                <label for="event-date">Date et heure</label>
+                                <input id="event-date" type="datetime-local" required>
+                                <label for="event-location">Lieu</label>
+                                <input id="event-location" maxlength="180">
+                                <label for="event-status">Statut</label>
+                                <select id="event-status"><option value="brouillon">Brouillon</option><option value="publie">Publié</option><option value="archive">Archivé</option></select>
+                                <div class="actions-formulaire"><button id="event-save" type="submit">Enregistrer</button><button class="secondaire" id="event-cancel" type="button" hidden>Annuler</button></div>
+                            </form>
+                        </section>
+                        <section class="panneau liste-admin"><div class="panneau-entete"><h2>Événements enregistrés</h2><button class="secondaire" data-refresh="evenements" type="button">Actualiser</button></div><div id="event-list"></div></section>
+                    </div>
+                </section>
+
+                <section class="vue-admin" id="vue-besoins" hidden>
+                    <div class="grille-edition">
+                        <section class="panneau">
+                            <h2 id="need-editor-title">Nouveau besoin</h2>
+                            <form id="need-form">
+                                <input id="need-id" type="hidden">
+                                <label for="need-title">Titre</label>
+                                <input id="need-title" maxlength="160" required>
+                                <label for="need-description">Description</label>
+                                <textarea id="need-description" rows="6" required></textarea>
+                                <label for="need-priority">Priorité</label>
+                                <select id="need-priority"><option value="normale">Normale</option><option value="importante">Importante</option><option value="urgente">Urgente</option></select>
+                                <label for="need-status">Statut</label>
+                                <select id="need-status"><option value="actif">Actif</option><option value="satisfait">Satisfait</option><option value="archive">Archivé</option></select>
+                                <div class="actions-formulaire"><button id="need-save" type="submit">Enregistrer</button><button class="secondaire" id="need-cancel" type="button" hidden>Annuler</button></div>
+                            </form>
+                        </section>
+                        <section class="panneau liste-admin"><div class="panneau-entete"><h2>Besoins enregistrés</h2><button class="secondaire" data-refresh="besoins" type="button">Actualiser</button></div><div id="need-list"></div></section>
+                    </div>
+                </section>
+
+                <section class="vue-admin" id="vue-projets" hidden>
+                    <div class="grille-edition">
+                        <section class="panneau">
+                            <h2 id="project-editor-title">Nouveau projet</h2>
+                            <form id="project-form" data-collection="projets_site">
+                                <input id="project-id" type="hidden">
+                                <label for="project-title">Titre</label><input id="project-title" maxlength="160" required>
+                                <label for="project-badge">Catégorie</label><input id="project-badge" maxlength="120" placeholder="Ex. Éducation">
+                                <label for="project-description">Description</label><textarea id="project-description" rows="7" required></textarea>
+                                <label for="project-image">Image <small>(WebP/JPG/PNG, 2 Mo max)</small></label><input id="project-image" type="file" accept="image/png,image/jpeg,image/webp">
+                                <input id="project-image-url" type="hidden">
+                                <label for="project-status">Statut</label><select id="project-status"><option value="publie">Publié</option><option value="masque">Masqué</option><option value="archive">Archivé</option></select>
+                                <label for="project-order">Ordre</label><input id="project-order" type="number" value="100" min="0" max="9999">
+                                <div class="actions-formulaire"><button type="submit">Enregistrer</button><button class="secondaire" id="project-cancel" type="button" hidden>Annuler</button></div>
+                            </form>
+                        </section>
+                        <section class="panneau liste-admin"><div class="panneau-entete"><h2>Projets</h2><button class="secondaire" data-refresh="projets" type="button">Actualiser</button></div><div id="project-list"></div></section>
+                    </div>
+                </section>
+
+                <section class="vue-admin" id="vue-realisations" hidden>
+                    <div class="grille-edition">
+                        <section class="panneau">
+                            <h2 id="achievement-editor-title">Nouvelle réalisation</h2>
+                            <form id="achievement-form" data-collection="realisations_site">
+                                <input id="achievement-id" type="hidden">
+                                <label for="achievement-title">Titre</label><input id="achievement-title" maxlength="160" required>
+                                <label for="achievement-badge">Catégorie</label><input id="achievement-badge" maxlength="120">
+                                <label for="achievement-description">Description</label><textarea id="achievement-description" rows="7" required></textarea>
+                                <label for="achievement-type">Type de média</label><select id="achievement-type"><option value="image">Image</option><option value="video">Vidéo par URL</option></select>
+                                <label for="achievement-image">Nouvelle image <small>(facultatif)</small></label><input id="achievement-image" type="file" accept="image/png,image/jpeg,image/webp">
+                                <label for="achievement-media-url">URL média <small>(utilisée notamment pour une vidéo)</small></label><input id="achievement-media-url" type="text" placeholder="/projet/image/... ou https://...">
+                                <label for="achievement-poster-url">Miniature vidéo <small>(facultatif)</small></label><input id="achievement-poster-url" type="text">
+                                <label for="achievement-status">Statut</label><select id="achievement-status"><option value="publie">Publié</option><option value="masque">Masqué</option><option value="archive">Archivé</option></select>
+                                <label for="achievement-order">Ordre</label><input id="achievement-order" type="number" value="100" min="0" max="9999">
+                                <div class="actions-formulaire"><button type="submit">Enregistrer</button><button class="secondaire" id="achievement-cancel" type="button" hidden>Annuler</button></div>
+                            </form>
+                        </section>
+                        <section class="panneau liste-admin"><div class="panneau-entete"><h2>Réalisations</h2><button class="secondaire" data-refresh="realisations" type="button">Actualiser</button></div><div id="achievement-list"></div></section>
+                    </div>
+                </section>
+
+                <section class="vue-admin" id="vue-partenaires" hidden>
+                    <div class="grille-edition">
+                        <section class="panneau">
+                            <h2 id="partner-editor-title">Nouveau partenaire</h2>
+                            <form id="partner-form" data-collection="partenaires_site">
+                                <input id="partner-id" type="hidden">
+                                <label for="partner-name">Nom</label><input id="partner-name" maxlength="160" required>
+                                <label for="partner-logo">Logo <small>(fond uniforme conseillé, 2 Mo max)</small></label><input id="partner-logo" type="file" accept="image/png,image/jpeg,image/webp">
+                                <input id="partner-logo-url" type="hidden">
+                                <label for="partner-site">Site web <small>(facultatif)</small></label><input id="partner-site" type="url" placeholder="https://...">
+                                <label for="partner-status">Statut</label><select id="partner-status"><option value="publie">Publié</option><option value="masque">Masqué</option><option value="archive">Archivé</option></select>
+                                <label for="partner-order">Ordre</label><input id="partner-order" type="number" value="100" min="0" max="9999">
+                                <div class="actions-formulaire"><button type="submit">Enregistrer</button><button class="secondaire" id="partner-cancel" type="button" hidden>Annuler</button></div>
+                            </form>
+                        </section>
+                        <section class="panneau liste-admin"><div class="panneau-entete"><h2>Partenaires</h2><button class="secondaire" data-refresh="partenaires" type="button">Actualiser</button></div><div id="partner-list"></div></section>
+                    </div>
+                </section>
+
+                <section class="vue-admin" id="vue-responsables" hidden>
+                    <div class="grille-edition">
+                        <section class="panneau">
+                            <h2 id="manager-editor-title">Nouveau responsable</h2>
+                            <form id="manager-form" data-collection="responsables_site">
+                                <input id="manager-id" type="hidden">
+                                <label for="manager-name">Nom</label><input id="manager-name" maxlength="160" required>
+                                <label for="manager-role">Fonction</label><input id="manager-role" maxlength="160" required>
+                                <label for="manager-description">Présentation <small>(facultatif)</small></label><textarea id="manager-description" rows="5"></textarea>
+                                <label for="manager-photo">Photo <small>(2 Mo max)</small></label><input id="manager-photo" type="file" accept="image/png,image/jpeg,image/webp">
+                                <input id="manager-photo-url" type="hidden">
+                                <label for="manager-status">Statut</label><select id="manager-status"><option value="publie">Publié</option><option value="masque">Masqué</option><option value="archive">Archivé</option></select>
+                                <label for="manager-order">Ordre</label><input id="manager-order" type="number" value="100" min="0" max="9999">
+                                <div class="actions-formulaire"><button type="submit">Enregistrer</button><button class="secondaire" id="manager-cancel" type="button" hidden>Annuler</button></div>
+                            </form>
+                        </section>
+                        <section class="panneau liste-admin"><div class="panneau-entete"><h2>Responsables</h2><button class="secondaire" data-refresh="responsables" type="button">Actualiser</button></div><div id="manager-list"></div></section>
+                    </div>
+                </section>
+
+                <section class="vue-admin" id="vue-messages" hidden>
+                    <section class="panneau">
+                        <div class="panneau-entete"><div><span class="sur-titre">Boîte de réception</span><h2>Messages du site</h2></div><button class="secondaire" id="messages-refresh" type="button">Actualiser</button></div>
+                        <p class="texte-secondaire">Les demandes enregistrées depuis le formulaire apparaissent ici. Une réponse ouvre WhatsApp ou votre application e-mail : elle n’est jamais envoyée automatiquement sans votre validation.</p>
+                        <div id="messages-list"></div>
+                    </section>
+                </section>
+
+                <section class="vue-admin" id="vue-infos" hidden>
+                    <section class="panneau largeur-moyenne">
+                        <span class="sur-titre">Données sélectionnées</span>
+                        <h2>Informations publiques</h2>
+                        <p class="texte-secondaire">Cette zone est réservée aux informations qui changent réellement. Elle ne transforme pas tout le HTML en base de données.</p>
+                        <form id="info-form">
+                            <label for="info-key">Clé</label>
+                            <input id="info-key" maxlength="80" placeholder="ex. telephone_public" required>
+                            <label for="info-value">Valeur</label>
+                            <textarea id="info-value" rows="4" required></textarea>
+                            <button type="submit">Enregistrer l'information</button>
+                        </form>
+                        <div class="liste-infos" id="info-list"></div>
+                    </section>
+                </section>
+
+                <section class="vue-admin" id="vue-commentaires" hidden>
+                    <section class="panneau">
+                        <div class="panneau-entete">
+                            <div><span class="sur-titre">Modération</span><h2>Commentaires reçus</h2></div>
+                            <button class="secondaire" id="comments-refresh" type="button">Actualiser</button>
+                        </div>
+                        <p class="texte-secondaire">Un commentaire n'apparaît sur le site qu'après validation. Vous pouvez le publier, le masquer ou le supprimer.</p>
+                        <div id="comments-list"></div>
+                    </section>
+                </section>
+
+                <section class="vue-admin" id="vue-statistiques" hidden>
+                    <section class="panneau">
+                        <div class="panneau-entete"><div><span class="sur-titre">Données agrégées</span><h2>Visiteurs</h2></div><button class="secondaire" id="stats-refresh" type="button">Actualiser</button></div>
+                        <p class="texte-secondaire">Aucun visiteur n'est identifié personnellement. Les régions, appareils et visites récurrentes sont conservés uniquement sous forme de totaux.</p>
+                        <div class="metriques statistiques-admin">
+                            <article><span>Total</span><strong id="stats-total">—</strong></article>
+                            <article><span>Premières visites</span><strong id="stats-new">—</strong></article>
+                            <article><span>Retours</span><strong id="stats-returning">—</strong></article>
+                        </div>
+                        <div class="statistiques-grilles">
+                            <div><h3>Régions principales</h3><div id="stats-regions"></div></div>
+                            <div><h3>Appareils</h3><div id="stats-devices"></div></div>
+                        </div>
+                    </section>
+                </section>
+            </section>
+
+            <p class="notification-admin" id="status-message" role="status" aria-live="polite" hidden></p>
+        </main>
+    </div>
+</body>
+</html>

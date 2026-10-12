@@ -1,0 +1,24 @@
+.cssc-attente-simple{
+    width:min(860px,calc(100% - 40px));
+    min-height:62vh;
+    margin:0 auto;
+    padding:clamp(90px,12vw,150px) 0 100px;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+}
+.cssc-attente-simple h1{
+    max-width:760px;
+    margin:16px 0 18px;
+    color:var(--quaternaire);
+    font-size:clamp(2.3rem,6vw,4.8rem);
+    line-height:1.02;
+}
+.cssc-attente-simple p{
+    max-width:680px;
+    margin:0 0 12px;
+    color:#64748b;
+    line-height:1.75;
+}
+.cssc-attente-simple .btn{margin-top:18px;}

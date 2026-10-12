@@ -14,23 +14,25 @@
     <meta content="Contactez la Maison Enrica à Limete, Kinshasa, pour une visite, un partenariat, du bénévolat ou une proposition de soutien." property="og:description">
     <meta content="https://maisonenrica.org/contact/contact.html" property="og:url">
     <meta content="https://maisonenrica.org/image/C.jpeg" property="og:image">
+    <meta content="Maison Enrica, Foyer de l’Enfant Jésus à Kinshasa" property="og:image:alt">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="Contact | Maison Enrica à Kinshasa" name="twitter:title">
     <meta content="Contactez la Maison Enrica à Limete, Kinshasa, pour une visite, un partenariat, du bénévolat ou une proposition de soutien." name="twitter:description">
     <meta content="https://maisonenrica.org/image/C.jpeg" name="twitter:image">
+    <meta content="Maison Enrica, Foyer de l’Enfant Jésus à Kinshasa" name="twitter:image:alt">
     <link href="../favicon.png" rel="icon" type="image/png">
     <title>Contact | Maison Enrica à Kinshasa</title>
     <!-- MODIFICATION : une seule bibliothèque d’icônes réduit les requêtes bloquantes. -->
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="../general.css?v=20260914" rel="stylesheet">
-    <link href="style.css?v=20260914" rel="stylesheet">
-    <script defer src="contact.js?v=20260914"></script>
+    <link href="../general.css?v=20261012" rel="stylesheet">
+    <link href="style.css?v=20261012" rel="stylesheet">
+    <script type="module" src="contact.js?v=20261011-2"></script>
     <!-- AJOUT : fonctionnement du menu burger. -->
-    <script defer src="../menu.js?v=20260914"></script>
+    <script defer src="../menu.js?v=20261010"></script>
     <!-- AJOUT PREMIUM : animations sobres, compteurs, galerie et confort de navigation. -->
-    <script defer src="../experience.js?v=20260914"></script>
+    <script defer src="../experience.js?v=20261011"></script>
+    <script defer src="../recherche.js?v=20261012"></script>
+    <script type="module" src="../contenus.js?v=20261011"></script>
 </head>
 <body class="page-contact">
     <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
@@ -94,6 +96,11 @@
                             <input autocomplete="name" id="nom-contact" maxlength="100" minlength="2" name="nom" placeholder="Votre Nom" required type="text">
                         </div>
                         <div>
+                            <label for="contact-reponse">E-mail ou numéro WhatsApp</label>
+                            <input autocomplete="email" id="contact-reponse" maxlength="120" name="contact" placeholder="Ex. nom@email.com ou +243…" required type="text">
+                            <small class="aide-champ">Utilisé uniquement pour permettre à Maison Enrica de vous répondre.</small>
+                        </div>
+                        <div>
                             <label for="objet-contact">Sujet de votre message</label>
                             <select id="objet-contact" name="objet" required>
                                 <option disabled selected value>Choisissez un sujet</option>
@@ -109,6 +116,10 @@
                         <div>
                             <label for="message-contact">Votre message</label>
                             <textarea id="message-contact" maxlength="2000" minlength="20" name="message" placeholder="Comment pouvons-nous vous aider ?" required rows="8"></textarea>
+                        </div>
+                        <div class="champ-piege" aria-hidden="true">
+                            <label for="site-contact">Site web</label>
+                            <input id="site-contact" name="site" tabindex="-1" autocomplete="off" type="text">
                         </div>
                         <div class="consentement">
                             <input id="accord-contact" name="accord" required type="checkbox" value="oui">
@@ -141,11 +152,19 @@
                     <!-- MODIFICATION : l'ancienne image statique est remplacée par une carte
                         interactive plus utile pour préparer une visite. -->
                     <div class="carte-localisation">
+                        <!-- OPTIMISATION : Google Maps n'est chargé qu'après une action volontaire. -->
+                        <div class="carte-apercu" id="carte-apercu">
+                            <i aria-hidden="true" class="fa-solid fa-map-location-dot"></i>
+                            <strong>Maison Enrica · Limete, Kinshasa</strong>
+                            <span>La carte interactive sera chargée uniquement si vous choisissez de l’afficher.</span>
+                            <button id="charger-carte" type="button">Afficher la carte</button>
+                        </div>
                         <iframe
                             allowfullscreen
+                            data-src="https://www.google.com/maps?q=10%20Avenue%20du%2017%20Mai%2C%20Limete%2C%20Kinshasa%2C%20RDC&amp;z=16&amp;output=embed"
+                            hidden
                             loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"
-                            src="https://www.google.com/maps?q=10%20Avenue%20du%2017%20Mai%2C%20Limete%2C%20Kinshasa%2C%20RDC&amp;z=16&amp;output=embed"
                             title="Localisation de la Maison Enrica à Limete, Kinshasa">
                         </iframe>
                         <div class="carte-actions">
@@ -204,6 +223,8 @@
                     <a aria-label="Envoyer un e-mail" href="mailto:maisonenricas@hotmail.com" title="Envoyer un e-mail"><i aria-hidden="true" class="fa-solid fa-envelope"></i></a>
                     <a aria-label="Appeler la Maison Enrica" href="tel:+243819073170" title="Appeler la Maison Enrica"><i aria-hidden="true" class="fa-solid fa-phone"></i></a>
                     <a aria-label="Écrire sur WhatsApp" href="https://wa.me/243819073170?text=Bonjour%20Maison%20Enrica%2C%20je%20souhaite%20vous%20contacter." rel="noopener noreferrer" target="_blank" title="Écrire sur WhatsApp"><i aria-hidden="true" class="fa-brands fa-whatsapp"></i></a>
+                
+                    <a aria-label="Suivre Maison Enrica sur Facebook" href="https://www.facebook.com/profile.php?id=100064860190113" rel="noopener noreferrer" target="_blank" title="Facebook Maison Enrica"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i></a>
                 </div>
             </div>
             <div>
@@ -230,7 +251,7 @@
                 <p>© 2026 Maison Enrica / Foyer de l'Enfant Jésus. Tous droits réservés.</p>
             </div>
             <div>
-                <p>Conçu et développé par <span>Minga Kweti</span></p>
+                <p>Conçu et développé par <a class="credit-portfolio" href="https://portfolio-lightmk.netlify.app/" rel="noopener noreferrer" target="_blank">Minga Kweti</a></p>
             </div>
             <div>
                 <i aria-hidden="true" class="fa-solid fa-location-dot"></i>

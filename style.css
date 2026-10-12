@@ -13,7 +13,7 @@
     background:
         radial-gradient(circle at 50% 35%, rgba(16, 185, 129, 0.18), transparent 28rem),
         linear-gradient(110deg, rgba(2, 6, 23, 0.86), rgba(2, 6, 23, 0.58)),
-        url("image/C.jpeg") center / cover no-repeat;
+        url("image/C.webp") center / cover no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -26,6 +26,15 @@
         padding-top: 0;
     }
 }
+@media (max-width: 620px){
+    .accueil{
+        background:
+            radial-gradient(circle at 50% 35%, rgba(16, 185, 129, 0.18), transparent 28rem),
+            linear-gradient(110deg, rgba(2, 6, 23, 0.86), rgba(2, 6, 23, 0.58)),
+            url("image/C-mobile.webp") center / cover no-repeat;
+    }
+}
+
 .style{
     background: linear-gradient(to right, #047857, #FBBF24);
     -webkit-background-clip: text;
@@ -364,6 +373,39 @@
     background: var(--quaternaire);
     object-fit: contain;
 }
+
+.video-charger{
+    position: absolute;
+    inset: 50% auto auto 50%;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 12px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    border-radius: 999px;
+    color: white;
+    background: rgba(2, 6, 23, 0.82);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+    font-weight: 750;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+}
+.video-charger:hover{
+    background: var(--secondaire);
+}
+.video-charger[hidden]{
+    display: none;
+}
+.video-secours{
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    z-index: 3;
+    color: white;
+    text-decoration: underline;
+}
+
 .video-cadre video:focus-visible{
     outline: 3px solid var(--tertiaire);
     outline-offset: -3px;
@@ -747,39 +789,6 @@
     }
 }
 
-/* AJOUT : compteur réel du site, alimenté par Netlify côté serveur. */
-.visites-site{
-    width: fit-content;
-    max-width: min(100%, 520px);
-    margin: 32px auto 0;
-    padding: 9px 17px 9px 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    border: 1px solid rgba(251, 191, 36, 0.28);
-    border-radius: 999px;
-    color: rgba(255, 255, 255, 0.88);
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.06));
-    box-shadow: 0 9px 24px rgba(0, 0, 0, 0.12);
-    font-size: 0.88rem;
-    font-weight: 650;
-}
-.visites-site i{
-    width: 32px;
-    height: 32px;
-    display: grid;
-    place-items: center;
-    flex: 0 0 32px;
-    border-radius: 50%;
-    color: var(--tertiaire);
-    background: rgba(251, 191, 36, 0.12);
-}
-.visites-site strong{
-    color: white;
-    font-size: 1.12rem;
-    letter-spacing: 0.01em;
-}
 
 @media (max-width: 420px){
     .anniversaire-embleme{
@@ -793,4 +802,379 @@
     .video-anniversaire figcaption strong{
         text-align: left;
     }
+}
+
+/* AJOUT : zone d'accueil légère, visible sans dominer la page. */
+.accueil-visiteur{
+    padding: 0 5%;
+    margin-top: -30px;
+    z-index: 3;
+}
+.accueil-visiteur-carte{
+    width: min(920px, 100%);
+    margin: 0 auto;
+    padding: 17px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.88);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--ombre-douce);
+}
+.accueil-visiteur-message{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.accueil-visiteur-message > i{
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 44px;
+    border-radius: 50%;
+    color: var(--secondaire);
+    background: var(--surface-douce);
+}
+.accueil-visiteur-titre{
+    margin: 0;
+    color: var(--quaternaire);
+    font-weight: 800;
+}
+.accueil-visiteur .visites-site{
+    width: auto;
+    max-width: none;
+    margin: 3px 0 0;
+    padding: 0;
+    display: block;
+    border: 0;
+    border-radius: 0;
+    color: var(--texte);
+    background: transparent;
+    box-shadow: none;
+    font-size: 0.86rem;
+    font-weight: 600;
+}
+.accueil-visiteur .visites-site strong{
+    color: var(--secondaire);
+    font-size: 1rem;
+}
+.bouton-aide{
+    flex: none;
+    padding: 10px 14px;
+    border: 1px solid rgba(4, 120, 87, 0.18);
+    border-radius: 999px;
+    color: var(--secondaire);
+    background: white;
+    font-weight: 750;
+    cursor: pointer;
+}
+
+@media (max-width: 720px){
+    .accueil-visiteur{
+        margin-top: -20px;
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+    .accueil-visiteur-carte{
+        align-items: flex-start;
+        padding: 16px;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        background: white;
+    }
+}
+@media (max-width: 480px){
+    .accueil-visiteur-carte{
+        flex-direction: column;
+    }
+    .bouton-aide{
+        align-self: flex-end;
+    }
+}
+/* FALLBACK : rendu plus léger si le flou d'arrière-plan n'est pas pris en charge. */
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))){
+    .hero-kicker,
+    .hero-reperes > div,
+    .accueil-visiteur-carte{
+        background: rgba(255, 255, 255, 0.96);
+    }
+    .hero-kicker,
+    .hero-reperes > div{
+        color: white;
+        background: rgba(2, 6, 23, 0.72);
+    }
+}
+
+
+/* ==========================================================
+   MODIFICATION : accueil visiteur plus clair et plus valorisant
+   ========================================================== */
+.accueil-visiteur-carte{
+    background:linear-gradient(135deg,rgba(255,255,255,.93),rgba(240,253,244,.88));
+}
+.accueil-visiteur-icone{
+    width:50px;
+    height:50px;
+    display:grid;
+    place-items:center;
+    flex:0 0 50px;
+    border-radius:16px;
+    color:white;
+    background:linear-gradient(145deg,var(--secondaire),var(--primaire));
+    box-shadow:0 10px 24px rgba(4,120,87,.18);
+}
+.visite-personnelle{
+    margin:3px 0 0;
+    color:var(--texte);
+    font-size:.84rem;
+}
+.accueil-visiteur-statistiques{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+.accueil-visiteur .visites-site{
+    display:grid;
+    gap:0;
+    min-width:130px;
+    text-align:right;
+}
+.accueil-visiteur .visites-site strong{
+    font-size:1.55rem;
+    line-height:1;
+}
+.accueil-visiteur .visites-site span{
+    margin-top:4px;
+    font-size:.74rem;
+}
+
+/* ==========================================================
+   AJOUT : actualités, événements et besoins dynamiques
+   ========================================================== */
+.contenus-vivants{
+    padding-top:72px;
+    padding-bottom:72px;
+}
+.contenus-vivants.surface-douce{
+    background:linear-gradient(180deg,#f8fffb,var(--surface-douce));
+}
+.section-intro{
+    width:min(1180px,100%);
+    margin:0 auto 26px;
+}
+.section-intro h2{margin:8px 0 6px;}
+.section-intro p{max-width:720px;}
+.grille-contenus{
+    width:min(1180px,100%);
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:18px;
+}
+.carte-dynamique{
+    min-width:0;
+    padding:24px;
+    border:1px solid rgba(4,120,87,.12);
+    border-radius:24px;
+    background:rgba(255,255,255,.92);
+    box-shadow:0 16px 42px rgba(2,6,23,.07);
+}
+.carte-dynamique h3{
+    margin:8px 0 10px;
+    color:var(--quaternaire);
+    font-size:1.25rem;
+}
+.contenu-meta{
+    margin:0;
+    color:var(--secondaire);
+    font-size:.78rem;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+}
+.contenu-texte{
+    white-space:pre-line;
+    overflow-wrap:anywhere;
+    line-height:1.7;
+}
+.contenu-lieu{margin:14px 0;color:var(--quaternaire);font-weight:650;}
+.contenu-vide{
+    grid-column:1/-1;
+    padding:24px;
+    border:1px dashed rgba(4,120,87,.2);
+    border-radius:20px;
+    text-align:center;
+    background:rgba(255,255,255,.68);
+}
+.lien-facebook,
+.lien-source{
+    color:var(--secondaire);
+    font-weight:750;
+}
+.lien-facebook{display:inline-flex;align-items:center;gap:8px;}
+.priorite-besoin{
+    display:inline-flex;
+    padding:6px 10px;
+    border-radius:999px;
+    color:var(--secondaire);
+    background:var(--surface-douce);
+    font-size:.73rem;
+    font-weight:850;
+    text-transform:uppercase;
+}
+.priorite-urgente{border-color:rgba(220,38,38,.24);}
+.priorite-urgente .priorite-besoin{color:#991b1b;background:#fef2f2;}
+.besoin-action{margin-top:12px;padding:10px 14px;font-size:.88rem;}
+.bouton-calendrier{
+    margin-top:8px;
+    padding:10px 12px;
+    border:1px solid rgba(4,120,87,.16);
+    border-radius:12px;
+    color:var(--secondaire);
+    background:var(--surface-douce);
+    font-weight:750;
+    cursor:pointer;
+}
+.partage-ligne{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:18px;
+    padding-top:14px;
+    border-top:1px solid rgba(15,23,42,.07);
+}
+.partage-contenu{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:7px 10px;
+    border-radius:999px;
+    color:var(--texte);
+    background:#f8fafc;
+    font-size:.76rem;
+    font-weight:700;
+}
+@media(max-width:920px){.grille-contenus{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:650px){
+    .grille-contenus{grid-template-columns:1fr;}
+    .accueil-visiteur-statistiques{width:100%;justify-content:space-between;}
+    .accueil-visiteur .visites-site{text-align:left;}
+    .section-intro.flex-between{align-items:flex-start;gap:16px;}
+}
+@media(max-width:480px){
+    .accueil-visiteur-statistiques{align-items:flex-end;}
+    .bouton-aide{align-self:auto;}
+}
+
+/* ==========================================================
+   AJOUT : commentaires publics avec modération
+   ========================================================== */
+.commentaires-site{background:#fbfdfc;}
+.commentaires-grille{
+    width:min(1180px,100%);
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:minmax(300px,.8fr) minmax(0,1.2fr);
+    gap:22px;
+}
+.commentaire-formulaire,
+.commentaires-publies{
+    padding:24px;
+    border:1px solid rgba(4,120,87,.12);
+    border-radius:24px;
+    background:#fff;
+    box-shadow:0 16px 42px rgba(2,6,23,.06);
+}
+.commentaire-formulaire{display:grid;gap:9px;align-self:start;}
+.commentaire-formulaire label{color:var(--quaternaire);font-size:.88rem;font-weight:750;}
+.commentaire-formulaire input,
+.commentaire-formulaire textarea{
+    width:100%;
+    padding:12px 13px;
+    border:1px solid #cbd5e1;
+    border-radius:12px;
+    color:var(--quaternaire);
+    background:#fff;
+}
+.commentaire-formulaire textarea{resize:vertical;}
+.champ-piege{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+.commentaire-statut{min-height:1.2em;margin:3px 0 0;font-size:.85rem;color:var(--secondaire);}
+.commentaire-carte{padding:17px 0;border-bottom:1px solid rgba(15,23,42,.08);}
+.commentaire-carte:first-child{padding-top:0}.commentaire-carte:last-child{border-bottom:0;padding-bottom:0}
+.commentaire-carte strong{display:block;color:var(--quaternaire);margin-bottom:5px}.commentaire-carte time{font-size:.73rem;color:var(--texte)}.commentaire-carte p{margin:8px 0 0;line-height:1.65;white-space:pre-line;overflow-wrap:anywhere}
+@media(max-width:780px){.commentaires-grille{grid-template-columns:1fr;}}
+
+/* ==========================================================
+   FINALISATION : première impression visiteur
+   ========================================================== */
+.bienvenue-visiteur{
+    position:relative;
+    z-index:80;
+    border-bottom:1px solid rgba(255,255,255,.12);
+    color:#ecfdf5;
+    background:linear-gradient(100deg,#064e3b,#047857 58%,#0f766e);
+}
+.bienvenue-visiteur-contenu{
+    width:min(1180px,calc(100% - 34px));
+    min-height:72px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+.bienvenue-visiteur-icone{
+    flex:0 0 auto;
+    width:40px;
+    height:40px;
+    display:grid;
+    place-items:center;
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:13px;
+    color:#fde68a;
+    background:rgba(255,255,255,.1);
+}
+.bienvenue-visiteur-contenu>div{
+    display:grid;
+    flex:1;
+    gap:1px;
+}
+.bienvenue-visiteur .mini-insigne{
+    color:#bbf7d0;
+    font-size:.68rem;
+}
+#bienvenue-visiteur-titre{
+    color:#fff;
+    font-size:clamp(.96rem,2vw,1.15rem);
+}
+#bienvenue-visiteur-texte{
+    color:rgba(255,255,255,.76);
+    font-size:.82rem;
+}
+.bienvenue-visiteur-compteur{
+    display:grid;
+    min-width:120px;
+    margin:0;
+    padding-left:18px;
+    border-left:1px solid rgba(255,255,255,.2);
+    text-align:right;
+}
+.bienvenue-visiteur-compteur strong{
+    color:#fde68a;
+    font-size:1.25rem;
+}
+.bienvenue-visiteur-compteur span{
+    font-size:.67rem;
+    color:rgba(255,255,255,.7);
+}
+@media(max-width:620px){
+    .bienvenue-visiteur-contenu{min-height:76px;gap:10px;}
+    .bienvenue-visiteur-icone{width:36px;height:36px;}
+    #bienvenue-visiteur-texte{display:none;}
+    .bienvenue-visiteur-compteur{min-width:92px;padding-left:10px;}
+    .bienvenue-visiteur-compteur span{font-size:.6rem;}
 }

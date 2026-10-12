@@ -412,3 +412,18 @@
         padding: 14px 10px;
     }
 }
+
+/* FINALISATION : éléments gérés depuis l'administration. */
+.contenus-admin-public[hidden]{display:none!important;}
+#partenaires-dynamiques .cardI img{
+    width:100%;
+    aspect-ratio:1200/760;
+    object-fit:contain;
+    background:#fff;
+}
+#responsables-dynamiques .cardI small{
+    display:block;
+    margin-top:8px;
+    color:#64748b;
+    line-height:1.55;
+}

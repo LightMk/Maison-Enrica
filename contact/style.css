@@ -493,6 +493,54 @@ button[type="submit"] i{
     border-radius: 18px;
     background: #f8fafc;
 }
+
+.carte-apercu{
+    flex: 1;
+    min-height: 315px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    color: #334155;
+    text-align: center;
+    background:
+        radial-gradient(circle at 50% 20%, rgba(16, 185, 129, 0.12), transparent 13rem),
+        #f8fafc;
+}
+.carte-apercu[hidden]{
+    display: none;
+}
+.carte-apercu > i{
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: white;
+    background: var(--secondaire);
+}
+.carte-apercu strong{
+    color: var(--quaternaire);
+    font-size: 1rem;
+}
+.carte-apercu span{
+    max-width: 360px;
+    font-size: 0.86rem;
+    line-height: 1.5;
+}
+.carte-apercu button{
+    margin-top: 4px;
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 999px;
+    color: white;
+    background: var(--secondaire);
+    font-weight: 800;
+    cursor: pointer;
+}
+
 .carte-localisation iframe{
     flex: 1;
     display: block;
@@ -581,4 +629,178 @@ button[type="submit"] i{
         flex-direction: column;
         gap: 9px;
     }
+}
+.aide-champ{
+    display:block;
+    margin-top:6px;
+    color:#64748b;
+    font-size:.78rem;
+    line-height:1.45;
+}
+
+.champ-piege{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important;}
+
+
+/* ==========================================================
+   RETOUCHE VISUELLE FINALE CONTACT
+   Modernisation uniquement visuelle : le fonctionnement reste inchangé.
+   ========================================================== */
+.page-contact main > section{
+    isolation:isolate;
+    overflow:hidden;
+}
+.page-contact main > section::before,
+.page-contact main > section::after{
+    content:"";
+    position:absolute;
+    z-index:-1;
+    border-radius:50%;
+    pointer-events:none;
+    filter:blur(2px);
+}
+.page-contact main > section::before{
+    width:360px;
+    height:360px;
+    top:70px;
+    left:-170px;
+    background:rgba(16,185,129,.09);
+}
+.page-contact main > section::after{
+    width:300px;
+    height:300px;
+    top:420px;
+    right:-145px;
+    background:rgba(251,191,36,.08);
+}
+.contact{
+    width:min(900px,100%);
+    margin:0 auto 42px;
+}
+.contact h1{
+    color:var(--quaternaire);
+    text-shadow:0 14px 35px rgba(4,120,87,.08);
+}
+.contact h1::after{
+    content:"";
+    width:58px;
+    height:6px;
+    display:block;
+    margin:18px auto 0;
+    border-radius:999px;
+    background:linear-gradient(90deg,var(--secondaire),var(--primaire),var(--tertiaire));
+}
+.contact hr{display:none;}
+.invitation-visite,
+.formulaire,
+.card-contact{
+    border-color:rgba(255,255,255,.72);
+    background:rgba(255,255,255,.89);
+    -webkit-backdrop-filter:blur(10px);
+    backdrop-filter:blur(10px);
+}
+.invitation-visite{
+    position:relative;
+    overflow:hidden;
+    border-radius:26px;
+    box-shadow:0 22px 55px rgba(2,6,23,.09);
+}
+.invitation-visite::after{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    right:-70px;
+    bottom:-100px;
+    border-radius:50%;
+    background:rgba(16,185,129,.09);
+    pointer-events:none;
+}
+.invitation-icone{
+    box-shadow:0 14px 34px rgba(4,120,87,.24);
+    background:linear-gradient(145deg,var(--secondaire),var(--primaire));
+}
+.contact-principal{
+    gap:30px;
+}
+.formulaire,
+.informations-contact{
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 22px 58px rgba(2,6,23,.1);
+}
+.formulaire::before,
+.informations-contact::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:4px;
+    background:linear-gradient(90deg,var(--secondaire),var(--primaire),var(--tertiaire));
+}
+.formulaire h2,
+.informations-contact h3{
+    letter-spacing:-.025em;
+}
+.formulaire label{
+    color:#0f172a;
+    font-weight:750;
+}
+.formulaire input,
+.formulaire select,
+.formulaire textarea{
+    border-color:#d7e7df;
+    background:rgba(248,255,251,.88);
+}
+.formulaire input:hover,
+.formulaire select:hover,
+.formulaire textarea:hover{
+    border-color:rgba(4,120,87,.34);
+}
+.formulaire button[type="submit"]{
+    min-height:54px;
+    box-shadow:0 16px 34px rgba(4,120,87,.23);
+}
+.informations-contact ul{
+    display:grid;
+    gap:8px;
+}
+.informations-contact li{
+    margin:0;
+    padding:10px 12px;
+    border-radius:14px;
+    background:rgba(240,253,244,.72);
+}
+.informations-contact .btn-whatsapp{
+    margin-top:8px;
+    border-radius:14px;
+}
+.carte-localisation{
+    border-color:rgba(4,120,87,.14);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.65);
+}
+.regles-visite{
+    padding:clamp(24px,4vw,36px);
+    box-shadow:0 18px 46px rgba(2,6,23,.08);
+}
+.liste-regles li{
+    margin:0;
+    padding:14px;
+    border:1px solid rgba(15,23,42,.06);
+    border-radius:16px;
+    background:rgba(248,250,252,.78);
+}
+.liste-regles li p{
+    margin:0;
+    max-width:none;
+    font-style:normal;
+}
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
+    .invitation-visite,.formulaire,.card-contact{background:#fff;}
+}
+@media(max-width:620px){
+    .contact{margin-bottom:30px;}
+    .contact h1::after{margin-top:14px;}
+    .invitation-visite{border-radius:22px;}
+    .contact-principal{gap:20px;}
 }

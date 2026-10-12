@@ -1,0 +1,26 @@
+MAISON ENRICA — FINALISATION ADMINISTRATION
+Date : 11 octobre 2026
+
+VALIDATIONS EXÉCUTÉES
+- Syntaxe JavaScript / Netlify Functions : OK
+- Références locales HTML / images / scripts / styles : OK
+- IDs HTML dupliqués : aucun détecté
+- manifest.webmanifest : JSON valide
+- sitemap.xml : XML valide
+- CSSC retirée du sitemap et placée en noindex : OK
+- Footer : maximum un lien Facebook par footer : OK
+- Crédit développeur relié au portfolio : OK
+- 13 logos partenaires : 1200 x 760, coins blancs identiques : OK
+- Nouvelle vidéo témoignage présente : 12,63 Mo, H.264/AAC, 1024 x 576
+- Recherche de clé sb_secret_ dans le code exécutable : aucune clé réelle détectée
+
+LIMITES DE TEST
+- L’environnement a bloqué l’ouverture automatisée du serveur local dans Chromium.
+- La connexion réelle Supabase, les règles RLS, Storage, la PWA installée et les fonctions Netlify doivent être validés après déploiement avec le projet réel.
+
+À FAIRE AVANT DÉPLOIEMENT
+1. Exécuter supabase/migration-finalisation-admin.sql dans Supabase SQL Editor.
+2. Configurer SUPABASE_URL et SUPABASE_SECRET_KEY dans les variables d’environnement Netlify.
+3. Déployer une seule fois la version finale.
+4. Tester /admin/ puis l’installation PWA.
+5. Envoyer un message test via Contact et vérifier sa réception dans Administration > Messages.

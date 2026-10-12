@@ -4,28 +4,29 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <!-- AJOUT : métadonnées essentielles pour le référencement et le partage. Modifier le domaine si le nom final change. -->
-    <meta content="Découvrez la Maison Enrica, Foyer de l’Enfant Jésus à Limete, Kinshasa : accueil, éducation et accompagnement de plus de 150 enfants." name="description">
+    <meta content="Découvrez la Maison Enrica, Foyer de l’Enfant Jésus à Limete, Kinshasa : accueil, éducation et accompagnement des enfants." name="description">
     <meta content="index, follow, max-image-preview:large" name="robots">
     <link href="https://maisonenrica.org/" rel="canonical">
     <meta content="fr_FR" property="og:locale">
     <meta content="website" property="og:type">
     <meta content="Maison Enrica" property="og:site_name">
     <meta content="Maison Enrica | Foyer de l’Enfant Jésus à Kinshasa" property="og:title">
-    <meta content="Découvrez la Maison Enrica, Foyer de l’Enfant Jésus à Limete, Kinshasa : accueil, éducation et accompagnement de plus de 150 enfants." property="og:description">
+    <meta content="Découvrez la Maison Enrica, Foyer de l’Enfant Jésus à Limete, Kinshasa : accueil, éducation et accompagnement des enfants." property="og:description">
     <meta content="https://maisonenrica.org/" property="og:url">
     <meta content="https://maisonenrica.org/image/C.jpeg" property="og:image">
+    <meta content="Maison Enrica, Foyer de l’Enfant Jésus à Kinshasa" property="og:image:alt">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="Maison Enrica | Foyer de l’Enfant Jésus à Kinshasa" name="twitter:title">
-    <meta content="Découvrez la Maison Enrica, Foyer de l’Enfant Jésus à Limete, Kinshasa : accueil, éducation et accompagnement de plus de 150 enfants." name="twitter:description">
+    <meta content="Découvrez la Maison Enrica, Foyer de l’Enfant Jésus à Limete, Kinshasa : accueil, éducation et accompagnement des enfants." name="twitter:description">
     <meta content="https://maisonenrica.org/image/C.jpeg" name="twitter:image">
+    <meta content="Maison Enrica, Foyer de l’Enfant Jésus à Kinshasa" name="twitter:image:alt">
     <link href="favicon.png" rel="icon" type="image/png">
-    <link as="image" href="image/C.jpeg" rel="preload">
+    <link as="image" href="image/C-mobile.webp" media="(max-width: 620px)" rel="preload" type="image/webp">
+    <link as="image" href="image/C.webp" media="(min-width: 621px)" rel="preload" type="image/webp">
     <title>Maison Enrica | Foyer de l’Enfant Jésus à Kinshasa</title>
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="general.css?v=20260914" rel="stylesheet">
-    <link href="style.css?v=20260914" rel="stylesheet">
+    <link href="general.css?v=20261012" rel="stylesheet">
+    <link href="style.css?v=20261011" rel="stylesheet">
     <!-- AJOUT : données structurées permettant aux moteurs de recherche de mieux identifier l’organisation. -->
     <script type="application/ld+json">
         {
@@ -34,7 +35,7 @@
             "name": "Maison Enrica – Foyer de l’Enfant Jésus",
             "alternateName": "Maison Enrica",
             "url": "https://maisonenrica.org/",
-            "logo": "https://maisonenrica.org/Logo.png",
+            "logo": "https://maisonenrica.org/Logo.webp",
             "image": "https://maisonenrica.org/image/C.jpeg",
             "email": "maisonenricas@hotmail.com",
             "telephone": "+243819073170",
@@ -55,18 +56,17 @@
             }
         }
     </script>
-    <script defer src="menu.js?v=20260914"></script>
-    <script defer src="experience.js?v=20260914"></script>
-    <script
-  src="https://js-de.sentry-cdn.com/15c8e33f4679747f5741027be2bd54ba.min.js"
-  crossorigin="anonymous"
-></script>
+    <script defer src="menu.js?v=20261010"></script>
+    <script defer src="experience.js?v=20261011"></script>
+    <script defer src="recherche.js?v=20261012"></script>
+    <!-- AJOUT : contenus dynamiques Supabase et notifications internes. -->
+    <script type="module" src="contenus.js?v=20261011"></script>
 </head>
 <body class="page-accueil">
     <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
     <header>
         <div class="flex3">
-            <img alt="Logo de la Maison Enrica" class="logo-img" decoding="async" height="200" loading="eager" src="Logo.webp" width="600">
+            <img alt="Logo de la Maison Enrica" class="logo-img" decoding="async" height="200" loading="eager" src="Logo.webp" width="300">
             <div class="logo-text">
                 MAISON ENRICA
             </div>
@@ -90,7 +90,7 @@
     <main id="contenu-principal">
         <section class="accueil">
             <div class="hero-contenu">
-                <span class="hero-kicker"><i aria-hidden="true" class="bi bi-heart-fill"></i> Foyer de l'Enfant Jésus • Kinshasa • Depuis 2006</span>
+                <span class="hero-kicker"><i aria-hidden="true" class="fa-solid fa-heart"></i> Foyer de l'Enfant Jésus • Kinshasa • Depuis 2006</span>
                 <h1>Protéger l'avenir, Construire une <span class="style">vie</span></h1>
             </div>
             <div class="animationEntrer">
@@ -116,15 +116,40 @@
             </div>
             <a class="hero-scroll" href="#mission" aria-label="Découvrir la mission de la Maison Enrica">
                 <span>Découvrir</span>
-                <i aria-hidden="true" class="bi bi-arrow-down"></i>
+                <i aria-hidden="true" class="fa-solid fa-arrow-down"></i>
             </a>
         </section>
+
+        <!-- AJOUT : accueil léger des visiteurs. Le message de retour reste local au navigateur ;
+             le nombre de visites vient toujours du compteur serveur Netlify. -->
+        <section class="accueil-visiteur" aria-label="Accueil des visiteurs">
+            <div class="accueil-visiteur-carte">
+                <div class="accueil-visiteur-message">
+                    <span class="accueil-visiteur-icone" aria-hidden="true"><i class="fa-solid fa-hand-holding-heart"></i></span>
+                    <div>
+                        <span class="mini-insigne">Votre visite</span>
+                        <p class="accueil-visiteur-titre" id="message-visiteur">Bienvenue à Maison Enrica !</p>
+                        <p class="visite-personnelle" id="visite-personnelle">Heureux de vous accueillir.</p>
+                    </div>
+                </div>
+                <div class="accueil-visiteur-statistiques">
+                    <p class="visites-site" aria-live="polite" hidden>
+                        <strong id="compteur-visites">—</strong>
+                        <span>visites enregistrées</span>
+                    </p>
+                    <button class="bouton-aide" id="ouvrir-guide" type="button">
+                        <i aria-hidden="true" class="fa-solid fa-compass"></i> Aide
+                    </button>
+                </div>
+            </div>
+        </section>
+
         <!-- AJOUT PREMIUM : section de narration pour mieux expliquer l'expérience proposée aux enfants. -->
         <section class="experience-foyer">
             <div class="experience-photo">
-                <img alt="Moment de vie collective à la Maison Enrica" decoding="async" height="608" loading="lazy" src="image/terasse-enf.jpeg" width="1080">
+                <img alt="Moment de vie collective à la Maison Enrica" decoding="async" height="608" loading="lazy" srcset="propos/image/terasse-enf-640.webp 640w, propos/image/terasse-enf.webp 1080w" sizes="(max-width: 720px) 88vw, 50vw" src="propos/image/terasse-enf.webp" width="1080">
                 <div class="experience-badge">
-                    <i aria-hidden="true" class="bi bi-house-heart"></i>
+                    <i aria-hidden="true" class="fa-solid fa-house"></i>
                     <span>Un cadre de vie, d'apprentissage et de partage</span>
                 </div>
             </div>
@@ -134,19 +159,19 @@
                 <p>La Maison Enrica accompagne les enfants dans les dimensions essentielles de leur quotidien : protection, alimentation, éducation, santé et développement personnel.</p>
                 <div class="experience-points">
                     <div>
-                        <i aria-hidden="true" class="bi bi-shield-check"></i>
+                        <i aria-hidden="true" class="fa-solid fa-shield-heart"></i>
                         <span>Protection et cadre familial</span>
                     </div>
                     <div>
-                        <i aria-hidden="true" class="bi bi-book"></i>
+                        <i aria-hidden="true" class="fa-solid fa-book-open"></i>
                         <span>Scolarisation et apprentissage</span>
                     </div>
                     <div>
-                        <i aria-hidden="true" class="bi bi-heart-pulse"></i>
+                        <i aria-hidden="true" class="fa-solid fa-heart-pulse"></i>
                         <span>Soins et bien-être quotidien</span>
                     </div>
                 </div>
-                <a class="lien-fleche" href="propos/propos.html">Découvrir notre histoire <i aria-hidden="true" class="bi bi-arrow-right"></i></a>
+                <a class="lien-fleche" href="propos/propos.html">Découvrir notre histoire <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a>
             </div>
         </section>
         <section class="mission" id="mission">
@@ -167,7 +192,7 @@
                     <p>120 enfants accueillis, 3 repas équilibrés par jour et une équipe professionnelle dévouée pour assurer leur bien-être quotidien.</p>
                     <div class="flex2">
                         <div>
-                            <p>150 Enfants</p>
+                            <p>Nos pensionnaires</p>
                         </div>
                         <div>
                             <p>19 Mentors</p>
@@ -183,7 +208,7 @@
             </div>
         </section>
         <!-- MODIFICATION : section anniversaire restructurée pour mettre les quatre vidéos en valeur sans autoplay. -->
-        <section aria-labelledby="titre-anniversaire" class="anniversaire">
+        <section aria-labelledby="titre-anniversaire" class="anniversaire" id="anniversaire">
             <div class="conteneur">
 
                 <!-- AJOUT : emblème anniversaire et introduction plus forte, dans les couleurs du site. -->
@@ -208,10 +233,15 @@
                     <figure class="video-anniversaire">
                         <div class="video-cadre">
                             <span aria-hidden="true" class="video-numero">01</span>
-                            <video aria-label="Première vidéo de la célébration des 20 ans" controls  preload="metadata">
-                                <source src="videos/20-ans-1.mp4" type="video/mp4">
+                            <video aria-label="Première vidéo de la célébration des 20 ans" playsinline poster="videos/posters/20-ans-1.webp" preload="none">
+                                <source data-src="videos/20-ans-1.mp4" type="video/mp4">
                                 Votre navigateur ne permet pas de lire cette vidéo.
                             </video>
+                            <button class="video-charger" type="button" aria-label="Lire la vidéo 1 de la célébration des 20 ans">
+                                <i aria-hidden="true" class="fa-solid fa-play"></i>
+                                <span>Lire la vidéo</span>
+                            </button>
+                            <noscript><a class="video-secours" href="videos/20-ans-1.mp4">Ouvrir la vidéo 1</a></noscript>
                         </div>
                         <figcaption>
                             <span>Vidéo 01</span>
@@ -222,10 +252,15 @@
                     <figure class="video-anniversaire">
                         <div class="video-cadre">
                             <span aria-hidden="true" class="video-numero">02</span>
-                            <video aria-label="Deuxième vidéo de la célébration des 20 ans" controls preload="metadata">
-                                <source src="videos/20-ans-2.mp4" type="video/mp4">
+                            <video aria-label="Deuxième vidéo de la célébration des 20 ans" playsinline poster="videos/posters/20-ans-2.webp" preload="none">
+                                <source data-src="videos/20-ans-2.mp4" type="video/mp4">
                                 Votre navigateur ne permet pas de lire cette vidéo.
                             </video>
+                            <button class="video-charger" type="button" aria-label="Lire la vidéo 2 de la célébration des 20 ans">
+                                <i aria-hidden="true" class="fa-solid fa-play"></i>
+                                <span>Lire la vidéo</span>
+                            </button>
+                            <noscript><a class="video-secours" href="videos/20-ans-2.mp4">Ouvrir la vidéo 2</a></noscript>
                         </div>
                         <figcaption>
                             <span>Vidéo 02</span>
@@ -236,10 +271,15 @@
                     <figure class="video-anniversaire">
                         <div class="video-cadre">
                             <span aria-hidden="true" class="video-numero">03</span>
-                            <video aria-label="Troisième vidéo de la célébration des 20 ans" controls  preload="metadata">
-                                <source src="videos/20-ans-3.mp4" type="video/mp4">
+                            <video aria-label="Troisième vidéo de la célébration des 20 ans" playsinline poster="videos/posters/20-ans-3.webp" preload="none">
+                                <source data-src="videos/20-ans-3.mp4" type="video/mp4">
                                 Votre navigateur ne permet pas de lire cette vidéo.
                             </video>
+                            <button class="video-charger" type="button" aria-label="Lire la vidéo 3 de la célébration des 20 ans">
+                                <i aria-hidden="true" class="fa-solid fa-play"></i>
+                                <span>Lire la vidéo</span>
+                            </button>
+                            <noscript><a class="video-secours" href="videos/20-ans-3.mp4">Ouvrir la vidéo 3</a></noscript>
                         </div>
                         <figcaption>
                             <span>Vidéo 03</span>
@@ -250,10 +290,15 @@
                     <figure class="video-anniversaire">
                         <div class="video-cadre">
                             <span aria-hidden="true" class="video-numero">04</span>
-                            <video aria-label="Quatrième vidéo de la célébration des 20 ans" controls  preload="metadata">
-                                <source src="videos/20-ans-4.mp4" type="video/mp4">
+                            <video aria-label="Quatrième vidéo de la célébration des 20 ans" playsinline poster="videos/posters/20-ans-4.webp" preload="none">
+                                <source data-src="videos/20-ans-4.mp4" type="video/mp4">
                                 Votre navigateur ne permet pas de lire cette vidéo.
                             </video>
+                            <button class="video-charger" type="button" aria-label="Lire la vidéo 4 de la célébration des 20 ans">
+                                <i aria-hidden="true" class="fa-solid fa-play"></i>
+                                <span>Lire la vidéo</span>
+                            </button>
+                            <noscript><a class="video-secours" href="videos/20-ans-4.mp4">Ouvrir la vidéo 4</a></noscript>
                         </div>
                         <figcaption>
                             <span>Vidéo 04</span>
@@ -285,14 +330,71 @@
                     <p>REPAS/JOUR</p>
                 </div>
             </div>
-
-            <!-- AJOUT : compteur réel alimenté par une Netlify Function.
-                 En local, un tiret est affiché tant que la fonction n'est pas disponible. -->
-            <div class="visites-site" aria-live="polite" hidden>
-                <i aria-hidden="true" class="bi bi-people"></i>
-                <span><strong id="compteur-visites">—</strong> visites enregistrées sur le site</span>
+        </section>
+        <!-- AJOUT : contenus gérés depuis l'administration Supabase, sans redéploiement du site. -->
+        <section class="contenus-vivants" id="actualites">
+            <div class="section-intro flex-between">
+                <div>
+                    <span class="insigne">VIE DU FOYER</span>
+                    <h2>Actualités récentes</h2>
+                    <p>Les dernières informations validées et publiées par Maison Enrica.</p>
+                </div>
+                <a class="lien-facebook" href="https://www.facebook.com/profile.php?id=100064860190113" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-facebook-f" aria-hidden="true"></i> Suivre sur Facebook
+                </a>
+            </div>
+            <div class="grille-contenus" id="liste-actualites" aria-live="polite">
+                <p class="contenu-vide">Chargement des actualités…</p>
             </div>
         </section>
+
+        <section class="contenus-vivants surface-douce" id="evenements">
+            <div class="section-intro">
+                <span class="insigne">AGENDA</span>
+                <h2>Événements</h2>
+                <p>Retrouvez les rendez-vous et activités publiés par les responsables.</p>
+            </div>
+            <div class="grille-contenus" id="liste-evenements" aria-live="polite">
+                <p class="contenu-vide">Chargement des événements…</p>
+            </div>
+        </section>
+
+        <section class="contenus-vivants" id="besoins-actuels">
+            <div class="section-intro">
+                <span class="insigne">AGIR CONCRÈTEMENT</span>
+                <h2>Nos besoins actuels</h2>
+                <p>Des besoins précis, publiés uniquement lorsqu'ils ont été confirmés par Maison Enrica.</p>
+            </div>
+            <div class="grille-contenus" id="liste-besoins" aria-live="polite">
+                <p class="contenu-vide">Chargement des besoins…</p>
+            </div>
+        </section>
+
+        <section class="commentaires-site" id="commentaires">
+            <div class="section-intro">
+                <span class="insigne">VOTRE MOT COMPTE</span>
+                <h2>Commentaires</h2>
+                <p>Partagez un message public. Chaque commentaire est vérifié avant publication afin de protéger le site et ses visiteurs.</p>
+            </div>
+            <div class="commentaires-grille">
+                <form class="commentaire-formulaire" id="commentaire-formulaire">
+                    <label for="commentaire-nom">Votre nom ou prénom</label>
+                    <input id="commentaire-nom" name="nom" maxlength="80" required>
+                    <label for="commentaire-message">Votre commentaire</label>
+                    <textarea id="commentaire-message" name="message" rows="5" minlength="5" maxlength="1000" required></textarea>
+                    <div class="champ-piege" aria-hidden="true">
+                        <label for="commentaire-site">Votre site</label>
+                        <input id="commentaire-site" name="site" tabindex="-1" autocomplete="off">
+                    </div>
+                    <button class="btn" type="submit">Envoyer pour validation</button>
+                    <p class="commentaire-statut" id="commentaire-statut" role="status" aria-live="polite"></p>
+                </form>
+                <div class="commentaires-publies" id="liste-commentaires" aria-live="polite">
+                    <p class="contenu-vide">Chargement des commentaires…</p>
+                </div>
+            </div>
+        </section>
+
         <section class="galerie">
             <span class="insigne">Galerie</span>
             <div class="flex-between">
@@ -305,26 +407,26 @@
             </div>
             <div class="galerie-grid">
                 <div class="enfant devoile">
-                    <img alt="les enfants" decoding="async" height="960" loading="lazy" src="image/enfant.webp" width="1280">
+                    <img alt="les enfants" decoding="async" height="960" loading="lazy" srcset="image/enfant-640.webp 640w, image/enfant.webp 1280w" sizes="(max-width: 720px) 88vw, 45vw" src="image/enfant.webp" width="1280">
                     <p>Les enfants de l'orphelinat</p>
                 </div>
                 <div class="eglise devoile">
-                    <img alt="l'église" decoding="async" height="735" loading="lazy" src="image/eglise.webp" width="980">
+                    <img alt="l'église" decoding="async" height="735" loading="lazy" srcset="image/eglise-640.webp 640w, image/eglise.webp 980w" sizes="(max-width: 720px) 88vw, 45vw" src="image/eglise.webp" width="980">
                     <p>La chapelle de l'Orphelinat</p>
                 </div>
                 <div class="ecole devoile">
-                    <img alt="l'école" decoding="async" height="1066" loading="lazy" src="image/ecole.webp" width="1066">
+                    <img alt="l'école" decoding="async" height="1066" loading="lazy" srcset="image/ecole-640.webp 640w, image/ecole.webp 1066w" sizes="(max-width: 720px) 88vw, 45vw" src="image/ecole.webp" width="1066">
                     <p>L'école Saint-Charles</p>
                 </div>
                 <div class="orphelinat devoile">
-                    <img alt="l'Orphelinat" decoding="async" height="960" loading="lazy" src="image/orphelinat.webp" width="1280">
+                    <img alt="l'Orphelinat" decoding="async" height="960" loading="lazy" srcset="image/orphelinat-640.webp 640w, image/orphelinat.webp 1280w" sizes="(max-width: 720px) 88vw, 45vw" src="image/orphelinat.webp" width="1280">
                     <p>l'orphelinat Maison Enrica</p>
                 </div>
             </div>
         </section>
         <section class="invite">
             <h2>Participer à leur avenir dès aujourd'hui</h2>
-            <p>Chaque geste compte. Votre soutien financier ou matériel permet à plus de 150 enfants de bénéficier d'une éducation, de soins de santé et d'un toit sécurisé.</p>
+            <p>Chaque geste compte. Votre soutien financier ou matériel contribue au quotidien des 120 enfants accueillis, notamment pour l’éducation, les soins de santé et un cadre de vie sécurisé.</p>
             <div class="flex">
                 <div>
                     <!-- MODIFICATION : la page Don est temporairement retirée ; redirection vers Contact. -->
@@ -336,6 +438,29 @@
             </div>
         </section>
     </main>
+    <!-- AJOUT : guide facultatif de première visite, sans backend ni compte utilisateur. -->
+    <aside class="guide-site" id="guide-site" aria-labelledby="guide-titre" hidden>
+        <div class="guide-entete">
+            <div>
+                <span class="mini-insigne">Guide rapide</span>
+                <span id="guide-progression">1 sur 5</span>
+            </div>
+            <button aria-label="Fermer le guide" id="fermer-guide" type="button"><i aria-hidden="true" class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="guide-visuel" aria-hidden="true"><i id="guide-icone" class="fa-solid fa-house-heart"></i></div>
+        <div class="guide-barre"><span id="guide-barre-progression"></span></div>
+        <h2 id="guide-titre">Bienvenue à Maison Enrica</h2>
+        <p id="guide-texte">Découvrez en quelques secondes l’essentiel du site.</p>
+        <a class="guide-lien" id="guide-lien" href="#mission">Découvrir cette partie</a>
+        <div class="guide-actions">
+            <button class="guide-ignorer" id="ignorer-guide" type="button">Ignorer</button>
+            <div>
+                <button class="guide-precedent" id="precedent-guide" type="button" disabled>Précédent</button>
+                <button class="guide-suivant" id="suivant-guide" type="button">Suivant</button>
+            </div>
+        </div>
+    </aside>
+
     <footer>
         <div class="footer">
             <div>
@@ -345,6 +470,8 @@
                     <a aria-label="Envoyer un e-mail" href="mailto:maisonenricas@hotmail.com" title="Envoyer un e-mail"><i aria-hidden="true" class="fa-solid fa-envelope"></i></a>
                     <a aria-label="Appeler la Maison Enrica" href="tel:+243819073170" title="Appeler la Maison Enrica"><i aria-hidden="true" class="fa-solid fa-phone"></i></a>
                     <a aria-label="Écrire sur WhatsApp" href="https://wa.me/243819073170?text=Bonjour%20Maison%20Enrica%2C%20je%20souhaite%20vous%20contacter." rel="noopener noreferrer" target="_blank" title="Écrire sur WhatsApp"><i aria-hidden="true" class="fa-brands fa-whatsapp"></i></a>
+                
+                    <a aria-label="Suivre Maison Enrica sur Facebook" href="https://www.facebook.com/profile.php?id=100064860190113" rel="noopener noreferrer" target="_blank" title="Facebook Maison Enrica"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i></a>
                 </div>
             </div>
             <div>
@@ -371,10 +498,10 @@
                 <p>© 2026 Maison Enrica / Foyer de l'Enfant Jésus.</p>
             </div>
             <div>
-                <p>Conçu et développé par <span>Minga Kweti</span></p>
+                <p>Conçu et développé par <a class="credit-portfolio" href="https://portfolio-lightmk.netlify.app/" rel="noopener noreferrer" target="_blank">Minga Kweti</a></p>
             </div>
             <div>
-                <i aria-hidden="true" class="bx bx-map"></i>
+                <i aria-hidden="true" class="fa-solid fa-location-dot"></i>
                 Limete, Kinshasa, RDC
             </div>
         </div>

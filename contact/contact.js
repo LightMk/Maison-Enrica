@@ -1,5 +1,7 @@
-// FINALISATION : le formulaire prépare un message fidèle au texte du visiteur.
-// WhatsApp reste le moyen principal et l'e-mail sert de solution de secours.
+// FINALISATION : WhatsApp reste le moyen principal.
+// Une copie de la demande peut aussi être enregistrée dans Supabase afin
+// qu'elle apparaisse dans l'espace administrateur. Si Supabase est indisponible,
+// WhatsApp et l'e-mail continuent de fonctionner normalement.
 
 const formulaire = document.querySelector("#form-contact")
 const bouton = document.querySelector("#btn-contact")
@@ -7,34 +9,24 @@ const boutonEmail = document.querySelector("#btn-email")
 const listeObjet = document.querySelector("#objet-contact")
 const etatContact = document.querySelector("#etat-contact")
 
-// Numéro officiel de la Maison Enrica au format WhatsApp : sans +, espace ou tiret.
 const numeroWhatsApp = "243819073170"
 const adresseEmail = "maisonenricas@hotmail.com"
 
-// Certains boutons du site indiquent automatiquement le sujet du message.
 const parametres = new URLSearchParams(window.location.search)
 const objetDemande = parametres.get("objet")
 
 if (objetDemande) {
-    const optionExiste = Array.from(listeObjet.options).some((option) => {
-        return option.value === objetDemande
-    })
-
-    if (optionExiste) {
-        listeObjet.value = objetDemande
-    }
+    const optionExiste = Array.from(listeObjet.options).some((option) => option.value === objetDemande)
+    if (optionExiste) listeObjet.value = objetDemande
 }
 
 function afficherEtat(message) {
-    if (etatContact) {
-        etatContact.textContent = message
-    }
+    if (etatContact) etatContact.textContent = message
 }
 
-// Le site ne reformule pas le texte du visiteur : il l'encadre seulement
-// avec le nom et le sujet sélectionné pour que la demande reste claire.
 function preparerMessage() {
     const nom = document.querySelector("#nom-contact").value.trim()
+    const contact = document.querySelector("#contact-reponse").value.trim()
     const objet = listeObjet.value
     const message = document.querySelector("#message-contact").value.trim()
 
@@ -43,14 +35,52 @@ function preparerMessage() {
         "\n\nJe vous contacte depuis votre site." +
         "\n\nDemande : " + objet +
         "\nNom : " + nom +
+        "\nContact : " + contact +
         "\n\nMessage :" +
         "\n" + message +
         "\n\nMerci."
 
-    return { nom, objet, texte }
+    return { nom, contact, objet, message, texte }
 }
 
-formulaire.addEventListener("submit", (event) => {
+async function enregistrerDansAdministration(donnees, canal) {
+    const piege = document.querySelector("#site-contact")?.value.trim()
+    if (piege) return false
+
+    try {
+        const reponse = await fetch("/.netlify/functions/messages", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify({
+                nom: donnees.nom,
+                contact: donnees.contact,
+                objet: donnees.objet,
+                message: donnees.message,
+                canal,
+                site: piege
+            })
+        })
+
+        return reponse.ok
+    } catch (erreur) {
+        return false
+    }
+}
+
+function ouvrirLien(lien) {
+    const lienTemporaire = document.createElement("a")
+    lienTemporaire.href = lien
+    lienTemporaire.target = "_blank"
+    lienTemporaire.rel = "noopener noreferrer"
+    document.body.append(lienTemporaire)
+    lienTemporaire.click()
+    lienTemporaire.remove()
+}
+
+formulaire.addEventListener("submit", async (event) => {
     event.preventDefault()
 
     if (!formulaire.checkValidity()) {
@@ -58,31 +88,51 @@ formulaire.addEventListener("submit", (event) => {
         return
     }
 
+    const confirmation = window.confirm(
+        "WhatsApp va s’ouvrir avec votre message déjà préparé. Vous devrez vérifier le contenu puis confirmer vous-même l’envoi. Continuer ?"
+    )
+
+    if (!confirmation) {
+        afficherEtat("Ouverture de WhatsApp annulée. Votre message reste dans le formulaire.")
+        return
+    }
+
     const donnees = preparerMessage()
-    const lienWhatsApp =
-        "https://wa.me/" +
-        numeroWhatsApp +
-        "?text=" +
-        encodeURIComponent(donnees.texte)
+    const lienWhatsApp = "https://wa.me/" + numeroWhatsApp + "?text=" + encodeURIComponent(donnees.texte)
 
     bouton.disabled = true
-    bouton.innerHTML = '<i aria-hidden="true" class="fa-brands fa-whatsapp"></i> Ouverture de WhatsApp...'
-    afficherEtat("Votre message est prêt. Vérifiez-le dans WhatsApp puis confirmez vous-même son envoi.")
+    bouton.innerHTML = '<i aria-hidden="true" class="fa-brands fa-whatsapp"></i> Préparation…'
+    afficherEtat("Préparation de votre demande…")
 
-    // L'ouverture dans un nouvel onglet permet de conserver le formulaire si le visiteur revient.
-    const nouvelleFenetre = window.open(lienWhatsApp, "_blank", "noopener,noreferrer")
+    const copieEnregistree = await enregistrerDansAdministration(donnees, "whatsapp")
 
-    // Secours pour les navigateurs qui bloquent l'ouverture d'un nouvel onglet.
-    if (!nouvelleFenetre) {
-        window.location.href = lienWhatsApp
-    }
+    afficherEtat(
+        copieEnregistree
+            ? "Une copie de votre demande a été enregistrée pour Maison Enrica. Vérifiez maintenant le message dans WhatsApp puis confirmez vous-même son envoi."
+            : "WhatsApp va s’ouvrir. Vérifiez le message puis confirmez vous-même son envoi."
+    )
+
+    bouton.innerHTML = '<i aria-hidden="true" class="fa-brands fa-whatsapp"></i> Ouverture de WhatsApp…'
+    ouvrirLien(lienWhatsApp)
+
+    window.setTimeout(() => {
+        bouton.disabled = false
+        bouton.innerHTML = '<i aria-hidden="true" class="fa-brands fa-whatsapp"></i> Envoyer le message'
+    }, 1200)
 })
 
-// L'e-mail n'utilise pas l'ancien système Netlify Forms.
-// Il ouvre l'application e-mail du visiteur avec le même message déjà préparé.
-boutonEmail.addEventListener("click", () => {
+boutonEmail.addEventListener("click", async () => {
     if (!formulaire.checkValidity()) {
         formulaire.reportValidity()
+        return
+    }
+
+    const confirmation = window.confirm(
+        "Votre application e-mail va s’ouvrir avec le message préparé. Vous devrez vérifier le contenu puis confirmer vous-même l’envoi. Continuer ?"
+    )
+
+    if (!confirmation) {
+        afficherEtat("Ouverture de l’e-mail annulée. Votre message reste dans le formulaire.")
         return
     }
 
@@ -96,17 +146,38 @@ boutonEmail.addEventListener("click", () => {
         "&body=" +
         encodeURIComponent(donnees.texte)
 
-    afficherEtat("Votre application e-mail va s’ouvrir avec le message préparé. Vérifiez-le puis confirmez vous-même son envoi.")
+    boutonEmail.disabled = true
+    const copieEnregistree = await enregistrerDansAdministration(donnees, "email")
+    boutonEmail.disabled = false
+
+    afficherEtat(
+        copieEnregistree
+            ? "Une copie de votre demande a été enregistrée. Votre application e-mail va maintenant s’ouvrir."
+            : "Votre application e-mail va s’ouvrir avec le message préparé."
+    )
     window.location.href = lienEmail
 })
 
-// Le retour disparaît dès que le visiteur recommence à modifier sa demande.
-formulaire.addEventListener("input", () => {
-    afficherEtat("")
-})
+formulaire.addEventListener("input", () => afficherEtat(""))
 
-// Réactive le bouton si l'utilisateur revient sur la page depuis WhatsApp.
 window.addEventListener("pageshow", () => {
     bouton.disabled = false
     bouton.innerHTML = '<i aria-hidden="true" class="fa-brands fa-whatsapp"></i> Envoyer le message'
+    boutonEmail.disabled = false
+})
+
+// La carte Google n'est chargée que si le visiteur la demande.
+const boutonCarte = document.querySelector("#charger-carte")
+const apercuCarte = document.querySelector("#carte-apercu")
+const carteGoogle = document.querySelector(".carte-localisation iframe[data-src]")
+
+boutonCarte?.addEventListener("click", () => {
+    if (!carteGoogle) return
+
+    if (!carteGoogle.getAttribute("src")) {
+        carteGoogle.src = carteGoogle.dataset.src
+    }
+
+    carteGoogle.hidden = false
+    apercuCarte?.setAttribute("hidden", "")
 })
